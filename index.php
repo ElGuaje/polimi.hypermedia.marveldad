@@ -1,8 +1,9 @@
 <?php 
 	include 'include/header.php';
 ?>
-	<b>Body of index page</b>
-	
+	<div class="container">
+		<b>Body of index page</b>
+	</div>
 <?php	
 	include 'include/footer.php';
 ?>

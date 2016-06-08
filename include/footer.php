@@ -1,9 +1,9 @@
 
-		<div id="footer">
-			
-			Copyright &copy; <?php echo date('Y'); ?>
-			
-		</div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Made by: Panyushov Piantella Trabucchi - Copyright &copy; 2016</p>
+      </div>
+    </footer>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
