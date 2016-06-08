@@ -1,6 +1,6 @@
 <?php
 
-	if(DEVELOPMENT){
+	if(@DEVELOPMENT){
 		$host = 'localhost';
 		$user = 'hypermedia';
 		$pass = 'hypermedia';
@@ -16,7 +16,7 @@
 	if ($db->connect_errno) {
 		echo 'Errore connessione DB: (' . $db->connect_errno . ') ' . $db->connect_error;
 	}else{
-		echo 'Connessione DB OK.'; 
+		;//echo 'Connessione DB OK.'; 
 	}
 	unset($pass);
 	
