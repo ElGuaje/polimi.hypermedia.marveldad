@@ -15,45 +15,44 @@
         <li><a href="#">Chi Siamo</a></li>
         <li><a href="#about">Il Gruppo</a></li>
         <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prodotti <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Smartphone e Telefonia</a></li>
+                <li><a href="#">Decoder e SmartTV</a></li>
+                <li><a href="#">Wearable e Gadgets</a></li>
+                <li><a href="#">Computer e Tablet</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="#">Offerte ed Occazioni</a></li>
               </ul>
             </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Smart Life <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">TV e Intrattenimento</a></li>
+            <li><a href="#">Casa e Famiglia</a></li>
+            <li><a href="#">Salute e Benessere</a></li>
+            <li><a href="#">Servizi alla persona</a></li>
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#">Offerte ed Occasioni</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assistenza <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">FAQ</a></li>
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Gestione linea</a></li>
+            <li><a href="#">Controllo costi e Gestione pagamenti</a></li>
             <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#">Gestione linea</a></li>
+            <li><a href="#">Supporto tecnico e Configurazione</a></li>
+            <li><a href="#">Servizi Smart Life</a></li>
           </ul>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="../navbar/">Carrello</a></li>
+        <li><a href="#">Carrello</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div>
   </div>
 </nav>
