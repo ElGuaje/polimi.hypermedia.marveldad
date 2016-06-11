@@ -53,7 +53,14 @@ code {
     margin-top: -8px;
 }
 
-.navbar-default .navbar-nav > .active > a {
+.navbar-default .navbar-nav > .active > a  {
     color: lightgray;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #ff3c1a;
     background-color: transparent;
 }
