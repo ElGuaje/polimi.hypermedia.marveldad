@@ -50,10 +50,18 @@
 			  padding-right: 15px;
 			  padding-left: 15px;
 			}
-
 			code {
 			  font-size: 80%;
 			}
+            .nav {
+                height: 75px;
+            }
+            .nav-container {
+                padding-top: 25px;
+            }
+            .navbar-collapse.in {
+                overflow-y: visible;
+            }
 		</style>
 	</head>
 	<body>
