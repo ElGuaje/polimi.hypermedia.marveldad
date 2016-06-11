@@ -56,11 +56,23 @@
             .nav {
                 height: 75px;
             }
+            .navbar-default {
+                background-color: #004592;
+                border-color: #003E83;
+            }
+            .navbar-default .navbar-nav > li > a {
+                color: lightgray;
+            }
+            .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+                color: #ff3c1a;
+                background-color: transparent;
+            }
             .nav-container {
                 padding-top: 25px;
             }
-            .navbar-collapse.in {
-                overflow-y: visible;
+            .navbar-brand {
+                padding-top: 0px;
+                margin-top: -8px;
             }
 		</style>
 	</head>

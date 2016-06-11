@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">TIM - Telecom Italia Mobile</a>
+      <a class="navbar-brand" href="#"><img alt="TIM - Telecom Italia Mobile" src="media/logo_white.png"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
