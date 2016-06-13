@@ -42,7 +42,7 @@
 			
 			$query = $db->query($sql);
 			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
-			$toJ = $telefoni;
+			$toJ = $telefoni[0];
 		}elseif($_GET['get'] == 'promo'){
 			$sql = "SELECT * FROM ".TAB_PRODOTTI." p LEFT JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto LEFT JOIN ".TAB_IMMAGINI." i ON pi.rifImage = i.idImmagine WHERE inPromo = 1 GROUP BY idProdotto";
 			$query = $db->query($sql);
