@@ -37,7 +37,7 @@
 				$('#divCarousel').empty();
 				var counter =0;
 				$.each(data,function(i,v){
-					$('#divCarousel').append('<div class="item"><a href="product.php?pid='+v['idProdotto']+'"><div class="carousel-caption"><h3>'+v['nome']+'</h3><p>'+v['prezzo']+'</p></div><img src="media/product_images/'+v['src']+'" alt="'+v['nome']+'"></a></div>');
+					$('#divCarousel').append('<div class="item"><a href="product.php?pid='+v['idProdotto']+'"><div class="carousel-caption"><h3>'+v['nome']+'</h3><p>'+v['prezzo']+' &euro;</p></div><img src="media/product_images/'+v['src']+'" alt="'+v['nome']+'"></a></div>');
 					$('#myCarousel ol').append('<li data-target="#myCarousel" data-slide-to="'+counter+'" class=""></li>');
 					counter ++;
 				});
