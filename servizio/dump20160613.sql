@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Giu 13, 2016 alle 12:10
+-- Generation Time: Giu 13, 2016 alle 12:14
 -- Versione del server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `hypermedia09`
 --
+DROP DATABASE `hypermedia09`;
+CREATE DATABASE IF NOT EXISTS `hypermedia09` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `hypermedia09`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +32,6 @@ SET time_zone = "+00:00";
 -- Creazione: Giu 03, 2016 alle 10:43
 --
 
-DROP TABLE IF EXISTS `asisstenza`;
 CREATE TABLE IF NOT EXISTS `asisstenza` (
   `idAssistenza` int(11) NOT NULL,
   `nome` int(11) NOT NULL,
@@ -45,7 +47,6 @@ CREATE TABLE IF NOT EXISTS `asisstenza` (
 -- Creazione: Giu 03, 2016 alle 10:36
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `idCategoria` int(11) NOT NULL,
   `categoria` varchar(64) NOT NULL,
@@ -81,7 +82,6 @@ INSERT INTO `categories` (`idCategoria`, `categoria`, `tipo`) VALUES
 -- Creazione: Giu 13, 2016 alle 08:54
 --
 
-DROP TABLE IF EXISTS `devices`;
 CREATE TABLE IF NOT EXISTS `devices` (
   `idProdotto` int(11) NOT NULL,
   `nome` varchar(64) NOT NULL,
@@ -111,7 +111,6 @@ INSERT INTO `devices` (`idProdotto`, `nome`, `prezzo`, `descrizione`, `schedaTec
 -- Creazione: Giu 03, 2016 alle 10:44
 --
 
-DROP TABLE IF EXISTS `devicesinassistenza`;
 CREATE TABLE IF NOT EXISTS `devicesinassistenza` (
   `rifDevice` int(11) NOT NULL,
   `rifAssistenza` int(11) NOT NULL
@@ -125,7 +124,6 @@ CREATE TABLE IF NOT EXISTS `devicesinassistenza` (
 -- Creazione: Giu 03, 2016 alle 10:45
 --
 
-DROP TABLE IF EXISTS `devicesinsl`;
 CREATE TABLE IF NOT EXISTS `devicesinsl` (
   `rifDevice` int(11) NOT NULL,
   `rifSmartLife` int(11) NOT NULL
@@ -139,7 +137,6 @@ CREATE TABLE IF NOT EXISTS `devicesinsl` (
 -- Creazione: Giu 13, 2016 alle 09:21
 --
 
-DROP TABLE IF EXISTS `imagesindevices`;
 CREATE TABLE IF NOT EXISTS `imagesindevices` (
   `rifImage` int(11) NOT NULL,
   `rifDevice` int(11) NOT NULL
@@ -162,7 +159,6 @@ INSERT INTO `imagesindevices` (`rifImage`, `rifDevice`) VALUES
 -- Creazione: Giu 13, 2016 alle 08:47
 --
 
-DROP TABLE IF EXISTS `immagini`;
 CREATE TABLE IF NOT EXISTS `immagini` (
   `idImmagine` int(11) NOT NULL,
   `src` varchar(64) NOT NULL
@@ -185,7 +181,6 @@ INSERT INTO `immagini` (`idImmagine`, `src`) VALUES
 -- Creazione: Giu 03, 2016 alle 10:42
 --
 
-DROP TABLE IF EXISTS `smartlife`;
 CREATE TABLE IF NOT EXISTS `smartlife` (
   `idSmartLife` int(11) NOT NULL,
   `nome` varchar(64) NOT NULL,
