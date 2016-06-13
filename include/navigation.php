@@ -43,7 +43,6 @@
             <li role="separator" class="divider"></li>
             <li><a href="#">Gestione linea</a></li>
             <li><a href="#">Controllo costi e Gestione pagamenti</a></li>
-            <li><a href="#">Separated link</a></li>
             <li><a href="#">Gestione linea</a></li>
             <li><a href="#">Supporto tecnico e Configurazione</a></li>
             <li><a href="#">Servizi Smart Life</a></li>
