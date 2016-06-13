@@ -64,3 +64,9 @@ code {
     color: #ff3c1a;
     background-color: transparent;
 }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: lightgray;
+    }
+}

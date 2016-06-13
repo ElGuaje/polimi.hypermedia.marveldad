@@ -17,7 +17,7 @@
         <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prodotti <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Smartphone e Telefonia</a></li>
+                <li><a href="product.php">Smartphone e Telefonia</a></li>
                 <li><a href="#">Decoder e SmartTV</a></li>
                 <li><a href="#">Wearable e Gadgets</a></li>
                 <li><a href="#">Computer e Tablet</a></li>

@@ -2,7 +2,7 @@
 	include 'include/header.php';
 ?>
 	<div class="container">
-		<div class="row">
+		<div class="col-3">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
@@ -35,6 +35,9 @@
 					</div>
 				</div>
 		</div>
+        <div class="col-9">
+            <p>Hello</p>
+        </div>
 	</div>
 <?php	
 	include 'include/footer.php';
