@@ -39,6 +39,21 @@
             <p>Hello</p>
         </div>
 	</div>
+	<script>
+		function getURLParameter(name) {
+		  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+		}
+		$(function(){
+			var pid = getURLParameter('pid');
+			$.ajax({
+				url: 'dojson.php?get=singleproduct&pid='+pid,
+				method: 'GET',
+				dataType: 'json'
+			}).done(function(data){
+				console.log(data);
+			}).fail();
+		});
+	</script>
 <?php	
 	include 'include/footer.php';
 ?>
