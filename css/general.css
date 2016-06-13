@@ -70,3 +70,8 @@ code {
         color: lightgray;
     }
 }
+
+.small-carousel {
+    height: 250px;
+    width: 250px;
+}
