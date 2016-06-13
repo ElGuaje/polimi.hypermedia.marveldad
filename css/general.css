@@ -70,3 +70,16 @@ code {
         color: lightgray;
     }
 }
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  
+  .carousel-indicators li{
+	background-color: #004592;
+  }
+  
+  .carousel-indicators .active{
+	background-color: #ff3c1a;
+  }

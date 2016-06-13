@@ -6,36 +6,47 @@
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
 					</ol>
 
 					<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<a href="http://google.com">
-								<img src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
-							</a>
-                            
-						</div>
-
-						<div class="item">
-							<img src="media/product_images/LG_G5_titan_01_1.jpg" alt="lg">
-						</div>
-
-						<div class="item">
-							<img src="media/product_images/sony-xperia-x-grphblk-3_4sx_0.jpg" alt="sony">
-						</div>
-
-						<div class="item">
-							<img src="media/product_images/huawei-p9-grey-01.jpg" alt="huawei">
-						</div>
+					<div id="divCarousel" class="carousel-inner" role="listbox">
+						
 					</div>
+					
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					  <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					  <span class="sr-only">Next</span>
+					</a>
 				</div>
+				
 		</div>
 	</div>
+	
+	<script>
+		$(function(){
+			$.ajax({
+				url: 'dojson.php?get=promo',
+				method: 'GET',
+				dataType: 'json'
+			}).done(function(data){
+				$('#divCarousel').empty();
+				var counter =0;
+				$.each(data,function(i,v){
+					$('#divCarousel').append('<div class="item"><a href="product.php?pid='+v['idProdotto']+'"><div class="carousel-caption"><h3>'+v['nome']+'</h3><p>'+v['prezzo']+'</p></div><img src="media/product_images/'+v['src']+'" alt="'+v['nome']+'"></a></div>');
+					$('#myCarousel ol').append('<li data-target="#myCarousel" data-slide-to="'+counter+'" class=""></li>');
+					counter ++;
+				});
+				$('#divCarousel').find('.item').first().addClass('active');
+				$('#myCarousel ol').find('li').first().addClass('active');
+			}).fail();
+		});
+	</script>
+	
 <?php	
 	include 'include/footer.php';
 ?>
