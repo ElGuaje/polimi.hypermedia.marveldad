@@ -38,11 +38,20 @@
 		}elseif($_GET['get'] == 'singleproduct'){
 			
 			$pid = $db->real_escape_string($_GET['pid']);
-			$sql = "SELECT * FROM devices WHERE idProdotto = ".$pid;
+			$sql = "SELECT * FROM ".TAB_PRODOTTI." WHERE idProdotto = ".$pid;
 			
 			$query = $db->query($sql);
 			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
-			$toJ = $telefoni[0];
+			
+			$sqlImmagini = "SELECT src FROM ".TAB_IMMAGINI." i LEFT JOIN ".TAB_IMGPROD." pi ON pi.rifImage = i.idImmagine WHERE pi.rifDevice = ".$pid;
+			$queryImmagini = $db->query($sqlImmagini);
+			$immagini = $queryImmagini->fetch_all(MYSQLI_ASSOC);
+			
+			$ret = $telefoni[0];
+			$ret['immagini'] = $immagini;
+			
+			$toJ = $ret;
+			
 		}elseif($_GET['get'] == 'promo'){
 			$sql = "SELECT * FROM ".TAB_PRODOTTI." p LEFT JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto LEFT JOIN ".TAB_IMMAGINI." i ON pi.rifImage = i.idImmagine WHERE inPromo = 1 GROUP BY idProdotto";
 			$query = $db->query($sql);
