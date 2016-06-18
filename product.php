@@ -3,6 +3,15 @@
 ?>
 	<div class="container">
 		<div class="col-md-4 col-xs-12">
+            <div id="navigationBackToCategory" class="col-md-12 col-xs-12" style="clear: both;">
+                <a href="#"><p class="alignleft">< Smartphone</p></a>
+            </div>
+            <div id="navigationBackToPromo" class="col-md-12 col-xs-12" style="clear: both;">
+                <a href="#"><p class="alignleft">< Promozioni</p></a>
+            </div>
+            <div id="navigationBackToService" class="col-md-12 col-xs-12" style="clear: both;">
+                <a href="#"><p class="alignleft">< Servizio Assistenza</p></a>
+            </div>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -13,28 +22,28 @@
                 </ol>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
+                <div class="carousel-inner small-carousel" role="listbox">
+                    <div class="item small-item active">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal1" href="#"> 
-                            <img src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
+                            <img class="img-responsive" src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
                         </a>
                     </div>
 
-                    <div class="item">
+                    <div class="item small-item">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal2" href="#"> 
-                            <img src="media/test_iphone1.jpg" alt="iphone">
+                            <img class="img-responsive" src="media/test_iphone1.jpg" alt="iphone">
                         </a>
                     </div>
 
-                    <div class="item">
+                    <div class="item small-item">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal3" href="#"> 
-                            <img src="media/test_iphone2.jpg" alt="iphone">
+                            <img class="img-responsive" src="media/test_iphone2.jpg" alt="iphone">
                         </a>
                     </div>
-
-                    <div class="item">
+                    
+                    <div class="item small-item">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal4" href="#"> 
-                            <img src="media/test_iphone3.jpg" alt="iphone">
+                            <img class="img-responsive" src="media/test_iphone3.jpg" alt="iphone">
                         </a>
                     </div>
                 </div>
@@ -77,11 +86,19 @@
             </div>
 		</div>
         <div class="col-md-8 col-xs-12">
+            <div id="navigation" class="col-md-12 col-xs-12" style="clear: both;">
+                <a href="#"><p class="alignleft"><< Precedente</p></a>
+                <a href="#"><p class="alignright">Successivo >></p></a>
+            </div>
+            <div id="navigationPromo" class="col-md-12 col-xs-12" style="clear: both;">
+                <a href="#"><p class="alignleft"><< Precedente in Promozione</p></a>
+                <a href="#"><p class="alignright">Successivo in Promozione >></p></a>
+            </div>
             <div id="nomeProdotto">
                 <h1>NOME PRODOTTO</h1>
             </div>
             <div class="col-md-3" id="prezzo">
-                <p>xxx,xx€</p>
+                <p><br>xxx,xx€</p>
             </div>
             <div class="col-md-4" id="specifiche">
                 <h4>Specifiche prodotto:</h4>
@@ -103,20 +120,37 @@
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
                     <h3>Descrizione</h3>
-                    <p>Some content some content some content some content some content some content some content.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                        pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>
                   </div>
                   <div id="menu1" class="tab-pane fade">
                     <h3>Scheda Tecnica</h3>
-                    <p>Some content some content some content some content some content some content some content.</p>
-                  </div>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                        pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>                  </div>
                   <div id="menu2" class="tab-pane fade">
                     <h3>Servizi Associati</h3>
-                    <p>Some content some content some content some content some content some content some content.</p>
-                  </div>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                        pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>                  </div>
                   <div id="faq" class="tab-pane fade">
                     <h3>FAQ</h3>
-                    <p>Some content some content some content some content some content some content some content.</p>
-                  </div>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                        pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>                  </div>
                 </div>
             </div>
         </div>

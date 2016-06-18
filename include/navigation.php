@@ -27,22 +27,22 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Smart Life <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>TV e Intrattenimento</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Casa e Famiglia</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Salute e Benessere</h4></a></li>
-            <li><a href="sl_service.php"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Servizi alla Persona</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Offerte ed Occasioni</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/01_Intrattenimento_0.png"><h4>TV e Intrattenimento</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/03_casa_famiglia_v2.png"><h4>Casa e Famiglia</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/02_icona_salute_benessere.png"><h4>Salute e Benessere</h4></a></li>
+            <li><a href="sl_service.php"><img class="dropdown-icon" src="media/icons/04_identita_payment.png"><h4>Servizi alla Persona</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/05_Outlet_2.png"><h4>Offerte ed Occasioni</h4></a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assistenza <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li role="separator" class="divider"></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Gestione Linea</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Controllo costi e<br>pagamenti</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Supporto tecnico e<br>Configurazione</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Supporto Servizi SL</h4></a></li>
-            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>FAQ</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/01_Gestione_Linea_e_Servizi_v1.png"><h4>Gestione Linea</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/02_CostiPagamenti_0.png"><h4>Controllo costi e Pagamenti</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/03_Configurazione.png"><h4>Supporto tecnico e Configurazione</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_ConenutiDigitalLife.png"><h4>Supporto Servizi SL</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/faq-blue.png"><h4>FAQ</h4></a></li>
           </ul>
         </li>
         <li><a href="#">Carrello</a></li>
