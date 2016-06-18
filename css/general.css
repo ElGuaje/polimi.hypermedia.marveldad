@@ -101,6 +101,32 @@ background-color: #ff3c1a;
     font-size: 12px;
 }
 
+.modal-body > .img-responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-modal {
+    left: auto;
+    right: auto;
+}
+
+.home-carousel {
+    width: 100%;
+    margin-bottom: 90px;
+}
+
+.home-carousel-bg {
+    background-color: white;
+}
+
+#divCarousel {
+    max-height: 790px;
+    max-width: 790px;
+    margin: auto;
+}
+
 .sl-navigation {
     margin-bottom: 10px;
 }

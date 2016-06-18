@@ -4,38 +4,52 @@
 	<div class="container">
 		<div class="col-md-4 col-xs-12">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
-					</ol>
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
 
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<a href="http://google.com">
-								<img src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
-							</a>
-                            
-						</div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a class="product-modal" data-toggle="modal" data-target="#productModal" href="#"> 
+                            <img src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
+                        </a>
+                    </div>
 
-						<div class="item">
-							<img src="media/product_images/LG_G5_titan_01_1.jpg" alt="lg">
-						</div>
+                    <div class="item">
+                        <a data-toggle="modal" data-target="#productModal" href="#">
+                            <img src="media/product_images/LG_G5_titan_01_1.jpg" alt="lg">
+                        </a>
+                    </div>
 
-						<div class="item">
-							<img src="media/product_images/sony-xperia-x-grphblk-3_4sx_0.jpg" alt="sony">
-						</div>
+                    <div class="item">
+                        <a data-toggle="modal" data-target="#productModal" href="#">
+                            <img src="media/product_images/sony-xperia-x-grphblk-3_4sx_0.jpg" alt="sony">
+                        </a>
+                    </div>
 
-						<div class="item">
-							<img src="media/product_images/huawei-p9-grey-01.jpg" alt="huawei">
-						</div>
-					</div>
-				</div>
+                    <div class="item">
+                        <a data-toggle="modal" data-target="#productModal" href="#">
+                            <img src="media/product_images/huawei-p9-grey-01.jpg" alt="huawei">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="productModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">  
+                        <div class="modal-body">
+                            <img class="modal-img img-responsive" src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
-        <div class="col-md-7 col-xs-12">
+        <div class="col-md-8 col-xs-12">
             <div id="nomeProdotto">
                 <h1>NOME PRODOTTO</h1>
             </div>
@@ -56,21 +70,25 @@
                   <li class="active smallTabText"><a data-toggle="tab" href="#home">Descrizione</a></li>
                   <li class="smallTabText"><a data-toggle="tab" href="#menu1">Scheda Tecnica</a></li>
                   <li class="smallTabText"><a data-toggle="tab" href="#menu2">Servizi associati</a></li>
-                  <li class="smallTabText"><a data-toggle="tab" href="#">FAQ</a></li>
+                  <li class="smallTabText"><a data-toggle="tab" href="#faq">FAQ</a></li>
                 </ul>
                             
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
-                    <h3>HOME</h3>
-                    <p>Some content.</p>
+                    <h3>Descrizione</h3>
+                    <p>Some content some content some content some content some content some content some content.</p>
                   </div>
                   <div id="menu1" class="tab-pane fade">
-                    <h3>Menu 1</h3>
-                    <p>Some content in menu 1.</p>
+                    <h3>Scheda Tecnica</h3>
+                    <p>Some content some content some content some content some content some content some content.</p>
                   </div>
                   <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Some content in menu 2.</p>
+                    <h3>Servizi Associati</h3>
+                    <p>Some content some content some content some content some content some content some content.</p>
+                  </div>
+                  <div id="faq" class="tab-pane fade">
+                    <h3>FAQ</h3>
+                    <p>Some content some content some content some content some content some content some content.</p>
                   </div>
                 </div>
             </div>
