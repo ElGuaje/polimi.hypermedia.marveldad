@@ -23,14 +23,13 @@ include 'include/header.php';
                             secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò
                             per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma
                             anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato.
-                            </p>
                             <h4 class="text-center">20% di sconto per te per i prossimi 2 mesi</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="wrapper">
-                        <span class="promo-gift"><p class="text-center">+</p></span>
+                        <span class="promo-gift">+</span>
                         <div class="thumbnail sl-offerta">
                             <p>
                                 <img class="media-object" src="http://placehold.it/200x150" align="left" alt="First">
@@ -40,15 +39,13 @@ include 'include/header.php';
                             secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò
                             per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma
                             anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato.
-                            </p>
                             <h4 class="text-center">Acquista qualsiasi biglietto usando servizio Tim Trasporti e avrai
-                                Tim
-                                Tag in regalo</h4>
+                                Tim Tag in regalo</h4>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
-                    <span class="promo-trial"><p class="text-center">!</p></span>
+                    <span class="promo-trial">!</span>
                     <div class="thumbnail sl-offerta">
                         <p>
                             <img class="media-object" src="http://placehold.it/200x150" align="left" alt="First">
@@ -58,13 +55,11 @@ include 'include/header.php';
                         secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò
                         per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma
                         anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato.
-                        </p>
                         <h4 class="text-center">Per tutti gli utenti TIM un mese di prova gratuita</h4>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 <?php
