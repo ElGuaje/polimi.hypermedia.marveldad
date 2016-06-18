@@ -17,35 +17,32 @@
         <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prodotti <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="product.php">Smartphone e Telefonia</a></li>
-                <li><a href="#">Decoder e SmartTV</a></li>
-                <li><a href="#">Wearable e Gadgets</a></li>
-                <li><a href="#">Computer e Tablet</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Offerte ed Occasioni</a></li>
+                <li><a href="product.php"><img class="dropdown-icon" src="media/icons/01_SmartphoneTelefoni_1.png"><h4>Smartphone e Telefonia</h4></a></li>
+                <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Decoder e SmartTV</h4></a></li>
+                <li><a href="#"><img class="dropdown-icon" src="media/icons/02_Wearable_Gadget.png"><h4>Wearable e Gadget</h4></a></li>
+                <li><a href="#"><img class="dropdown-icon" src="media/icons/02_TabletComputer.png"><h4>Computer e Tablet</h4></a></li>
+                <li><a href="#"><img class="dropdown-icon" src="media/icons/05_Outlet_2.png"><h4>Offerte ed Occasioni</h4></a></li>
               </ul>
             </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Smart Life <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">TV e Intrattenimento</a></li>
-            <li><a href="#">Casa e Famiglia</a></li>
-            <li><a href="#">Salute e Benessere</a></li>
-            <li><a href="sl_service.php">Servizi alla persona</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Offerte ed Occasioni</a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>TV e Intrattenimento</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Casa e Famiglia</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Salute e Benessere</h4></a></li>
+            <li><a href="sl_service.php"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Servizi alla Persona</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Offerte ed Occasioni</h4></a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assistenza <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">FAQ</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Gestione linea</a></li>
-            <li><a href="#">Controllo costi e Gestione pagamenti</a></li>
-            <li><a href="#">Gestione linea</a></li>
-            <li><a href="#">Supporto tecnico e Configurazione</a></li>
-            <li><a href="#">Servizi Smart Life</a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Gestione Linea</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Controllo costi e<br>pagamenti</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Supporto tecnico e<br>Configurazione</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Supporto Servizi SL</h4></a></li>
+            <li><a href="#"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>FAQ</h4></a></li>
           </ul>
         </li>
         <li><a href="#">Carrello</a></li>
