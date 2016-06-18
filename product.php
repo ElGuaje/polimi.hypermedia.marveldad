@@ -41,7 +41,7 @@
             </div>
             <div id="productModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">    
+                    <div class="modal-content">  
                         <div class="modal-body">
                             <img class="modal-img img-responsive" src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
                         </div>

@@ -1,8 +1,8 @@
 <?php 
 	include 'include/header.php';
 ?>
-	<div class="container">
-		<div class="row">
+	<div class="container home-carousel">
+		<div class="row home-carousel-bg">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
