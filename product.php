@@ -15,35 +15,62 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <a class="product-modal" data-toggle="modal" data-target="#productModal" href="#"> 
+                        <a class="product-modal" data-toggle="modal" data-target="#productModal1" href="#"> 
                             <img src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
                         </a>
                     </div>
 
                     <div class="item">
-                        <a data-toggle="modal" data-target="#productModal" href="#">
-                            <img src="media/product_images/LG_G5_titan_01_1.jpg" alt="lg">
+                        <a class="product-modal" data-toggle="modal" data-target="#productModal2" href="#"> 
+                            <img src="media/test_iphone1.jpg" alt="iphone">
                         </a>
                     </div>
 
                     <div class="item">
-                        <a data-toggle="modal" data-target="#productModal" href="#">
-                            <img src="media/product_images/sony-xperia-x-grphblk-3_4sx_0.jpg" alt="sony">
+                        <a class="product-modal" data-toggle="modal" data-target="#productModal3" href="#"> 
+                            <img src="media/test_iphone2.jpg" alt="iphone">
                         </a>
                     </div>
 
                     <div class="item">
-                        <a data-toggle="modal" data-target="#productModal" href="#">
-                            <img src="media/product_images/huawei-p9-grey-01.jpg" alt="huawei">
+                        <a class="product-modal" data-toggle="modal" data-target="#productModal4" href="#"> 
+                            <img src="media/test_iphone3.jpg" alt="iphone">
                         </a>
                     </div>
                 </div>
             </div>
-            <div id="productModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
+            <div id="productModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">  
                         <div class="modal-body">
                             <img class="modal-img img-responsive" src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="productModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">  
+                        <div class="modal-body">
+                            <img class="modal-img img-responsive" src="media/test_iphone1.jpg" alt="iphone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="productModal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">  
+                        <div class="modal-body">
+                            <img class="modal-img img-responsive" src="media/test_iphone2.jpg" alt="iphone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="productModal4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">  
+                        <div class="modal-body">
+                            <img class="modal-img img-responsive" src="media/test_iphone3.jpg" alt="iphone">
                         </div>
                     </div>
                 </div>

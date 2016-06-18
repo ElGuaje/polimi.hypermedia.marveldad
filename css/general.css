@@ -78,6 +78,13 @@ code {
     margin: auto;
 }
 
+.small-carousel > .carousel-inner > .item > img,
+.small-carousel > .carousel-inner > .item > a {
+    max-height: 300px;
+    max-width: 300px;
+    margin: auto;
+}
+
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   width: 70%;
