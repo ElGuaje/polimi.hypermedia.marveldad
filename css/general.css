@@ -73,8 +73,9 @@ code {
 
 
 .small-carousel {
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
+    margin: auto;
 }
 
 .carousel-inner > .item > img,
@@ -89,4 +90,13 @@ background-color: #004592;
 
 .carousel-indicators .active{
 background-color: #ff3c1a;
+}
+
+#prezzo {
+    color: #ff3c1a;
+    font-size: 26px;
+}
+
+.smallTabText {
+    font-size: 12px;
 }
