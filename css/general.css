@@ -128,11 +128,6 @@ code {
     border-color: gray;
 }
 
-.small-carousel .small-item {
-    height: 430px;
-    width: 100%;
-}
-
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   width: 70%;

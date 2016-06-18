@@ -22,28 +22,28 @@
                 </ol>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner small-carousel" role="listbox">
-                    <div class="item small-item active">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal1" href="#"> 
-                            <img class="img-responsive" src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
+                            <img src="media/test_iphone0_small.jpg" alt="iphone">
                         </a>
                     </div>
 
-                    <div class="item small-item">
+                    <div class="item">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal2" href="#"> 
-                            <img class="img-responsive" src="media/test_iphone1.jpg" alt="iphone">
+                            <img src="media/test_iphone1_small.jpg" alt="iphone">
                         </a>
                     </div>
 
-                    <div class="item small-item">
+                    <div class="item">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal3" href="#"> 
-                            <img class="img-responsive" src="media/test_iphone2.jpg" alt="iphone">
+                            <img src="media/test_iphone2_small.jpg" alt="iphone">
                         </a>
                     </div>
                     
-                    <div class="item small-item">
+                    <div class="item">
                         <a class="product-modal" data-toggle="modal" data-target="#productModal4" href="#"> 
-                            <img class="img-responsive" src="media/test_iphone3.jpg" alt="iphone">
+                            <img src="media/test_iphone3_small.jpg" alt="iphone">
                         </a>
                     </div>
                 </div>
