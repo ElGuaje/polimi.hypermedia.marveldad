@@ -100,3 +100,14 @@ background-color: #ff3c1a;
 .smallTabText {
     font-size: 12px;
 }
+
+.modal-body > .img-responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-modal {
+    left: auto;
+    right: auto;
+}
