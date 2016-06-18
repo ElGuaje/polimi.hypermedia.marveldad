@@ -31,7 +31,7 @@
             <li><a href="#">TV e Intrattenimento</a></li>
             <li><a href="#">Casa e Famiglia</a></li>
             <li><a href="#">Salute e Benessere</a></li>
-            <li><a href="#">Servizi alla persona</a></li>
+            <li><a href="sl_service.php">Servizi alla persona</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Offerte ed Occasioni</a></li>
           </ul>

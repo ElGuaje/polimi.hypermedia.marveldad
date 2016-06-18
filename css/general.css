@@ -100,3 +100,28 @@ background-color: #ff3c1a;
 .smallTabText {
     font-size: 12px;
 }
+
+.sl-navigation {
+    margin-bottom: 10px;
+}
+
+.sl-navigation .nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+.vertical-center {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.sl-title {
+    margin: 0 0 0 0;
+}
