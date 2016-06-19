@@ -20,7 +20,7 @@
 	}
 	unset($pass);
 	
-	
+	$db->set_charset("utf8");
 	
 	
 ?>
