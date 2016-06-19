@@ -42,7 +42,8 @@
 			
 			$query = $db->query($sql);
 			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
-			
+			if(empty($telefoni))
+				die(json_encode('No devices found', JSON_NUMERIC_CHECK));
 			$sqlImmagini = "SELECT src FROM ".TAB_IMMAGINI." i LEFT JOIN ".TAB_IMGPROD." pi ON pi.rifImage = i.idImmagine WHERE pi.rifDevice = ".$pid;
 			$queryImmagini = $db->query($sqlImmagini);
 			$immagini = $queryImmagini->fetch_all(MYSQLI_ASSOC);
@@ -50,7 +51,28 @@
 			$ret = $telefoni[0];
 			$ret['immagini'] = $immagini;
 			
+			
+			if(isset($_GET['getpromo'])){
+				$sqlPromo = "SELECT idProdotto FROM ".TAB_PRODOTTI." WHERE ( 
+					idProdotto = IFNULL((SELECT MIN(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto > {$pid} AND inPromo = 1),0) 
+					OR idProdotto = IFNULL((SELECT MAX(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto < {$pid} AND inPromo = 1),0)
+					)";
+				//$sqlPromo = "SELECT a.idProdotto AS nextPromo,  b.idProdotto AS prevPromo FROM ".TAB_PRODOTTI." a, ".TAB_PRODOTTI." b WHERE a.inPromo =1 AND b.inPromo = 1 AND ({$pid}<a.idProdotto) AND ({$pid}>b.idProdotto)";
+				$queryPromo = $db->query($sqlPromo);
+				$promo = $queryPromo->fetch_all(MYSQLI_NUM);
+				if(isset($promo[0]) && isset($promo[1])){
+					$ret['promoPrev'] = $promo[0][0];
+					$ret['promoNext'] = $promo[1][0];
+				}elseif(!isset($promo[1])){
+					if($promo[0][0] > $pid)
+						$ret['promoNext'] = $promo[0][0];
+					else
+						$ret['promoPrev'] = $promo[0][0];
+				}
+			}
 			$toJ = $ret;
+
+			
 			
 		}elseif($_GET['get'] == 'promo'){
 			$sql = "SELECT * FROM ".TAB_PRODOTTI." p LEFT JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto LEFT JOIN ".TAB_IMMAGINI." i ON pi.rifImage = i.idImmagine WHERE inPromo = 1 GROUP BY idProdotto";

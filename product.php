@@ -29,9 +29,9 @@
                 <a href="#"><p class="alignleft"><< Precedente</p></a>
                 <a href="#"><p class="alignright">Successivo >></p></a>
             </div>
-            <div id="navigationPromo" class="col-md-12 col-xs-12" style="clear: both;">
-                <a href="#"><p class="alignleft"><< Precedente in Promozione</p></a>
-                <a href="#"><p class="alignright">Successivo in Promozione >></p></a>
+            <div class="col-md-12 col-xs-12 navigationPromo" style="clear: both;">
+                <a href="#" id="aPrevInPromo"><p class="alignleft"><< Precedente in Promozione</p></a>
+                <a href="#" id="aNextInPromo"><p class="alignright">Successivo in Promozione >></p></a>
             </div>
             <div id="divNomeProdotto">
 				<h1 id="dataNomeProdotto"></h1>
@@ -43,9 +43,9 @@
                 <h4>Specifiche prodotto:</h4>
                 <ul>
                     <li>Spec 1</li>
-                    <li>Spec 2</li>
-                    <li>Spec 3</li>
-                    <li>Spec 4</li>
+					 <li>Spec 1</li> 
+					 <li>Spec 1</li> 
+					 <li>Spec 1</li>
                 </ul>
             </div>
             <div id="prodTabs" class="col-md-9 col-xs-12">
@@ -99,8 +99,11 @@
 	var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
 		$(function(){
 			var pid = getURLParameter('pid');
+			var promo = (getURLParameter('promo') != null) ? '&getpromo=1':'';
+			
+			// Get data from DB
 			$.ajax({
-				url: 'dojson.php?get=singleproduct&pid='+pid,
+				url: 'dojson.php?get=singleproduct&pid='+pid+promo,
 				method: 'GET',
 				dataType: 'json'
 			}).done(function(data){
@@ -120,7 +123,20 @@
 					$('#dataCarItems').find('.item').first().addClass('active');
 					$('#myCarousel ol').find('li').first().addClass('active');
 				}
-			}).fail();
+
+				// Next and Prev promotions link
+				if(promo != ''){
+					if(data['promoPrev'] != undefined)
+						$('#aPrevInPromo').attr('href','?promo=1&pid='+data['promoPrev']);
+					if(data['promoNext'] != undefined)
+						$('#aNextInPromo').attr('href','?promo=1&pid='+data['promoNext']);
+				}
+
+				}).fail(function(){
+				alert('Oops, that is an error!');
+			});
+			
+			
 		});
 	</script>
 <?php	
