@@ -14,76 +14,16 @@
             </div>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                <ol class="carousel-indicators" id="dataImgCarOL">
                 </ol>
 
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <a class="product-modal" data-toggle="modal" data-target="#productModal1" href="#"> 
-                            <img src="media/test_iphone0_small.jpg" alt="iphone">
-                        </a>
-                    </div>
-
-                    <div class="item">
-                        <a class="product-modal" data-toggle="modal" data-target="#productModal2" href="#"> 
-                            <img src="media/test_iphone1_small.jpg" alt="iphone">
-                        </a>
-                    </div>
-
-                    <div class="item">
-                        <a class="product-modal" data-toggle="modal" data-target="#productModal3" href="#"> 
-                            <img src="media/test_iphone2_small.jpg" alt="iphone">
-                        </a>
-                    </div>
-                    
-                    <div class="item">
-                        <a class="product-modal" data-toggle="modal" data-target="#productModal4" href="#"> 
-                            <img src="media/test_iphone3_small.jpg" alt="iphone">
-                        </a>
-                    </div>
+                <div class="carousel-inner" role="listbox" id="dataCarItems">
                 </div>
             </div>
-            <div id="productModal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">  
-                        <div class="modal-body">
-                            <img class="modal-img img-responsive" src="media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="iphone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="productModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">  
-                        <div class="modal-body">
-                            <img class="modal-img img-responsive" src="media/test_iphone1.jpg" alt="iphone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="productModal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">  
-                        <div class="modal-body">
-                            <img class="modal-img img-responsive" src="media/test_iphone2.jpg" alt="iphone">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="productModal4" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="productModal">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">  
-                        <div class="modal-body">
-                            <img class="modal-img img-responsive" src="media/test_iphone3.jpg" alt="iphone">
-                        </div>
-                    </div>
-                </div>
-            </div>
+			<div id="modalImages">
+				
+			</div>
 		</div>
         <div class="col-md-8 col-xs-12">
             <div id="navigation" class="col-md-12 col-xs-12" style="clear: both;">
@@ -94,11 +34,11 @@
                 <a href="#"><p class="alignleft"><< Precedente in Promozione</p></a>
                 <a href="#"><p class="alignright">Successivo in Promozione >></p></a>
             </div>
-            <div id="nomeProdotto">
-                <h1>NOME PRODOTTO</h1>
-            </div>
-            <div class="col-md-3" id="prezzo">
-                <p><br>xxx,xx€</p>
+            <div id="divNomeProdotto">
+				<h1 id="dataNomeProdotto"></h1>
+			</div>
+            <div class="col-md-3 prezzo">
+                <br><p id="dataPrezzo"></p>
             </div>
             <div class="col-md-4" id="specifiche">
                 <h4>Specifiche prodotto:</h4>
@@ -120,7 +60,7 @@
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
                     <h3>Descrizione</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    <p id="dataDescrizione">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                         Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
                         ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
                         consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
@@ -156,9 +96,8 @@
         </div>
 	</div>
 	<script>
-		function getURLParameter(name) {
-		  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
-		}
+	var carImg = '<div class="item"><a class="product-modal" data-toggle="modal" data-target="" href="#"><img src="media/test_iphone0_small.jpg" alt=""></a></div>';
+	var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
 		$(function(){
 			var pid = getURLParameter('pid');
 			$.ajax({
@@ -167,6 +106,21 @@
 				dataType: 'json'
 			}).done(function(data){
 				console.log(data);
+				$('#dataNomeProdotto').html(data['nome']);
+				$('#dataPrezzo').html(data['prezzo'].toFixed(2) +'&euro;');
+				$('#dataDescrizione').html(data['descrizione']);
+				
+				if(data['immagini']){
+					var counter =0;
+					$.each(data['immagini'],function(i,v){
+						$('#dataCarItems').append(carImg).find('.product-modal').last().attr('data-target','.modalImg'+counter).find('img').last().attr('src',imgPathProduct+v['src']);
+						$('#dataImgCarOL').append('<li data-target="#myCarousel" data-slide-to="'+counter+'"></li>');
+						$('#modalImages').append(modalImg).find('.toSetClass').removeClass('toSetClass').addClass('modalImg'+counter).find('img').last().attr('src',imgPathProduct+v['src']).attr('id','modalImg'+counter);
+						counter++;
+					});
+					$('#dataCarItems').find('.item').first().addClass('active');
+					$('#myCarousel ol').find('li').first().addClass('active');
+				}
 			}).fail();
 		});
 	</script>
