@@ -22,7 +22,6 @@
                 </div>
             </div>
 			<div id="modalImages">
-				
 			</div>
 		</div>
         <div class="col-md-8 col-xs-12">
@@ -69,7 +68,7 @@
                   </div>
                   <div id="menu1" class="tab-pane fade">
                     <h3>Scheda Tecnica</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                    <p id="dataSchedaTecnica">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                         Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
                         ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
                         consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
@@ -109,7 +108,7 @@
 				$('#dataNomeProdotto').html(data['nome']);
 				$('#dataPrezzo').html(data['prezzo'].toFixed(2) +'&euro;');
 				$('#dataDescrizione').html(data['descrizione']);
-				
+				$('#dataSchedaTecnica').html(data['schedaTecnica']);
 				if(data['immagini']){
 					var counter =0;
 					$.each(data['immagini'],function(i,v){
