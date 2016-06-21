@@ -24,7 +24,6 @@
 		<![endif]-->
 			<!-- Bootstrap core JavaScript
 			================================================== -->
-			<!-- Placed at the end of the document so the pages load faster -->
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
 			<script src="js/bootstrap.min.js"></script>
@@ -33,16 +32,3 @@
 			<script src="js/general.js"></script>
 	</head>
 	<body>
-	<?php
-		if($_SERVER['HTTP_HOST'] != 'www.marveldad.altervista.org'){
-		define('DEVELOPMENT',true);
-		define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/hypermedia/');
-	}
-	else{
-		define('DEVELOPMENT',false);
-		define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/');
-	}
-
-		require_once ROOT.'core/connect.php';
-		include ROOT.'include/navigation.php';
-	?>

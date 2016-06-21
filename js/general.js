@@ -5,5 +5,6 @@ function getURLParameter(name) {
 var imgPathProduct = 'media/product_images/';
 
 $(document).ready(function(){
-    
+    $('#divNavbar').load('include/navigation.html');
+	$('#divFooter').load('include/footer.html');
 });
