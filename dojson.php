@@ -72,6 +72,24 @@
 						$ret['promoPrev'] = $promo[0][0];
 				}
 			}
+			
+			// Get prev & next device of same cat
+			$sqlCat = "SELECT idProdotto FROM ".TAB_PRODOTTI." WHERE ( 
+					idProdotto = IFNULL((SELECT MIN(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto > {$pid} AND rifCategoria = ".$db->real_escape_string($ret['rifCategoria'])."),0) 
+					OR idProdotto = IFNULL((SELECT MAX(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto < {$pid} AND rifCategoria = ".$db->real_escape_string($ret['rifCategoria'])."),0)
+					)";
+			$queryCat = $db->query($sqlCat);
+			$cat = $queryCat->fetch_all(MYSQLI_NUM);
+			if(isset($cat[0]) && isset($cat[1])){
+					$ret['prevInCat'] = $cat[0][0];
+					$ret['nextInCat'] = $cat[1][0];
+			}elseif(!isset($cat[1])){
+				if($cat[0][0] > $pid)
+					$ret['nextInCat'] = $cat[0][0];
+				else
+					$ret['prevInCat'] = $cat[0][0];
+			}
+			
 			$toJ = $ret;
 			
 		}elseif($_GET['get'] == 'promo'){

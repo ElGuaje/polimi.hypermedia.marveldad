@@ -59,8 +59,8 @@
 			</div>
 			<div class="col-md-8 col-xs-12">
 				<div id="navigation" class="col-md-12 col-xs-12" style="clear: both;">
-					<a href="#"><p class="alignleft"><< Precedente</p></a>
-					<a href="#"><p class="alignright">Successivo >></p></a>
+					<a href="#" id="aPrevInCat"><p class="alignleft"><< Precedente</p></a>
+					<a href="#" id="aNextInCat"><p class="alignright">Successivo >></p></a>
 				</div>
 				<div class="col-md-12 col-xs-12 navigationPromo" style="clear: both;">
 					<a href="#" id="aPrevInPromo"><p class="alignleft"><< Precedente in Promozione</p></a>
@@ -88,48 +88,30 @@
 					<div class="tab-content">
 					  <div id="home" class="tab-pane fade in active">
 						<h3>Descrizione</h3>
-						<p id="dataDescrizione">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-							Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-							consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-							arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-							pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>
+						<p id="dataDescrizione"></p>
 					  </div>
-					  <div id="menu1" class="tab-pane fade">
+					<div id="menu1" class="tab-pane fade">
 						<h3>Scheda Tecnica</h3>
-						<p id="dataSchedaTecnica">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-							Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-							consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-							arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-							pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>                  </div>
-					  <div id="menu2" class="tab-pane fade">
+						<p id="dataSchedaTecnica"></p>                  
+					</div>
+					<div id="menu2" class="tab-pane fade">
 						<h3>Servizi Associati</h3>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-							Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-							consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-							arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-							pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>                  </div>
-					  <div id="faq" class="tab-pane fade">
+						<p></p>                  
+					</div>
+					<div id="faq" class="tab-pane fade">
 						<h3>FAQ</h3>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-							Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-							ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-							consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-							arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-							pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum</p>                  </div>
+						<p></p>        
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script>
-		var carImg = '<div class="item"><a class="product-modal" data-toggle="modal" data-target="" href="#"><img src="media/test_iphone0_small.jpg" alt=""></a></div>';
-		var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
-			$(function(){
-				var pid = getURLParameter('pid');
-				var promo = (getURLParameter('promo') != null) ? '&getpromo=1':'';
-				
+			var promoYes = '&getpromo=1';
+			var promoNo = '';
+			var carImg = '<div class="item"><a class="product-modal" data-toggle="modal" data-target="" href="#"><img src="media/test_iphone0_small.jpg" alt=""></a></div>';
+			var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
+			function loadProduct(pid,promo){
 				// Get data from DB
 				$.ajax({
 					url: 'dojson.php?get=singleproduct&pid='+pid+promo,
@@ -137,14 +119,25 @@
 					dataType: 'json'
 				}).done(function(data){
 					console.log(data);
+					
+					if(data['prevInCat'] != undefined)
+						$('#aPrevInCat').unbind('click').click(function(){loadProduct(data['prevInCat'],promoNo)})
+					
+					if(data['nextInCat'] != undefined)
+						$('#aNextInCat').unbind('click').click(function(){loadProduct(data['nextInCat'],promoNo)})
+					
 					$('#dataNomeProdotto').html(data['nome']);
 					$('#dataPrezzo').html(data['prezzo'].toFixed(2) +'&euro;');
+					$('#dataSpecUl').html('');
 					$('#dataSpecUl').append('<li>'+data['spec1']+'</li>');
 					$('#dataSpecUl').append('<li>'+data['spec2']+'</li>');
 					$('#dataSpecUl').append('<li>'+data['spec3']+'</li>');
 					$('#dataSpecUl').append('<li>'+data['spec4']+'</li>');
 					$('#dataDescrizione').html(data['descrizione']);
 					$('#dataSchedaTecnica').html(data['schedaTecnica']);
+					$('#dataCarItems').html('');
+					$('#dataImgCarOL').html('');
+					$('#modalImages').html('');
 					if(data['immagini']){
 						var counter =0;
 						$.each(data['immagini'],function(i,v){
@@ -160,16 +153,22 @@
 					// Next and Prev promotions link
 					if(promo != ''){
 						if(data['promoPrev'] != undefined)
-							$('#aPrevInPromo').attr('href','?promo=1&pid='+data['promoPrev']);
+							$('#aPrevInPromo').unbind('click').click(function(){loadProduct(data['promoPrev'],promoYes)});
 						if(data['promoNext'] != undefined)
-							$('#aNextInPromo').attr('href','?promo=1&pid='+data['promoNext']);
+							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)});
 					}
 
 					}).fail(function(){
 					alert('Oops, that is an error!');
 				});
 				
-				
+				// return statement for links
+				return false;
+			}
+			$(function(){
+				var pid = getURLParameter('pid');
+				var promo = (getURLParameter('promo') != null) ? promoYes:'';
+				loadProduct(pid,promo);
 			});
 		</script>
 		<div id="divFooter">
