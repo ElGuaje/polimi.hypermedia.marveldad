@@ -16,6 +16,8 @@
 	define('TAB_PRODOTTI','devices');
 	define('TAB_IMMAGINI','immagini');
 	define('TAB_IMGPROD','imagesindevices');
+	define('TAB_SL','smartlife');
+	define('TAB_FAQ_SL','faqsmartlife');
 	
 	
 	
@@ -71,8 +73,6 @@
 				}
 			}
 			$toJ = $ret;
-
-			
 			
 		}elseif($_GET['get'] == 'promo'){
 			// SIMPLE JOIN: there must be an image for a device in promotion
@@ -82,7 +82,29 @@
 				die($db->error);
 			$promo = $query->fetch_all(MYSQLI_ASSOC);
 			$toJ = $promo;
+		
+		}elseif($_GET['get'] == 'singlesl'){
+			
+			$sid =$_GET['sid'];
+			$sqlSl = "SELECT * FROM ".TAB_SL." WHERE idSmartLife = {$sid}";
+			$querySl = $db->query($sqlSl);
+			if(!$querySl)
+				die($db->error);
+			$sl = $querySl->fetch_all(MYSQLI_ASSOC)[0];
+			
+			$sqlFaq = "SELECT * FROM ".TAB_FAQ_SL." WHERE rifSmartLife = {$sid}";
+			$queryFaq = $db->query($sqlFaq);
+			if(!$queryFaq)
+				die($db->error);
+			$faq = $queryFaq->fetch_all(MYSQLI_ASSOC);
+			
+			$sl['faq'] = $faq;
+			
+			$toJ = $sl;
+			
 		}
+		
+		
 	}
 	
 

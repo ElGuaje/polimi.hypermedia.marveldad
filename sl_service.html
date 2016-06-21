@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TIM :: Smart Life Services</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!--link rel="icon" href="../../favicon.ico"-->
+		
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+		<link href="css/general.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+		<script src="js/general.js"></script>
+	</head>
+	<body>
+		<div id="divNavbar">
+		</div>
+		<div class="container">
+			<!--Title and navigation info-->
+			<div class="row">
+				<!--Go back links -->
+				<div class="col-md-4 col-xs-12">
+					<div class="side-link-wrapper pull-left">
+						<a href="#"><p>< Servizio all Persona</p></a>
+						<a href="#"><p>< Promozioni</p></a>
+						<a href="#"><p>< Device</p></a>
+					</div>
+				</div>
+				<!--Main title and nav links -->
+				<div class="col-md-8 col-xs-12">
+					<div class="row">
+						<div class="col-xs-4">
+							<a href="#"><p class="text-right"><< Precedente</p></a>
+							<a href="#"><p class="text-right"><< Precedente in promo</p></a>
+						</div>
+						<div class="col-xs-4" style="width: auto">
+							<h1 class="text-center sl-title" id="dataNomeSL"">SL Title</h1>
+						</div>
+						<div class="col-xs-4">
+							<a href="#"><p class="text-left">Successivo >></p></a>
+							<a href="#"><p class="text-left">Successivo in promo >></p></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--SL internal navigation -->
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="sl-navigation">
+						<ul class="nav nav-tabs">
+							<li role="presentation" class="active"><a data-toggle="tab" href="#tab-description">Descrizione</a></li>
+							<li role="presentation"><a data-toggle="tab" href="#tab-activ">Attivazione e regolamento</a></li>
+							<li role="presentation"><a data-toggle="tab" href="#tab-faq">FAQ</a></li>
+							<li role="presentation"><a data-toggle="tab" href="#tab-device">Dispositivi</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-description">
+					<div class="container-fluid">
+						<!--Description row-->
+						<div class="row" id="sl-des-row">
+							<div class="row main-des-row">
+								<div class="col-xs-12 col-md-4">
+									<img class="img-responsive" src="http://placehold.it/350x150">
+								</div>
+								<div class="col-xs-12 col-md-8">
+									<h4>Come funziona</h4>
+									<p id="dataDescrizione"></p>
+								</div>
+							</div>
+							<!--Divider-->
+							<div class="row">
+								<div class="col-xs-12">
+									<hr>
+								</div>
+							</div>
+							<!--Additional content row-->
+							<div class="row">
+								<div class="col-xs-12">
+									<p>Additional content</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-activ">
+					<div class="container-fluid">
+						<!--Activation e rules row-->
+						<div class="row" id="sl-act-row">
+							<div class="col-xs-12">
+								<h3>Attivazione e regolamento</h3>
+								<div id="dataAttivazioneRegolamento"></div>
+								<!--ul class="list-group">
+									<li class="list-group-item">Alghero</li>
+									<li class="list-group-item">Brescia</li>
+									<li class="list-group-item">Grosetto</li>
+									<li class="list-group-item">Livorno</li>
+									<li class="list-group-item">Mantova</li>
+									<li class="list-group-item">Oristano</li>
+									<li class="list-group-item">Pisa</li>
+									<li class="list-group-item">Vicenza</li>
+								</ul-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-faq">
+					<div class="container-fluid">
+						<!--FAQ row-->
+						<div class="row" id="dataFAQ">
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-device">
+					<div class="container-fluid">
+						<!--Devices row-->
+						<div class="row" id="sl-devices-row">
+							<div class="row">
+								<div class="col-xs-12">
+									<h3>Puoi usare questo servizio con:</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6 col-md-4">
+									<div class="thumbnail">
+										<img src="/hypermedia/media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="LG">
+										<div class="caption">
+											<h3>Apple iPhone</h3>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+												Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+												ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+												consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+												arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+												pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+											</p>
+											<p><a href="#" class="btn btn-primary" role="button">Scopri</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-4">
+									<div class="thumbnail">
+										<img src="/hypermedia/media/product_images/LG_G5_titan_01_1.jpg" alt="LG">
+										<div class="caption">
+											<h3>LG Titan 5</h3>
+											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+												Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+												ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+												consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+												arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+												pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+											</p>
+											<p><a href="#" class="btn btn-primary" role="button">Scopri</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			function buildFAQ(question,answer){
+				return '<div class="panel panel-default"><div class="panel-heading">'+question+'</div><div class="panel-body">'+answer+'</div></div>';
+			}
+			
+			$(function(){
+				var sid = getURLParameter('sid');
+				$.ajax({
+					url: 'dojson.php?get=singlesl&sid='+sid,
+					method: 'GET',
+					dataType: 'json'
+				}).done(function(data){
+					console.log(data);
+					
+					$('#dataNomeSL').html(data['nome']);
+					$('#dataDescrizione').html(data['descrizione']);
+					$('#dataAttivazioneRegolamento').html(data['attivazioneRegolamento']);
+					
+					if(data['faq'].length > 0){
+						$.each(data['faq'],function(i,v){
+							$('#dataFAQ').append(buildFAQ(v['domanda'],v['risposta']));
+						});
+					}else{
+						$('#dataFAQ').html('Non sono disponibili domande frequenti.');
+					}
+					
+					
+				}).fail(function(){
+					alert('Oops, that is an error!');
+				});
+			});
+		</script>
+		<div id="divFooter">
+		</div>
+	</body>
+</html>

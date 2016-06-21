@@ -74,11 +74,7 @@
 				</div>
 				<div class="col-md-4" id="specifiche">
 					<h4>Specifiche prodotto:</h4>
-					<ul>
-						<li>Spec 1</li>
-						 <li>Spec 1</li> 
-						 <li>Spec 1</li> 
-						 <li>Spec 1</li>
+					<ul id="dataSpecUl">
 					</ul>
 				</div>
 				<div id="prodTabs" class="col-md-9 col-xs-12">
@@ -143,6 +139,10 @@
 					console.log(data);
 					$('#dataNomeProdotto').html(data['nome']);
 					$('#dataPrezzo').html(data['prezzo'].toFixed(2) +'&euro;');
+					$('#dataSpecUl').append('<li>'+data['spec1']+'</li>');
+					$('#dataSpecUl').append('<li>'+data['spec2']+'</li>');
+					$('#dataSpecUl').append('<li>'+data['spec3']+'</li>');
+					$('#dataSpecUl').append('<li>'+data['spec4']+'</li>');
 					$('#dataDescrizione').html(data['descrizione']);
 					$('#dataSchedaTecnica').html(data['schedaTecnica']);
 					if(data['immagini']){
