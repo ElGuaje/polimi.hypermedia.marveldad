@@ -18,6 +18,7 @@
 	define('TAB_IMGPROD','imagesindevices');
 	define('TAB_SL','smartlife');
 	define('TAB_FAQ_SL','faqsmartlife');
+	define('TAB_DEV_IN_SL','devicesinsl');
 	
 	
 	
@@ -117,6 +118,16 @@
 			$faq = $queryFaq->fetch_all(MYSQLI_ASSOC);
 			
 			$sl['faq'] = $faq;
+			
+			// Get the devices associated 
+			
+			$sqlDevInSl = "SELECT d.*,i.src as image FROM ".TAB_PRODOTTI." d JOIN ".TAB_DEV_IN_SL." dis ON dis.rifDevice = d.idProdotto JOIN ".TAB_SL." s ON dis.rifSmartLife = s.idSmartLife JOIN ".TAB_IMGPROD." id ON id.rifDevice = d.idProdotto JOIN ".TAB_IMMAGINI." i ON i.idImmagine = id.rifImage WHERE s.idSmartLife = {$sid} GROUP BY idProdotto";
+			$queryDevInSl = $db->query($sqlDevInSl);
+			if(!$queryDevInSl)
+				die($db->error);
+			$devInSl = $queryDevInSl->fetch_all(MYSQLI_ASSOC);
+			
+			$sl['assDevices'] = $devInSl;
 			
 			$toJ = $sl;
 			

@@ -142,39 +142,7 @@
 									<h3>Puoi usare questo servizio con:</h3>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-sm-6 col-md-4">
-									<div class="thumbnail">
-										<img src="/hypermedia/media/product_images/APPLE_OIPHONE_SE_spacegrey_01.jpg" alt="LG">
-										<div class="caption">
-											<h3>Apple iPhone</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-												Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-												ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-												consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-												arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-												pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
-											</p>
-											<p><a href="#" class="btn btn-primary" role="button">Scopri</a>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-4">
-									<div class="thumbnail">
-										<img src="/hypermedia/media/product_images/LG_G5_titan_01_1.jpg" alt="LG">
-										<div class="caption">
-											<h3>LG Titan 5</h3>
-											<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-												Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-												ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-												consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-												arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-												pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
-											</p>
-											<p><a href="#" class="btn btn-primary" role="button">Scopri</a>
-										</div>
-									</div>
-								</div>
+							<div class="row" id="dataAssDevices">
 							</div>
 						</div>
 					</div>
@@ -185,6 +153,10 @@
 		<script>
 			function buildFAQ(question,answer){
 				return '<div class="panel panel-default"><div class="panel-heading">'+question+'</div><div class="panel-body">'+answer+'</div></div>';
+			}
+			
+			function buildAssDevices(dev){
+				return '<a href="product.html?pid='+dev['idProdotto']+'"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="'+imgPathProduct+dev['image']+'" alt="'+dev['nome']+'"><div class="caption"><h3>'+dev['nome']+'</h3><p class="prezzo">'+dev['prezzo'].toFixed(2) +'&euro;'+'</p><p>Some info...</p></div></div></div></a>';
 			}
 			
 			$(function(){
@@ -206,6 +178,12 @@
 						});
 					}else{
 						$('#dataFAQ').html('Non sono disponibili domande frequenti.');
+					}
+					
+					if(data['assDevices'].length > 0){
+						$.each(data['assDevices'],function(i,v){
+							$('#dataAssDevices').append(buildAssDevices(v));
+						});
 					}
 					
 					
