@@ -1,4 +1,20 @@
 <?php
+
+	function query($db,$sql,$resType = MYSQLI_ASSOC){
+		$query = $db->query($sql);
+		if(!$query)
+			die($db->error);
+		return $query->fetch_all($resType);
+	}
+/*
+	function unTag($i){
+		if(is_array($i))
+			foreach($i as $k=>$v)
+				$i[$k] = unTag($v);
+		return htmlspecialchars("<b>ciao</b>");
+	}
+
+*/
 	if($_SERVER['HTTP_HOST'] != 'www.marveldad.altervista.org'){
 		define('DEVELOPMENT',true);
 		define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/hypermedia/');
@@ -19,6 +35,7 @@
 	define('TAB_SL','smartlife');
 	define('TAB_FAQ_SL','faqsmartlife');
 	define('TAB_DEV_IN_SL','devicesinsl');
+	define('TAB_CATEGORIES','categories');
 	
 	
 	
@@ -131,14 +148,27 @@
 			
 			$toJ = $sl;
 			
+		}elseif($_GET['get'] == 'slbycat' && isset($_GET['catid'])){
+			
+			$idCat = $_GET['catid'];
+			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 's' LIMIT 1");
+			$toJ['categoria'] = $resCat[0];
+			$sqlSLByCat = "SELECT idSmartLife,nome,abstract,image,categoria FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria WHERE rifCategoria = {$idCat}";
+			$resSLByCat = query($db,$sqlSLByCat);
+			
+			$toJ['sls'] = $resSLByCat;
+			
+			
+			
 		}
 		
 		
 	}
 	
-
+	if(isset($_GET['pre']))
+		echo '<pre>',print_r($toJ,true),'</pre>';
 	echo json_encode($toJ, JSON_NUMERIC_CHECK);
-
+	
 	//echo '<pre>',print_r($_GET,true),'</pre>';
 
 

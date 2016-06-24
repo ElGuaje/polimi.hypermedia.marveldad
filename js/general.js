@@ -3,6 +3,7 @@ function getURLParameter(name) {
 }
 
 var imgPathProduct = 'media/product_images/';
+var imgPathSL = 'media/sl_images/';
 
 $(document).ready(function(){
     $('#divNavbar').load('include/navigation.html');
