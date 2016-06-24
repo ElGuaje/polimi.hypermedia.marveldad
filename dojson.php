@@ -146,6 +146,23 @@
 			
 			$sl['assDevices'] = $devInSl;
 			
+			
+			// Get prev & next SL of same cat
+			$sqlPNCat = "SELECT idSmartLife FROM ".TAB_SL." WHERE ( 
+					idSmartLife = IFNULL((SELECT MIN(idSmartLife) FROM ".TAB_SL." WHERE idSmartLife > {$sid} AND rifCategoria = ".$db->real_escape_string($sl['rifCategoria'])."),0) 
+					OR idSmartLife = IFNULL((SELECT MAX(idSmartLife) FROM ".TAB_SL." WHERE idSmartLife < {$sid} AND rifCategoria = ".$db->real_escape_string($sl['rifCategoria'])."),0)
+					)";
+			$cat = query($db,$sqlPNCat,MYSQLI_NUM);
+			if(isset($cat[0]) && isset($cat[1])){
+					$sl['prevInCat'] = $cat[0][0];
+					$sl['nextInCat'] = $cat[1][0];
+			}elseif(!isset($cat[1])){
+				if($cat[0][0] > $sid)
+					$sl['nextInCat'] = $cat[0][0];
+				else
+					$sl['prevInCat'] = $cat[0][0];
+			}
+			
 			$toJ = $sl;
 			
 		}elseif($_GET['get'] == 'slbycat' && isset($_GET['catid'])){

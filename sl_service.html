@@ -49,14 +49,14 @@
 				<div class="col-md-8 col-xs-12">
 					<div class="row">
 						<div class="col-xs-4">
-							<a href="#"><p class="text-right"><< Precedente</p></a>
+							<a href="#" id="aPrevInCat"><p class="text-right"><< Precedente</p></a>
 							<a href="#"><p class="text-right"><< Precedente in promo</p></a>
 						</div>
 						<div class="col-xs-4" style="width: auto">
 							<h1 class="text-center sl-title" id="dataNomeSL"">SL Title</h1>
 						</div>
 						<div class="col-xs-4">
-							<a href="#"><p class="text-left">Successivo >></p></a>
+							<a href="#" id="aNextInCat"><p class="text-left">Successivo >></p></a>
 							<a href="#"><p class="text-left">Successivo in promo >></p></a>
 						</div>
 					</div>
@@ -83,7 +83,7 @@
 						<div class="row" id="sl-des-row">
 							<div class="row main-des-row">
 								<div class="col-xs-12 col-md-4">
-									<img class="img-responsive" src="http://placehold.it/350x150">
+									<img class="img-responsive" id="dataImg">
 								</div>
 								<div class="col-xs-12 col-md-8">
 									<h4>Come funziona</h4>
@@ -151,6 +151,10 @@
 		</div>
 
 		<script>
+			var sid = getURLParameter('sid');
+			var promoYes = '&getpromo=1';
+			var promoNo = '';
+			var promo = (getURLParameter('promo')!=null) ? promoYes : promoNo;
 			function buildFAQ(question,answer){
 				return '<div class="panel panel-default"><div class="panel-heading">'+question+'</div><div class="panel-body">'+answer+'</div></div>';
 			}
@@ -159,10 +163,11 @@
 				return '<a href="product.html?pid='+dev['idProdotto']+'"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="'+imgPathProduct+dev['image']+'" alt="'+dev['nome']+'"><div class="caption"><h3>'+dev['nome']+'</h3><p class="prezzo">'+dev['prezzo'].toFixed(2) +'&euro;'+'</p><p>Some info...</p></div></div></div></a>';
 			}
 			
-			$(function(){
-				var sid = getURLParameter('sid');
+			function loadSL(sid,promo){
+			
+				// Get data from DB
 				$.ajax({
-					url: 'dojson.php?get=singlesl&sid='+sid,
+					url: 'dojson.php?get=singlesl&sid='+sid+promo,
 					method: 'GET',
 					dataType: 'json'
 				}).done(function(data){
@@ -171,6 +176,11 @@
 					$('#dataNomeSL').html(data['nome']);
 					$('#dataDescrizione').html(data['descrizione']);
 					$('#dataAttivazioneRegolamento').html(data['attivazioneRegolamento']);
+					
+					if(data['image'] != null)
+						$('#dataImg').attr('src',imgPathSL+data['image']);
+					else
+						$('#dataImg').attr('src',imgPathSL+'placeholder.png');
 					
 					if(data['faq'].length > 0){
 						$.each(data['faq'],function(i,v){
@@ -184,14 +194,30 @@
 						$.each(data['assDevices'],function(i,v){
 							$('#dataAssDevices').append(buildAssDevices(v));
 						});
+					}else{
+						$('#dataAssDevices').append('<p>Nessun prodotto associato a questo servizio.</p>');
 					}
 					
 					$('#linkToCategory').html('<a href="sl_by_category.html?catid='+data['rifCategoria']+'">< '+data['categoria']+'</a>')
+					
+					if(data['prevInCat'] != undefined)
+						$('#aPrevInCat').unbind('click').click(function(){loadSL(data['prevInCat'],promoNo)})
+					
+					if(data['nextInCat'] != undefined)
+						$('#aNextInCat').unbind('click').click(function(){loadSL(data['nextInCat'],promoNo)})
 					
 					
 				}).fail(function(){
 					alert('Oops, that is an error!');
 				});
+				
+				
+				// return statement for links
+				return false;
+			}
+			
+			$(function(){
+				loadSL(sid,promo);
 			});
 		</script>
 		<div id="divFooter">
