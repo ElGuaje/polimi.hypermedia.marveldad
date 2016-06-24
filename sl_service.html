@@ -40,7 +40,7 @@
 				<!--Go back links -->
 				<div class="col-md-4 col-xs-12">
 					<div class="side-link-wrapper pull-left">
-						<a href="#"><p>< Servizio all Persona</p></a>
+						<p id="linkToCategory"></p>
 						<a href="#"><p>< Promozioni</p></a>
 						<a href="#"><p>< Device</p></a>
 					</div>
@@ -185,6 +185,8 @@
 							$('#dataAssDevices').append(buildAssDevices(v));
 						});
 					}
+					
+					$('#linkToCategory').html('<a href="sl_by_category.html?catid='+data['rifCategoria']+'">< '+data['categoria']+'</a>')
 					
 					
 				}).fail(function(){

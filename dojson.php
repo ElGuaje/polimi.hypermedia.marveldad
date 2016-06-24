@@ -122,7 +122,7 @@
 		}elseif($_GET['get'] == 'singlesl'){
 			
 			$sid =$_GET['sid'];
-			$sqlSl = "SELECT * FROM ".TAB_SL." WHERE idSmartLife = {$sid}";
+			$sqlSl = "SELECT * FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria WHERE idSmartLife = {$sid}";
 			$querySl = $db->query($sqlSl);
 			if(!$querySl)
 				die($db->error);
