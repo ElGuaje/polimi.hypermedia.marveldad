@@ -1,5 +1,7 @@
 <?php
-
+	// Phonegap stuff
+	header('Access-Control-Allow-Origin: *');
+	
 	function query($db,$sql,$resType = MYSQLI_ASSOC){
 		$query = $db->query($sql);
 		if(!$query)

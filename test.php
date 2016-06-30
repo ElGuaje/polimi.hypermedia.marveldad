@@ -23,7 +23,7 @@
 				  }
 			}).click(function(){
 				$.ajax({
-					url:'doJson.php?get=singleproduct&pid='+$(this).attr('pid'),
+					url: mySite+'doJson.php?get=singleproduct&pid='+$(this).attr('pid'),
 					method: 'GET',
 					dataType: 'json'
 				}).done(function(data){
@@ -46,7 +46,7 @@
 			}).click(function(){
 				
 				$.ajax({
-					url:'doJson.php?get=prodotti',
+					url: mySite+'doJson.php?get=prodotti',
 					method: 'GET',
 					dataType:'json'
 				}).done(function(data){

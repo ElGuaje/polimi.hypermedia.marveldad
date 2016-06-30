@@ -114,7 +114,7 @@
 			function loadProduct(pid,promo){
 				// Get data from DB
 				$.ajax({
-					url: 'dojson.php?get=singleproduct&pid='+pid+promo,
+					url: mySite+'dojson.php?get=singleproduct&pid='+pid+promo,
 					method: 'GET',
 					dataType: 'json'
 				}).done(function(data){

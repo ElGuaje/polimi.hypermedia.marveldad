@@ -107,7 +107,7 @@
     $(function () {
         $('#dataGridSL').empty();
         $.ajax({
-            url: 'dojson.php?get=slbycat&catid=' + idCat,
+            url: mySite+'dojson.php?get=slbycat&catid=' + idCat,
             type: 'GET',
             dataType: 'json'
         }).done(function (data) {

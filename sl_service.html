@@ -167,7 +167,7 @@
 			
 				// Get data from DB
 				$.ajax({
-					url: 'dojson.php?get=singlesl&sid='+sid+promo,
+					url: mySite+'dojson.php?get=singlesl&sid='+sid+promo,
 					method: 'GET',
 					dataType: 'json'
 				}).done(function(data){
