@@ -44,7 +44,7 @@ code {
     position: static;
 }
 
-.nav > li.dropdown.open .dropdown-menu {
+.nav > li.dropdown.open .home-dropdown {
     display: table;
     width: 100%;
     text-align: center;
@@ -56,15 +56,15 @@ code {
     background-color: rgba(155, 230, 253, 0.875);
 }
 
-.dropdown-menu > li {
+.home-dropdown > li {
     display: table-cell;
 }
 
-.dropdown-menu > li > a {
+.home-dropdown > li > a {
     color: #cc1f00;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+.home-dropdown > li > a:hover, .home-dropdown > li > a:focus {
     color: #cc1f00;
     text-decoration: none;
     background-color: transparent;
@@ -75,7 +75,7 @@ code {
     margin: -2px;
 }
 
-.dropdown-menu > li > a {
+.home-dropdown > li > a {
     margin: 1px;
 }
 
