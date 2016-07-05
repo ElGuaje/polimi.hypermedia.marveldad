@@ -160,7 +160,7 @@
 			}
 			
 			function buildAssDevices(dev){
-				return '<a href="product.html?pid='+dev['idProdotto']+'"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="'+imgPathProduct+dev['image']+'" alt="'+dev['nome']+'"><div class="caption"><h3>'+dev['nome']+'</h3><p class="prezzo">'+dev['prezzo'].toFixed(2) +'&euro;'+'</p><p>Some info...</p></div></div></div></a>';
+				return '<a href="product.html?pid='+dev['idProdotto']+'&fromsl='+sid+'"><div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="'+imgPathProduct+dev['image']+'" alt="'+dev['nome']+'"><div class="caption"><h3>'+dev['nome']+'</h3><p class="prezzo">'+dev['prezzo'].toFixed(2) +'&euro;'+'</p><p>Some info...</p></div></div></div></a>';
 			}
 			
 			function loadSL(sid,promo){

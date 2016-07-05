@@ -45,6 +45,9 @@
 				<div id="navigationBackToService" class="col-md-12 col-xs-12" style="clear: both;">
 					<a href="#"><p class="alignleft">< Servizio Assistenza</p></a>
 				</div>
+				<div id="navigationBackToSLService" class="col-md-12 col-xs-12" style="clear: both;">
+					<a href="#"><p class="alignleft">< SL Service</p></a>
+				</div>
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators" id="dataImgCarOL">
@@ -157,6 +160,10 @@
 						if(data['promoNext'] != undefined)
 							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)});
 					}
+					
+					// Back to SL link
+					if(getURLParameter('fromSL') != null)
+						$('#navigationBackToSLService').attr('href','sl_service.html?sid='+getURLParameter('fromSL')); 
 
 					}).fail(function(){
 					alert('Oops, that is an error!');
