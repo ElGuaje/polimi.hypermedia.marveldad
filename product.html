@@ -165,9 +165,7 @@
 					if(getURLParameter('fromSL') != null)
 						$('#navigationBackToSLService').attr('href','sl_service.html?sid='+getURLParameter('fromSL')); 
 
-					}).fail(function(){
-					alert('Oops, that is an error!');
-				});
+					}).fail(ajaxErrorRep());
 				
 				// return statement for links
 				return false;

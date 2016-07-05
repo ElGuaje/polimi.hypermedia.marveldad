@@ -209,9 +209,7 @@
 						$('#aNextInCat').unbind('click').click(function(){loadSL(data['nextInCat'],promoNo)})
 					
 					
-				}).fail(function(){
-					alert('Oops, that is an error!');
-				});
+				}).fail(ajaxErrorRep());
 				
 				
 				// return statement for links
