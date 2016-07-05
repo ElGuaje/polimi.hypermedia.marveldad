@@ -66,7 +66,7 @@
 			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
 			if(empty($telefoni))
 				die(json_encode('No devices found', JSON_NUMERIC_CHECK));
-			$sqlImmagini = "SELECT src FROM ".TAB_IMMAGINI." i LEFT JOIN ".TAB_IMGPROD." pi ON pi.rifImage = i.idImmagine WHERE pi.rifDevice = ".$pid;
+			$sqlImmagini = "SELECT src FROM ".TAB_IMGPROD." WHERE rifDevice ={$pid}";
 			$queryImmagini = $db->query($sqlImmagini);
 			$immagini = $queryImmagini->fetch_all(MYSQLI_ASSOC);
 			
@@ -114,7 +114,7 @@
 			
 		}elseif($_GET['get'] == 'promo'){
 			// SIMPLE JOIN: there must be an image for a device in promotion
-			$sql = "SELECT * FROM ".TAB_PRODOTTI." p JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto LEFT JOIN ".TAB_IMMAGINI." i ON pi.rifImage = i.idImmagine WHERE inPromo = 1 GROUP BY idProdotto";
+			$sql = "SELECT * FROM ".TAB_PRODOTTI." p JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto WHERE inPromo = 1 GROUP BY idProdotto";
 			$query = $db->query($sql);
 			if(!$query)
 				die($db->error);
@@ -140,7 +140,7 @@
 			
 			// Get the devices associated 
 			
-			$sqlDevInSl = "SELECT d.*,i.src as image FROM ".TAB_PRODOTTI." d JOIN ".TAB_DEV_IN_SL." dis ON dis.rifDevice = d.idProdotto JOIN ".TAB_SL." s ON dis.rifSmartLife = s.idSmartLife JOIN ".TAB_IMGPROD." id ON id.rifDevice = d.idProdotto JOIN ".TAB_IMMAGINI." i ON i.idImmagine = id.rifImage WHERE s.idSmartLife = {$sid} GROUP BY idProdotto";
+			$sqlDevInSl = "SELECT d.*,id.src as image FROM ".TAB_PRODOTTI." d JOIN ".TAB_DEV_IN_SL." dis ON dis.rifDevice = d.idProdotto JOIN ".TAB_SL." s ON dis.rifSmartLife = s.idSmartLife JOIN ".TAB_IMGPROD." id ON id.rifDevice = d.idProdotto WHERE s.idSmartLife = {$sid} GROUP BY idProdotto";
 			$queryDevInSl = $db->query($sqlDevInSl);
 			if(!$queryDevInSl)
 				die($db->error);
