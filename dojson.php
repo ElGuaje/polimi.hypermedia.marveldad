@@ -103,7 +103,7 @@
 			if(isset($cat[0]) && isset($cat[1])){
 					$ret['prevInCat'] = $cat[0][0];
 					$ret['nextInCat'] = $cat[1][0];
-			}elseif(!isset($cat[1])){
+			}elseif(isset($cat[0]) && !isset($cat[1])){
 				if($cat[0][0] > $pid)
 					$ret['nextInCat'] = $cat[0][0];
 				else
