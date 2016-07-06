@@ -45,7 +45,44 @@
     <!--Dropdown and search bar -->
     <div class="container">
         <div class="col-md-3 col-xs-12">
-            <p>placeholder</p>
+            <div class="panel panel-default" style="min-height:700px">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Filtra prodotti:</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="inPromo">Solo prodotti in promozione</label>
+                    </div>
+                    <hr>
+                    <h4>Prezzo:</h4>
+                    <div class="radio">
+                        <label><input type="radio" value="under150">< 150€</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="150to250">150€ - 250€</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="250to400">250€ - 400€</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="over400">> 400€</label>
+                    </div>
+                    <hr>
+                    <h4>Sistema Operativo:</h4>
+                    <div class="radio">
+                        <label><input type="radio" value="under150">Android</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="150to250">iOS</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="250to400">Windows Phone</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" value="over400">Blackberry</label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-9 col-xs-12">
             <div class="row">
@@ -55,9 +92,9 @@
                             <div class="col-xs-12 col-md-12">
                                 <div class="input-group pull-left">
                                     <input type="text" class="form-control" placeholder="Ricerca per nome...">
-                                          <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button">Vai!</button>
-                                          </span>
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Vai!</button>
+                                      </span>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +141,7 @@
         }).done(function (data) {
 
             console.log(data);
-            $('#dataCatName').html('Smart Life : ' + data['categoria']['nomeCategoria']);
+            $('#dataCatName').html('Prodotti : ' + data['categoria']['nomeCategoria']);
             if (data['sls'].length > 0) {
                 var colCounter = 0;
                 $.each(data['sls'], function (i, v) {
@@ -118,7 +155,7 @@
                     colCounter++;
                 });
             } else {
-                $('#dataGridSL').html('<p>Nessun servizio associato a questa categoria.</p>');
+                $('#dataGridSL').html('<p>Nessun prodotto associato a questa categoria.</p>');
             }
 
 
