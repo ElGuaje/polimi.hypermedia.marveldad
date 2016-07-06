@@ -20,3 +20,15 @@ $(document).ready(function(){
     $('#divNavbar').load('include/navigation.html');
 	$('#divFooter').load('include/footer.html');
 });
+
+// Custom messages
+var msgErrorAjax = 'Ooops... that\'s an error!\nSome little russian hamsters are trying to fix it.\nWould you like to feed them? ';
+
+
+// Custom functions
+function ajaxErrorRep(){
+	var feed = prompt(msgErrorAjax);
+	if(feed != undefined)
+		if(feed.toLowerCase() == 'yes' || feed.toLowerCase() == 'si' || feed.toLowerCase() == 'y' || feed.toLowerCase() == 's')
+			alert('Thanks, they really appreciated that!\nBut unfortunately the error is still there :(');
+}

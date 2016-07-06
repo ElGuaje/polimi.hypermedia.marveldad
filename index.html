@@ -76,7 +76,7 @@
 					});
 					$('#divCarousel').find('.item').first().addClass('active');
 					$('#myCarousel ol').find('li').first().addClass('active');
-				}).fail();
+				}).fail(function(){ajaxErrorRep();});
 			});
 		</script>
 		<div id="divFooter">
