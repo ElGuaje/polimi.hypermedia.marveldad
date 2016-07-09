@@ -56,7 +56,20 @@
 <script>
 	if($(window).width() > 768){
         $('nav .dropdown').hover(function(){ 
-          $('.dropdown-toggle', this).trigger('click'); 
+            $('.dropdown-toggle', this).trigger('click'); 
+        }),
+        $('nav .dropdown').mousedown(function(){
+            //$('.dropdown-toggle', this).click('click');
+            window.location.href = "sl_by_category.html?catid=6";
+        });
+    }
+    else{
+        $('nav .dropdown').click(function(){
+            $('.dropdown-toggle', this).trigger('click');
+        }),
+        $('nav .dropdown').click(function(){
+            //$('.dropdown-toggle', this).click('click');
+            window.location.href = "sl_by_category.html?catid=6";
         });
     }
 </script>
