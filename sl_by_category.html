@@ -135,9 +135,9 @@
                     }
                     if (colCounter == 0)
                         $('#dataGridSL').append('<div class="row">');
-                    var $last = $('#dataGridSL').find('.row').last();
-                    $last.append(buildBlock(v));
-                    $last.addClass("filtr-container");
+                    var last = $('#dataGridSL').find('.row').last();
+                    last.append(buildBlock(v));
+                    //$last.addClass("filtr-container");
                     colCounter++;
                 });
             } else {

@@ -30,6 +30,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     <script src="js/general.js"></script>
+	<script src="js/jquery.filterizr.min.js"></script>
 </head>
 <body>
 <div id="divNavbar"></div>
@@ -91,7 +92,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
                                 <div class="input-group pull-left">
-                                    <input type="text" class="form-control" placeholder="Ricerca per nome...">
+                                    <input type="text" class="form-control" placeholder="Ricerca per nome..."  data-search>
                                       <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">Vai!</button>
                                       </span>
@@ -103,7 +104,7 @@
             </div>
 
             <!--SL Services -->
-            <div id="dataGridDevices" style="margin-bottom: 100px">
+            <div id="dataGridDevices" style="margin-bottom: 100px" class="filtr-container">
                 <div class="row">
                 </div>
             </div>
@@ -117,7 +118,7 @@
     var idCat = getURLParameter('catid');
     function buildBlock(item) {
 		// images: 150x230
-		return '<a href="product.html?pid='+ item['idProdotto'] +'"><div class="col-xs-12 col-md-3">' +
+		return '<a href="product.html?pid='+ item['idProdotto'] +'"><div class="col-xs-12 col-md-3 filtr-item">' +
 				'<div class="thumbnail devThumb">' +
 				'<img src="' + imgPathProductResized + item['src'] + '" alt="'+ item['nome'] +'">' +
 				'<div class="caption">' +
@@ -149,6 +150,9 @@
                     $('#dataGridDevices').find('.row').last().append(buildBlock(v));
                     colCounter++;
                 });
+				
+				
+				var filterizd = $('.filtr-container').filterizr({});
             } else {
                 $('#dataGridDevices').html('<p>Nessun prodotto associato a questa categoria.</p>');
             }
