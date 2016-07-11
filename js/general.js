@@ -14,6 +14,7 @@ function getURLParameter(name) {
 }
 
 var imgPathProduct = mySite+'media/product_images/';
+var imgPathProductResized = mySite+'media/product_images/resized/';
 var imgPathSL = mySite+'media/sl_images/';
 
 $(document).ready(function(){

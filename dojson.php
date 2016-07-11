@@ -177,8 +177,13 @@
 			
 			$toJ['sls'] = $resSLByCat;
 			
-			
-			
+		}elseif($_GET['get'] == 'devicesbycat' && isset($_GET['catid'])){
+			$idCat = $_GET['catid'];
+			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 'd' LIMIT 1");
+			$toJ['categoria'] = $resCat[0];
+			$sqlDevicesByCat = "SELECT idProdotto, nome, prezzo, marca, inPromo, src FROM ".TAB_PRODOTTI." JOIN ".TAB_IMGPROD." ON idProdotto = rifDevice WHERE rifCategoria = {$idCat} GROUP BY idProdotto ORDER BY inPromo DESC";
+			$resDevicesByCat = query($db,$sqlDevicesByCat);
+			$toJ['devices'] = $resDevicesByCat;
 		}
 		
 		
