@@ -186,6 +186,7 @@
 				FROM ".TAB_PRODOTTI." 
 				JOIN imagesindevices  ON idProdotto = rifDevice 
 				WHERE rifCategoria = {$idCat} 
+				GROUP BY idProdotto
 				ORDER BY inPromo DESC";
 			$resDevicesByCat = query($db,$sqlDevicesByCat);
 			$toJ['devices'] = $resDevicesByCat;
