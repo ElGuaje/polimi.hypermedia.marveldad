@@ -118,7 +118,7 @@
     var idCat = getURLParameter('catid');
     function buildBlock(item) {
 		// images: 150x230
-		return '<a href="product.html?pid='+ item['idProdotto'] +'"><div class="col-xs-12 col-md-3 filtr-item">' +
+		return '<a href="product.html?pid='+ item['idProdotto'] +'"><div class="col-xs-12 col-md-3 filtr-item" data-category="1" data-sort="value">' +
 				'<div class="thumbnail devThumb">' +
 				'<img src="' + imgPathProductResized + item['src'] + '" alt="'+ item['nome'] +'">' +
 				'<div class="caption">' +
@@ -151,8 +151,8 @@
                     colCounter++;
                 });
 				
-				
 				var filterizd = $('.filtr-container').filterizr({});
+				
             } else {
                 $('#dataGridDevices').html('<p>Nessun prodotto associato a questa categoria.</p>');
             }
