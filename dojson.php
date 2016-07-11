@@ -181,7 +181,12 @@
 			$idCat = $_GET['catid'];
 			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 'd' LIMIT 1");
 			$toJ['categoria'] = $resCat[0];
-			$sqlDevicesByCat = "SELECT idProdotto, nome, prezzo, marca, inPromo, src FROM ".TAB_PRODOTTI." JOIN ".TAB_IMGPROD." ON idProdotto = rifDevice WHERE rifCategoria = {$idCat} GROUP BY idProdotto ORDER BY inPromo DESC";
+			// Tolto group by, problemi con piu immagini per 1 device
+			$sqlDevicesByCat = "SELECT idProdotto, nome, prezzo, marca, inPromo, src, spec1
+				FROM ".TAB_PRODOTTI." 
+				JOIN imagesindevices  ON idProdotto = rifDevice 
+				WHERE rifCategoria = {$idCat} 
+				ORDER BY inPromo DESC";
 			$resDevicesByCat = query($db,$sqlDevicesByCat);
 			$toJ['devices'] = $resDevicesByCat;
 		}
