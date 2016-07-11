@@ -17,16 +17,15 @@
 	}
 
 */
-	if($_SERVER['HTTP_HOST'] != 'www.marveldad.altervista.org'){
+	if($_SERVER['HTTP_HOST'] != 'www.marveldad.altervista.org' && $_SERVER['HTTP_HOST'] != 'marveldad.altervista.org'){
 		define('DEVELOPMENT',true);
 		define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/hypermedia/');
-	}
-	else{
+	}else{
 		define('DEVELOPMENT',false);
-		define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/');
+		define('ROOT','');
+		//define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/');
 	}
 	require_once ROOT.'core/connect.php';
-	
 	// doJson.php?get=prodotti
 	// doJson.php?get=singleproduct&pid=
 	
@@ -128,7 +127,8 @@
 			$querySl = $db->query($sqlSl);
 			if(!$querySl)
 				die($db->error);
-			$sl = $querySl->fetch_all(MYSQLI_ASSOC)[0];
+			$sl = $querySl->fetch_all(MYSQLI_ASSOC);
+			$sl = $sl[0];
 			
 			$sqlFaq = "SELECT * FROM ".TAB_FAQ_SL." WHERE rifSmartLife = {$sid}";
 			$queryFaq = $db->query($sqlFaq);
