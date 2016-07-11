@@ -172,7 +172,7 @@
 			$idCat = $_GET['catid'];
 			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 's' LIMIT 1");
 			$toJ['categoria'] = $resCat[0];
-			$sqlSLByCat = "SELECT idSmartLife,nome,abstract,image,categoria FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria WHERE rifCategoria = {$idCat}";
+			$sqlSLByCat = "SELECT idSmartLife,nome,abstract,image,categoria,filtro FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria WHERE rifCategoria = {$idCat}";
 			$resSLByCat = query($db,$sqlSLByCat);
 			
 			$toJ['sls'] = $resSLByCat;

@@ -51,22 +51,28 @@
 						<h3 class="panel-title">Filtra prodotti:</h3>
 					</div>
                 <div id="filter" class="panel-body collapse">
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="inPromo">Solo prodotti in promozione</label>
+					<!--div class="checkbox">
+                        <label><input type="radio" value="inPromo" data-filter="202">Anche non in promozione</label>
                     </div>
+                    <div class="checkbox">
+                        <label><input type="radio" value="inPromo" data-filter="2">Solo prodotti in promozione</label>
+                    </div-->
                     <hr>
                     <h4>Prezzo:</h4>
-                    <div class="radio">
-                        <label><input type="radio" value="under150">< 150€</label>
+					<div class="radio">
+                        <label><input type="radio" name="price" data-filter="203" value="">Qualsiasi prezzo</label>
                     </div>
                     <div class="radio">
-                        <label><input type="radio" value="150to250">150€ - 250€</label>
+                        <label><input type="radio" name="price" data-filter="3" value="under150">< 150€</label>
                     </div>
                     <div class="radio">
-                        <label><input type="radio" value="250to400">250€ - 400€</label>
+                        <label><input type="radio" name="price"  data-filter="4" value="150to250">150€ - 250€</label>
                     </div>
                     <div class="radio">
-                        <label><input type="radio" value="over400">> 400€</label>
+                        <label><input type="radio" name="price" data-filter="5" value="250to400">250€ - 400€</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="price" data-filter="6" value="over400">> 400€</label>
                     </div>
                     <hr>
                     <h4>Sistema Operativo:</h4>
@@ -118,7 +124,31 @@
     var idCat = getURLParameter('catid');
     function buildBlock(item) {
 		// images: 150x230
-		return '<a href="product.html?pid='+ item['idProdotto'] +'"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="1" data-sort="value">' +
+		// Categories:
+		// All devices
+		var categories = "1";
+		
+		// Promotion
+		if(item['inPromo'] == 1)
+			categories += ", 2";
+		// also non in promo
+		categories += ", 202";
+		
+		
+		// all prices
+		categories += ", 203";
+		if(item['prezzo'] < 150)
+			categories += ", 3";
+		else if(item['prezzo'] < 250)
+			categories += ", 4";
+		else if(item['prezzo'] < 400)
+			categories += ", 5";
+		else
+			categories += ", 6";
+		
+		console.log(categories);
+		
+		return '<a href="product.html?pid='+ item['idProdotto'] +'"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="'+categories+'" data-sort="value">' +
 				'<div class="thumbnail devThumb">' +
 				'<img src="' + imgPathProductResized + item['src'] + '" alt="'+ item['nome'] +'">' +
 				'<div class="caption">' +
