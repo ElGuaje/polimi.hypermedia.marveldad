@@ -21,6 +21,6 @@
 	unset($pass);
 	
 	$db->set_charset("utf8");
-	
+	$db->query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
 	
 ?>
