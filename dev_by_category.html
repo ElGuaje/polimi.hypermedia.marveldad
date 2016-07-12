@@ -52,7 +52,7 @@
                 </div>
                 <div id="filter" class="panel-body collapse in">
                     <div class="checkbox">
-                        <label><input id="filterCkPromo" name="filterCkPromo" type="checkbox" value="inPromo" >Solo prodotti in promozione</label>
+                        <label><input id="filterCkPromo" name="filterCkPromo" type="checkbox" value="inPromo">Solo prodotti in promozione</label>
                         <hr>
                         <h4>Prezzo:</h4>
                         <div class="radio">
@@ -142,6 +142,7 @@
     $(document.body).on('click', "input", null, unionFilter);
     
     var idCat = getURLParameter('catid');
+	
     function buildBlock(item) {
         // images: 150x230
         // Categories:
@@ -179,25 +180,11 @@
 			else if(slow1.indexOf('black') > -1 && slow1.indexOf('berry') > -1)
 				categories += ", 10";
 		}
-		/*switch (item['spec1']) {
-            case "Android":
-                categories += ", 7";
-                break;
-            case "iOS":
-                categories += ", 8";
-                break;
-            case "Windows Phone":
-                categories += ", 9";
-                break;
-            case "Black Berry":
-                categories += ", 10";
-                break;
-        }*/
-
-        console.log(categories);
-
-        return '<a href="product.html?pid=' + item['idProdotto'] + '" style="text-decoration: none"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="' + categories + '" data-sort="value">' +
-                '<div class="thumbnail devThumb">' +
+		
+		var promoClass = (item['inPromo'] == 1 ? 'devicepromotion' : '');
+		var promo = (idCat == 0 ? '&promo=1' : '');
+        return '<a href="product.html?pid=' + item['idProdotto'] + promo + '" style="text-decoration: none"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="' + categories + '" data-sort="value">' +
+                '<div class="thumbnail devThumb '+promoClass+'">' +
                 '<img src="' + imgPathProductResized + item['src'] + '" alt="' + item['nome'] + '">' +
                 '<div class="caption">' +
                 '<h4 class="text-center">' + item['nome'] + '</h4>' +
@@ -217,8 +204,6 @@
 		if ($(window).width() < 600){  
 			$('#filter').removeClass('in');
 		}
-	
-	
 	
         $('#dataGridDevices').empty();
         $.ajax({
@@ -241,11 +226,14 @@
                     $('#dataGridDevices').find('.row').last().append(buildBlock(v));
                     colCounter++;
                 });
-
+				
+				if(idCat == 0)
+					$('#filterCkPromo').click();
+				
+				
             } else {
                 $('#dataGridDevices').html('<p>Nessun prodotto associato a questa categoria.</p>');
             }
-
 
         }).fail(function () {
             ajaxErrorRep();

@@ -72,7 +72,7 @@
 			$ret = $telefoni[0];
 			$ret['immagini'] = $immagini;
 			
-			
+			// Check same category!
 			if(isset($_GET['getpromo'])){
 				$sqlPromo = "SELECT idProdotto FROM ".TAB_PRODOTTI." WHERE ( 
 					idProdotto = IFNULL((SELECT MIN(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto > {$pid} AND inPromo = 1),0) 
@@ -112,6 +112,7 @@
 			$toJ = $ret;
 			
 		}elseif($_GET['get'] == 'promo'){
+			
 			// SIMPLE JOIN: there must be an image for a device in promotion
 			$sql = "SELECT * FROM ".TAB_PRODOTTI." p JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto WHERE inPromo = 1 GROUP BY idProdotto";
 			$query = $db->query($sql);
@@ -178,14 +179,24 @@
 			$toJ['sls'] = $resSLByCat;
 			
 		}elseif($_GET['get'] == 'devicesbycat' && isset($_GET['catid'])){
-			$idCat = $_GET['catid'];
-			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 'd' LIMIT 1");
-			$toJ['categoria'] = $resCat[0];
-			// Tolto group by, problemi con piu immagini per 1 device
+			$where = '';
+			if($_GET['catid'] > 0){
+				$idCat = $_GET['catid'];
+				$resCat = query($db,"
+				SELECT categoria AS nomeCategoria
+				FROM ".TAB_CATEGORIES." 
+				WHERE idCategoria = {$idCat} 
+				AND tipo = 'd' LIMIT 1");
+				$toJ['categoria'] = $resCat[0];
+				$where = " WHERE rifCategoria = {$idCat} ";
+			}else{
+				$toJ['categoria']['nomeCategoria'] = 'Prodotti in promozione';
+				$where = ' WHERE inPromo = 1 ';
+			}
 			$sqlDevicesByCat = "SELECT idProdotto, nome, prezzo, marca, inPromo, src, spec1, spec2, spec3, spec4
 				FROM ".TAB_PRODOTTI." 
-				JOIN imagesindevices  ON idProdotto = rifDevice 
-				WHERE rifCategoria = {$idCat} 
+				JOIN ".TAB_IMGPROD."  ON idProdotto = rifDevice 
+				{$where}
 				GROUP BY idProdotto
 				ORDER BY inPromo DESC";
 			$resDevicesByCat = query($db,$sqlDevicesByCat);
