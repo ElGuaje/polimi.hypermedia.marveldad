@@ -56,11 +56,12 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">TV - Divertimento senza limiti</a></li>
-                                <li><a href="#">TIMmusic - La colonna sonora della tua vita</a></li>
-                                <li><a href="#">TIMReading - Leggi quando vuoi, cosa vuoi</a></li>
-                                <li><a href="#">TIMGames - Mettiti in gioco, una nuova sfida ti aspetta!</a></li>
-                                <li><a href="#">Seria A Team</a></li>
+								<li data-filter="all"><a href="#">Mostra tutto</a></li>
+                                <li data-filter="1"><a href="#">TV - Divertimento senza limiti</a></li>
+                                <li data-filter="2"><a href="#">Seria A Team</a></li>
+                                <li data-filter="3"><a href="#">TIMmusic - La colonna sonora della tua vita</a></li>
+                                <li data-filter="4"><a href="#">TIMReading - Leggi quando vuoi, cosa vuoi</a></li>
+                                <li data-filter="5"><a href="#">TIMGames - Mettiti in gioco, una nuova sfida ti aspetta!</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,8 +80,8 @@
         </div>
     </div>
     <!--SL Services -->
-    <div id="dataGridSL">
-        <div class="row" class="filtr-container">
+    <div id="dataGridSL" class="filtr-container">
+        <div class="row" >
             <!--div class="col-xs-3">
                 <div class="thumbnail">
                     <img src="http://placehold.it/350x150" alt="Primo">
@@ -98,13 +99,12 @@
         </div>
     </div>
 </div>
-
 <div id="divFooter"></div>
 
 <script>
     var idCat = getURLParameter('catid');
     function buildBlock(item) {
-        return '<div class="col-xs-12 col-sm-6 col-md-3 filtr-item" data-category="1" data-sort="value">' +
+        return '<div class="col-xs-12 col-sm-6 col-md-3 filtr-item" data-category="'+ item['filtro'] +'" data-sort="value">' +
                 '<a href="sl_service.html?sid=' + item['idSmartLife'] + '">' +
                 '<div class="thumbnail">' +
                 '<img src="' + imgPathSL + item['image'] + '" alt="' + item['nome'] + '">' +
@@ -135,9 +135,9 @@
                     }
                     if (colCounter == 0)
                         $('#dataGridSL').append('<div class="row">');
-                    var $last = $('#dataGridSL').find('.row').last();
-                    $last.append(buildBlock(v));
-                    $last.addClass("filtr-container");
+                    var last = $('#dataGridSL').find('.row').last();
+                    last.append(buildBlock(v));
+                    //$last.addClass("filtr-container");
                     colCounter++;
                 });
             } else {
