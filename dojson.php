@@ -182,7 +182,7 @@
 			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 'd' LIMIT 1");
 			$toJ['categoria'] = $resCat[0];
 			// Tolto group by, problemi con piu immagini per 1 device
-			$sqlDevicesByCat = "SELECT idProdotto, nome, prezzo, marca, inPromo, src, spec1
+			$sqlDevicesByCat = "SELECT idProdotto, nome, prezzo, marca, inPromo, src, spec1, spec2, spec3, spec4
 				FROM ".TAB_PRODOTTI." 
 				JOIN imagesindevices  ON idProdotto = rifDevice 
 				WHERE rifCategoria = {$idCat} 

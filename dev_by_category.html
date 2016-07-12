@@ -196,14 +196,18 @@
 
         console.log(categories);
 
-        return '<a href="product.html?pid=' + item['idProdotto'] + '"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="' + categories + '" data-sort="value">' +
+        return '<a href="product.html?pid=' + item['idProdotto'] + '" style="text-decoration: none"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="' + categories + '" data-sort="value">' +
                 '<div class="thumbnail devThumb">' +
                 '<img src="' + imgPathProductResized + item['src'] + '" alt="' + item['nome'] + '">' +
                 '<div class="caption">' +
                 '<h4 class="text-center">' + item['nome'] + '</h4>' +
                 '<h3 class="text-center" style="color: #ff3c1a">' + item['prezzo'].toFixed(2) + '&euro;</h3>' +
-                '<div><ul style="margin-top: 25px;"><li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>Spec1</p></li><li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>Spec2</p></li><li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>Spec3</p></li><li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>Spec4</p></li>'
-                '</div>' +
+                '<div><ul style="margin-top: 25px;">' +
+				'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ item['spec1'] +'</p></li>'+
+				'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ item['spec2'] +'</p></li>'+
+				'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ item['spec3'] +'</p></li>'+
+				'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ item['spec4'] +'</p></li>'+
+				'</ul></div>' +
                 '</div>' +
                 '</div></a>';
     }
