@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 -- Database: `hypermedia09`
 --
 DROP DATABASE `hypermedia09`;
-
+CREATE DATABASE IF NOT EXISTS `hypermedia09` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `hypermedia09`;
 -- --------------------------------------------------------
 
 --
