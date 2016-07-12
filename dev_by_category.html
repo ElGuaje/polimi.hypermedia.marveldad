@@ -49,7 +49,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title"><a data-toggle="collapse" href="#filter">Filtra prodotti:</a></h3>
                 </div>
-                <div id="filter" class="panel-body collapse">
+                <div id="filter" class="panel-body">
                     <div class="checkbox">
                         <label><input type="checkbox" value="inPromo">Solo prodotti in promozione</label>
                     </div>
@@ -175,6 +175,14 @@
 </div>
 
 <div id="divFooter"></div>
+
+<script>
+    $(document).ready(function(){
+      if ($(window).width() < 600){  
+        $('.panel-body').addClass('collapse');
+      }
+    });
+</script>
 
 <script>
     var idCat = getURLParameter('catid');
