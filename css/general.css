@@ -412,3 +412,8 @@ span.promo-trial {
     height: 400px;
     margin-bottom: 10px;
 }
+
+a .devThumb:hover{
+	border-color:#004592;
+	border-width: 1.5px;
+}
