@@ -46,21 +46,13 @@
     <!--Dropdown and search bar -->
     <div class="container col-md-12 col-xs-12">
         <div class="col-md-3 col-xs-12">
-            <div class="panel panel-default" style="margin-bottom: 100px">
+            <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="collapse" href="#filter" style="cursor:pointer;">
                     <h3 class="panel-title">Filtra prodotti:</h3>
                 </div>
-                <div id="filter" class="panel-body">
+                <div id="filter" class="panel-body collapse in">
                     <div class="checkbox">
                         <label><input type="checkbox" value="inPromo">Solo prodotti in promozione</label>
-                        <div id="filter" class="panel-body collapse">
-                        <!--div class="checkbox">
-                            <label><input type="radio" value="inPromo" data-filter="202">Anche non in promozione</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="radio" value="inPromo" data-filter="2">Solo prodotti in promozione</label>
-                        </div-->
-                        </div>
                         <hr>
                         <h4>Prezzo:</h4>
                         <div class="radio">
@@ -125,14 +117,6 @@
 </div>
 
 <div id="divFooter"></div>
-
-<script>
-    $(document).ready(function(){
-      if ($(window).width() < 600){  
-        $('.panel-body').addClass('collapse');
-      }
-    });
-</script>
 
 <script>
 
@@ -205,6 +189,14 @@
                 '</div></a>';
     }
     $(function () {
+		
+		// Toggle collapsed filter
+		if ($(window).width() < 600){  
+			$('#filter').removeClass('in');
+		}
+	
+	
+	
         $('#dataGridDevices').empty();
         $.ajax({
             url: 'dojson.php?get=devicesbycat&catid=' + idCat,
