@@ -52,11 +52,11 @@
                 </div>
                 <div id="filter" class="panel-body collapse in">
                     <div class="checkbox">
-                        <label><input type="checkbox" value="inPromo">Solo prodotti in promozione</label>
+                        <label><input id="filterCkPromo" name="filterCkPromo" type="checkbox" value="inPromo" >Solo prodotti in promozione</label>
                         <hr>
                         <h4>Prezzo:</h4>
                         <div class="radio">
-                            <label><input  type="radio" name="price" data-filter-value="203" value="">Qualsiasi prezzo</label>
+                            <label><input  type="radio" name="price" data-filter-value="203" value="">Qualsiasi</label>
                         </div>
                         <div class="radio">
                             <label><input type="radio" name="price" data-filter-value="3" value="under150">< 150€</label>
@@ -72,17 +72,20 @@
                         </div>
                         <hr>
                         <h4>Sistema Operativo:</h4>
-                        <div class="radio">
-                            <label><input type="radio" name="os" data-filter-value="7" value="under150">Android</label>
+						<div class="radio">
+                            <label><input type="radio" name="os" data-filter-value="207" value="">Qualsiasi</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="os" data-filter-value="8" value="150to250">iOS</label>
+                            <label><input type="radio" name="os" data-filter-value="7" value="">Android</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="os" data-filter-value="9" value="250to400">Windows Phone</label>
+                            <label><input type="radio" name="os" data-filter-value="8" value="">iOS</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="os" data-filter-value="10" value="over400">Blackberry</label>
+                            <label><input type="radio" name="os" data-filter-value="9" value="">Windows Phone</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="os" data-filter-value="10" value="">Blackberry</label>
                         </div>
                     </div>
                 </div>
@@ -119,16 +122,19 @@
 <div id="divFooter"></div>
 
 <script>
-
+	
     var unionFilter = function(){
         // Getting price value
         var priceFilter = $("input[name=price]:checked").data("filter-value");
         //Getting os filter value
         var osFilter = $("input[name=os]:checked").data("filter-value");
-
+	
+		var promoFilter = ($('input[name=filterCkPromo]').is(':checked') ? "2": "1" );
+		
         var filterValues = [];
         if (priceFilter) filterValues.push(priceFilter);
         if (osFilter) filterValues.push(osFilter);
+		if (promoFilter) filterValues.push(promoFilter);
         var filterizd = $('.filtr-container').filterizr();
         filterizd.filterizr("filter", filterValues);
     };
@@ -159,8 +165,21 @@
             categories += ", 5";
         else
             categories += ", 6";
+			
         //OS Categories
-        switch (item['spec1']) {
+		categories += ", 207";
+		if(item['spec1'] != null){
+			var slow1 = item['spec1'].toLowerCase();
+			if(slow1.indexOf('android') > -1)
+				categories += ", 7";
+			else if(slow1.indexOf('ios') > -1)
+				categories += ", 8";
+			else if(slow1.indexOf('windows') > -1)
+				categories += ", 9";	
+			else if(slow1.indexOf('black') > -1 && slow1.indexOf('berry') > -1)
+				categories += ", 10";
+		}
+		/*switch (item['spec1']) {
             case "Android":
                 categories += ", 7";
                 break;
@@ -173,7 +192,7 @@
             case "Black Berry":
                 categories += ", 10";
                 break;
-        }
+        }*/
 
         console.log(categories);
 
