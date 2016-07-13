@@ -10,7 +10,7 @@
       <a class="navbar-brand" href="index.html"><img alt="TIM - Telecom Italia Mobile" src="media/logo_white.png"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul id="navbarIntestUL" class="nav navbar-nav">
         <li style="font-size: 17px; font-family: Trebuchet MS"><a href="#whoweare">Chi Siamo</a></li>
         <li style="font-size: 17px; font-family: Trebuchet MS"><a href="gruppo.html">Il Gruppo</a></li>
         <li style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
@@ -53,27 +53,28 @@
   </div>
 </nav>
 <script>
+	var p ;
 	if($(window).width() > 790){
-        $('nav .dropdown').hover(function(){ 
-            $('.dropdown-toggle', this).trigger('click'); 
-        }),
-        $('nav .dropdown-toggle').mousedown(function(){
+        $('nav li.dropdown').find('a.dropdown-toggle').hover(function(){ 
+            p = $(this).trigger('click').parent().addClass('open'); 
+			$('nav li.dropdown.open ul').mouseleave(function(){
+				p.trigger('click');
+			});
+        });
+        /*$('nav li.dropdown-toggle').click(function(){
             //$('.dropdown-toggle', this).click('click');
             window.location.href = "sl_by_category.html?catid=6";
-        });
+        });*/
+		
     }
     else if($(window).width() > 599 && $(window).width() < 768){
         $('nav .dropdown').click(function(){
             $('.dropdown-toggle', this).trigger('click');
         });
     }
-    else{
-        $('nav .dropdown').click(function(){
+   /* else{
+        $('nav li.dropdown').click(function(){
             $('.dropdown-toggle', this).trigger('click');
         }),
-        $('nav .dropdown').click(function(){
-            //$('.dropdown-toggle', this).click('click');
-            window.location.href = "sl_by_category.html?catid=6";
-        });
-    }
+    }*/
 </script>
