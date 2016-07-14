@@ -61,13 +61,13 @@
 				</div>
 			</div>
 			<div class="col-md-8 col-xs-12">
-				<div id="navigation" class="col-md-12 col-xs-12" style="clear: both;">
-					<a href="#" id="aPrevInCat"><p class="alignleft"><< Precedente</p></a>
-					<a href="#" id="aNextInCat"><p class="alignright">Successivo >></p></a>
+				<div id="navigation" class="col-md-12 col-xs-12 " style="clear: both;">
+					<p><a href="#" id="aPrevInCat" class="alignleft toHide hidden"><< Precedente</a>
+					<a href="#" id="aNextInCat" class="alignright toHide hidden">Successivo >></a></p>
 				</div>
-				<div class="col-md-12 col-xs-12 navigationPromo" style="clear: both;">
-					<a href="#" id="aPrevInPromo"><p class="alignleft"><< Precedente in Promozione</p></a>
-					<a href="#" id="aNextInPromo"><p class="alignright">Successivo in Promozione >></p></a>
+				<div id="promoNavigation" class="col-md-12 col-xs-12 navigationPromo " style="clear: both;">
+					<p><a href="#" id="aPrevInPromo" class="alignleft hidden toHide"><< Precedente in Promozione</a>
+					<a href="#" id="aNextInPromo" class="alignright hidden toHide">Successivo in Promozione >></a></p>
 				</div>
 				<div id="divNomeProdotto">
 					<h1 id="dataNomeProdotto"></h1>
@@ -117,6 +117,9 @@
 			var carImg = '<div class="item"><a class="product-modal" data-toggle="modal" data-target="" href="#"><img src="media/test_iphone0_small.jpg" alt=""></a></div>';
 			var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
 			function loadProduct(pid,promo){
+				
+				$('.toHide').addClass('hidden');
+				
 				// Get data from DB
 				$.ajax({
 					url: mySite+'dojson.php?get=singleproduct&pid='+pid+promo,
@@ -124,13 +127,7 @@
 					dataType: 'json'
 				}).done(function(data){
 					console.log(data);
-					
-					if(data['prevInCat'] != undefined)
-						$('#aPrevInCat').unbind('click').click(function(){loadProduct(data['prevInCat'],promoNo)})
-					
-					if(data['nextInCat'] != undefined)
-						$('#aNextInCat').unbind('click').click(function(){loadProduct(data['nextInCat'],promoNo)})
-					
+										
 					$('#dataNomeProdotto').html(data['nome']);
 					$('#dataPrezzo').html(data['prezzo'].toFixed(2) +'&euro;');
 					$('#dataSpecUl').html('');
@@ -154,13 +151,21 @@
 						$('#dataCarItems').find('.item').first().addClass('active');
 						$('#myCarousel ol').find('li').first().addClass('active');
 					}
-
+					
 					// Next and Prev promotions link
 					if(promo != ''){
-						if(data['promoPrev'] != undefined)
-							$('#aPrevInPromo').unbind('click').click(function(){loadProduct(data['promoPrev'],promoYes)});
+						$('#promoNavigation').removeClass('hidden').removeClass('toHide');
+						if(data['promoPrev'] != undefined){
+							$('#aPrevInPromo').unbind('click').click(function(){loadProduct(data['promoPrev'],promoYes)}).removeClass('hidden');
+						}
 						if(data['promoNext'] != undefined)
-							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)});
+							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)}).removeClass('hidden');;
+					}else{
+						$('#navigation').removeClass('hidden');
+						if(data['prevInCat'] != undefined)
+							$('#aPrevInCat').unbind('click').click(function(){loadProduct(data['prevInCat'],promoNo)}).removeClass('hidden');
+						if(data['nextInCat'] != undefined)
+							$('#aNextInCat').unbind('click').click(function(){loadProduct(data['nextInCat'],promoNo)}).removeClass('hidden');
 					}
 					
 					// Back to SL link
