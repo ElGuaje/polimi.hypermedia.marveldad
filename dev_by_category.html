@@ -91,6 +91,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <div class="col-md-9 col-xs-12">
             <div class="row">
                 <div class="panel panel-default">
@@ -122,15 +123,15 @@
 <div id="divFooter"></div>
 
 <script>
-	
+
     var unionFilter = function(){
         // Getting price value
         var priceFilter = $("input[name=price]:checked").data("filter-value");
         //Getting os filter value
         var osFilter = $("input[name=os]:checked").data("filter-value");
-	
+
 		var promoFilter = ($('input[name=filterCkPromo]').is(':checked') ? "2": "1" );
-		
+
         var filterValues = [];
         if (priceFilter) filterValues.push(priceFilter);
         if (osFilter) filterValues.push(osFilter);
@@ -140,7 +141,7 @@
     };
 
     $(document.body).on('click', "input", null, unionFilter);
-    
+
     var idCat = getURLParameter('catid');
     function buildBlock(item) {
         // images: 150x230
@@ -165,7 +166,7 @@
             categories += ", 5";
         else
             categories += ", 6";
-			
+
         //OS Categories
 		categories += ", 207";
 		if(item['spec1'] != null){
@@ -175,7 +176,7 @@
 			else if(slow1.indexOf('ios') > -1)
 				categories += ", 8";
 			else if(slow1.indexOf('windows') > -1)
-				categories += ", 9";	
+				categories += ", 9";
 			else if(slow1.indexOf('black') > -1 && slow1.indexOf('berry') > -1)
 				categories += ", 10";
 		}
@@ -212,14 +213,14 @@
                 '</div></a>';
     }
     $(function () {
-		
+
 		// Toggle collapsed filter
-		if ($(window).width() < 600){  
+		if ($(window).width() < 600){
 			$('#filter').removeClass('in');
 		}
-	
-	
-	
+
+
+
         $('#dataGridDevices').empty();
         $.ajax({
             url: 'dojson.php?get=devicesbycat&catid=' + idCat,
