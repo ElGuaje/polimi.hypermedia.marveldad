@@ -35,20 +35,8 @@
 		<div id="divNavbar">
 		</div>
 		<div class="container col-md-12 col-xs-12">
-			<div class="col-md-4 col-xs-12">
-				<div id="navigationBackToCategory" class="col-md-12 col-xs-12" style="clear: both;">
-					<a href="#"><p class="alignleft">< Smartphone</p></a>
-				</div>
-				<div id="navigationBackToPromo" class="col-md-12 col-xs-12" style="clear: both;">
-					<a href="#"><p class="alignleft">< Promozioni</p></a>
-				</div>
-				<div id="navigationBackToService" class="col-md-12 col-xs-12" style="clear: both;">
-					<a href="#"><p class="alignleft">< Servizio Assistenza</p></a>
-				</div>
-				<div id="navigationBackToSLService" class="col-md-12 col-xs-12" style="clear: both;">
-					<a href="#"><p class="alignleft">< SL Service</p></a>
-				</div>
-				<div id="myCarousel" class="carousel slide col-md-12 col-xs-12" data-ride="carousel">
+			<div class="col-md-4 col-xs-12" style="margin-bottom: 100px">
+				<div id="myCarousel" style="margin-top: 30px" class="carousel slide col-md-12 col-xs-12" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators" id="dataImgCarOL">
 					</ol>
@@ -59,27 +47,47 @@
 				</div>
 				<div id="modalImages">
 				</div>
+                <div style="position: relative">
+                    <div id="navigationBackToCategory" style="margin-top: 30px" class="col-md-12 col-xs-12" style="clear: both;">
+                        <a href="#"><p class="alignleft">< Smartphone</p></a>
+                    </div>
+                    <div id="navigationBackToPromo" class="col-md-12 col-xs-12" style="clear: both;">
+                        <a href="#"><p class="alignleft">< Promozioni</p></a>
+                    </div>
+                    <div id="navigationBackToService" class="col-md-12 col-xs-12" style="clear: both;">
+                        <a href="#"><p class="alignleft">< Servizio Assistenza</p></a>
+                    </div>
+                    <div id="navigationBackToSLService" class="col-md-12 col-xs-12" style="clear: both;">
+                        <a href="#"><p class="alignleft">< SL Service</p></a>
+                    </div>
+				</div>
 			</div>
 			<div class="col-md-8 col-xs-12">
-				<div id="navigation" class="col-md-12 col-xs-12 " style="clear: both;">
-					<p><a href="#" id="aPrevInCat" class="alignleft toHide hidden"><< Precedente</a>
-					<a href="#" id="aNextInCat" class="alignright toHide hidden">Successivo >></a></p>
-				</div>
-				<div id="promoNavigation" class="col-md-12 col-xs-12 navigationPromo " style="clear: both;">
-					<p><a href="#" id="aPrevInPromo" class="alignleft hidden toHide"><< Precedente in Promozione</a>
-					<a href="#" id="aNextInPromo" class="alignright hidden toHide">Successivo in Promozione >></a></p>
-				</div>
-				<div id="divNomeProdotto">
-					<h1 id="dataNomeProdotto"></h1>
-				</div>
-				<div class="col-md-3 prezzo">
-					<br><p id="dataPrezzo"></p>
-				</div>
-				<div class="col-md-4" id="specifiche">
-					<h4>Specifiche prodotto:</h4>
-					<ul id="dataSpecUl">
-					</ul>
-				</div>
+                <div class="col-md-12 col-xs-12" style="margin-bottom: -40px">    
+                    <div class="col-md-9 col-xs-9" id="divNomeProdotto">
+                        <h1 id="dataNomeProdotto"></h1>
+                    </div>
+                    <div class="col-md-3 col-xs-3">
+                        <div id="navigation" class="col-md-12 col-xs-12 " style="clear: both;">
+                            <p><a href="#" id="aPrevInCat" class="alignright toHide hidden"><< Precedente</a><br>
+                            <a href="#" id="aNextInCat" class="alignright toHide hidden">Successivo >></a></p>
+                        </div>
+                        <div id="promoNavigation" class="col-md-12 col-xs-12 navigationPromo " style="clear: both;">
+                            <p><a href="#" id="aPrevInPromo" class="alignright hidden toHide"><< Precedente in Promozione</a><br>
+                            <a href="#" id="aNextInPromo" class="alignright hidden toHide">Successivo in Promozione >></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container col-md-12 col-xs-12" style="margin-bottom: 20px">
+                    <div class="col-md-3 prezzo">
+                        <br><p id="dataPrezzo"></p>
+                    </div>
+                    <div class="col-md-4" id="specifiche">
+                        <h4 style="font-size: 14px">Specifiche prodotto:</h4>
+                        <ul style="font-size: 12px" id="dataSpecUl">
+                        </ul>
+                    </div>
+                </div>
                 <div class="container col-md-12 col-xs-12" style="margin-bottom: 100px">
                     <div id="prodTabs" class="col-md-12 col-xs-12">
                         <ul class="nav nav-tabs">
@@ -109,8 +117,8 @@
                         </div>
                     </div>
                 </div>
-			</div>
-		</div>
+            </div>
+        </div>
 		<script>
 			var promoYes = '&getpromo=1';
 			var promoNo = '';
