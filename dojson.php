@@ -37,6 +37,8 @@
 	define('TAB_FAQ_SL','faqsmartlife');
 	define('TAB_DEV_IN_SL','devicesinsl');
 	define('TAB_CATEGORIES','categories');
+	define('TAB_ASSISTENZA','assistenza');
+	define('TAB_DEV_IN_ASS','devicesinassistenza');
 	
 	
 	
@@ -58,7 +60,7 @@
 			//echo '<pre>',print_r($telefoni,true),'</pre>';
 		}elseif($_GET['get'] == 'singleproduct'){
 			
-			$pid = $db->real_escape_string($_GET['pid']);
+			$pid = (int)$_GET['pid'];
 			$sql = "SELECT * FROM ".TAB_PRODOTTI." WHERE idProdotto = ".$pid;
 			
 			$query = $db->query($sql);
@@ -201,6 +203,27 @@
 				ORDER BY inPromo DESC";
 			$resDevicesByCat = query($db,$sqlDevicesByCat);
 			$toJ['devices'] = $resDevicesByCat;
+		
+		}elseif($_GET['get'] == 'singleass' && isset($_GET['aid'])){
+			$aid = (int)$_GET['aid'];
+			$sql = "SELECT *, categoria FROM ".TAB_ASSISTENZA." 
+			JOIN ".TAB_CATEGORIES." 
+			ON rifCategoria = idCategoria 
+			WHERE idAssistenza = {$aid}";
+			$singleA = query($db,$sql);
+			
+			$sqlAssociatedDevices = "SELECT p.idProdotto, p.nome 
+			FROM ".TAB_PRODOTTI." p 
+			JOIN ".TAB_DEV_IN_ASS." dia 
+			ON p.idProdotto = dia.rifDevice 
+			WHERE dia.rifAssistenza = {$aid} 
+			ORDER BY nome";
+			
+			$associatedDevices = query($db,$sqlAssociatedDevices);
+			
+			$toJ['assistenza'] = $singleA[0];
+			$toJ['devices'] = $associatedDevices;
+			
 		}
 		
 		

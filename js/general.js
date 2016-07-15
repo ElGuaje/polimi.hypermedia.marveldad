@@ -16,6 +16,7 @@ function getURLParameter(name) {
 var imgPathProduct = mySite+'media/product_images/';
 var imgPathProductResized = mySite+'media/product_images/resized/';
 var imgPathSL = mySite+'media/sl_images/';
+var imgPathAss = mySite+'media/assistenza/';
 
 $(document).ready(function(){
     $('#divNavbar').load('include/navigation.html');

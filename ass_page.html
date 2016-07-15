@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TIM :: Attivazione SIM</title>
+    <title>TIM :: Assistenza</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <!--link rel="icon" href="../../favicon.ico"-->
@@ -39,7 +39,8 @@
     <div class="row">
         <nav>
             <ul class="pager">
-                <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Torna indietro</a></li>
+                <li id="toCatAss" class="previous"><a href="#"><span aria-hidden="true">&larr;</span> </a></li>
+				<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Torna #Device#</a></li>
             </ul>
         </nav>
     </div>
@@ -48,15 +49,15 @@
         <div class="col-xs-12 col-md-4">
             <!--Assistance main picture -->
             <div class="row">
-                <div class="col-xs-12"><img src="/hypermedia/media/assistenza/ass_attivazione_sim_card.jpg"
-                                            alt="Attivazione SIM"
-                                            class="img-responsive"></div>
+                <div id="imgAssistenza" class="col-xs-12" style="margin-bottom: 5px;">
+				</div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">Dispostivi collegati</div>
-                        <table class="table">
+                        <div class="panel-body" style="max-height: 250px; overflow-y: scroll;">
+						<table id="tableAssDevices" class="table">
                             <!--todo: links for linked devices -->
                             <thead>
                             <td>
@@ -65,24 +66,9 @@
                             </td>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        LG Nexus 5
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        LG G2
-                                    </a>
-                                </td>
-                            </tr>
-
                             </tbody>
-
                         </table>
+						</div>
                         <div class="panel-footer">
                             <p>
                                 Sono indicati solo i dispositivi nello store TIM. La soluzione
@@ -94,31 +80,12 @@
             </div>
         </div>
         <div class="col-xs-12 col-md-8">
-            <h2>
-                Attivazione della SIM TIM
-            </h2>
-            <p>Quando acquisti una nuova TIM Card devono contestualmente essere associati alla stessa i tuoi *dati
-                anagrafici*. Ti sarà pertanto richiesto di esibire un *documento d’identità valido* ed il *codice
-                fiscale*.
-            <p/>
-            <p>La registrazione dei dati anagrafici e la certificazione degli stessi sui sistemi aziendali è vincolante
-                per l’abilitazione della linea che, contrariamente, non sarà abilitata al traffico ed a tutte le altre
-                operazioni.
-            <p/>
-
-            <p>La procedura di acquisizione dei tuoi dati anagrafici va effettuata *esclusivamente attraverso i Negozi
-                TIM* con la presentazione di documenti in corso di validità (carta d’identità o documenti equivalenti
-                rilasciati da un’amministrazione statale quali: passaporto, patente in formato cartaceo, porto d’armi e
-                tessere degli ufficiali).
-            <p/>
-
-            <p>Ti ricordiamo che è consentita la vendita e l’intestazione di TIM Card *anche a clienti minorenni che
-                abbiano compiuto gli 8 anni di età*.</p>
-
+            <h2 id="assTitle"></h2>
+			<div id="assContent"></div>
             <div class="row call-to-contact">
                 <div class="col-xs-12">
                     <!--todo Contact form link-->
-                    <p>Non è quello che ti server <a href="#">Contattaci</a> tramite il form apposta</p>
+                    <p>Se non hai trovato la risposta che cercavi <a href="#">Contattaci</a> tramite l'apposito form</p>
                 </div>
             </div>
         </div>
@@ -126,5 +93,57 @@
 
 </div>
 <div id="divFooter"></div>
+
+<script>
+	
+	var aid = getURLParameter('aid');
+	
+	function loadAssistance(aid){
+		
+		$.ajax({
+			url: mySite + 'dojson.php?get=singleass&aid='+aid,
+			method: 'GET',
+			dataType: 'json'
+		}).done(function(data){
+			
+			console.log(data);
+			var assistenza = data['assistenza'];
+			var devices = data['devices'];
+			
+			// Check record not found
+			if(data['assistenza'].length == 0)
+				alert('nothing found');
+			else{
+			
+				$('#assTitle').html(assistenza['nome']);
+				if(assistenza['image'] != null)
+					$('#imgAssistenza').html('<img src="'+ imgPathAss + assistenza['image'] +'" alt="'+assistenza['nome']+'" class="img-responsive">');
+				
+				$('#assContent').html(assistenza['descrizione']);
+				// Navigation
+				$('#toCatAss').find('a').attr('href','ass_by_category.html?catid='+assistenza['rifCategoria']).append(assistenza['categoria']);
+				
+				// Associated devices
+				if(devices.length == 0)
+					$('#tableAssDevices').find('tbody').append('<tr><td>Nessun dispositivo associato.</td></tr>');
+				else{
+					$.each(devices, function(i,v){
+						$('#tableAssDevices').find('tbody').append('<tr><td><a href="product.html?pid='+v['idProdotto']+'&fromass='+assistenza['idAssistenza']+'">'+v['nome']+'</a></td></tr>');
+					});
+				}
+			}
+			
+		}).fail(function(){ ajaxErrorRep(); });
+	
+	
+	}
+	
+	$(function(){
+		
+		loadAssistance(aid);
+	});
+	
+</script>
+
 </body>
 </html>
