@@ -38,45 +38,31 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-xs-12 text-center ass-category-header">
-            <h1>Assistance Category Name</h1>
-        </div>
+        <div id="catName" class="col-xs-12 text-center ass-category-header"></div>
     </div>
     <!--Sub categories rows-->
     <div class="row">
         <!--Photo column-->
         <div class="col-xs-12 col-md-3">
+			This image is not DB-related !!<br>
+			Maybe we should insert here the link to the contact form instead
             <img src="/hypermedia/media/assistenza/ass_linea_fissa_img.jpg" alt="Assistenza Linea Fissa"
                  class="img-rounded"
             />
         </div>
         <!--Table with categories-->
-        <div class="col-xs-12 col-md-9">
+        <div id="assWrapper" class="col-xs-12 col-md-9">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
-                    Assistenza Linea Fissa
+                    Di cos'hai bisogno? <i><  ----STATIC CONTENT !!</i>
                 </div>
                 <!--todo: compact list items-->
-                <ul class="list-group">
-                    <li class="list-group-item">
+                <ul id="ulAssServ" class="list-group">
+                    <!--li class="list-group-item">
                         <a href="#"><h4>Attivazione della linea</h4></a>
                         <p>Richiedere l'attivazione di una linea telefonica di casa è molto semplice.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#"><h4>Trasloco</h4></a>
-                        <p>Spostare la tua linea telefonica presso una nuova abitazione naella stessa città o in una
-                            città diversa.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#"><h4>Recesso</h4></a>
-                        <p>Tutte le informazioni sulle modalità per avvalersi del diritto di ripensamento e la relativa
-                            documentazione.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="#"><h4>Variazione abbonamento</h4></a>
-                        <p>Come cambiare il contratto TIM casa da Business a Privato.</p>
-                    </li>
+                    </li-->
                 </ul>
             </div>
         </div>
@@ -84,5 +70,47 @@
 </div>
 
 <div id="divFooter"></div>
+
+
+<script>
+
+	var catid = getURLParameter('catid');
+	
+	function loadAssCategory(catid){
+		
+		$.ajax({
+			url: mySite + 'dojson.php?get=assbycat&catid=' + catid,
+			method: 'GET',
+			dataType: 'json'
+		}).done(function(data){
+			
+			console.log(data);
+			
+			var categoria = data['categoria'];
+			var assistenze = data['assistenze'];
+			
+			$('#catName').html('<h1>'+categoria['categoria']+'</h1>');
+			
+			if(assistenze.length == 0){
+				$('#assWrapper').find('ul').remove();
+				$('#assWrapper').find('.panel-heading').html('Spiacenti, nessun argomento trovato a riguardo.');
+			}else{
+				$.each(assistenze,function(i,v){
+					$('#ulAssServ').append('<li class="list-group-item"><a href="ass_page.html?aid='+ v['idAssistenza'] +'"><h4>'+ v['nome'] +'</h4></a><p>'+ v['abstract'] +'</p></li>');
+				});
+			}
+			
+			
+		}).fail(function(){ ajaxErrorRep(); });
+	
+	
+	}
+	
+	$(function(){
+		loadAssCategory(catid);
+	});
+
+</script>
+
 </body>
 </html>

@@ -224,6 +224,22 @@
 			$toJ['assistenza'] = $singleA[0];
 			$toJ['devices'] = $associatedDevices;
 			
+		}elseif($_GET['get'] = 'assbycat' && isset($_GET['catid'])){
+			
+			if($_GET['catid'] == 0){
+				// Load FAQ
+			;
+			}else{
+				$catid = (int)$_GET['catid'];
+				$sqlCat = "SELECT * FROM ".TAB_CATEGORIES." WHERE idCategoria = {$catid}";
+				$cat = query($db,$sqlCat);
+				
+				$sqlAssByCat = "SELECT idAssistenza, nome, abstract, image FROM ".TAB_ASSISTENZA." WHERE rifCategoria = {$catid}";
+				$assByCat = query($db,$sqlAssByCat);
+				
+				$toJ['categoria'] = $cat[0];
+				$toJ['assistenze'] = $assByCat;
+			}
 		}
 		
 		
