@@ -455,7 +455,7 @@ a .thumbnail:hover{
 }
 
 /* Removes underline from text in introductories  */
-.filtr-item a:hover{
+.filtr-item a:hover, .noUnderlined a:hover{
 	text-decoration: none;
 }
 
