@@ -439,9 +439,6 @@ a .thumbnail:hover{
 .carousel-control {
     left: -12px;
 }
-.carousel-control.right {
-    right: -12px;
-}
 /* Changes the position of the indicators */
 .carousel-indicators {
     right: 50%;
