@@ -50,13 +50,13 @@
         <!--Previous link for small diveces-->
         <nav>
             <ul class="pager">
-                <li class="previous hidden-md hidden-lg"><a href="#" class="backToSLCat"><span aria-hidden="true">&larr;</span> </a>
+                <li class="previous hidden-md hidden-lg"><a href="#" class="backToSLCat"></a>
             </ul>
         </nav>
         <!--General navigation for big screens-->
         <nav>
             <ul class="pager">
-                <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"><span aria-hidden="true">&larr;</span> </a>
+                <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"></a>
                 </li>
                 <li class="hidden-sm hidden-xs"><a href="#">Precedente</a></li>
                 <li><h1 style="display: inline" id="aPrevInCat">SL Title</h1></li>
@@ -218,7 +218,7 @@
 
             //$('#linkToCategory').html('<a href="sl_by_category.html?catid=' + data['rifCategoria'] + '">< ' + data['categoria'] + '</a>')
 			
-			$('.backToSLCat').attr('href','sl_by_category.html?catid='+data['rifCategoria']).append(data['categoria']);
+			$('.backToSLCat').attr('href','sl_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+data['categoria']);
 			
             if (data['prevInCat'] != undefined)
                 $('#aPrevInCat').unbind('click').click(function () {

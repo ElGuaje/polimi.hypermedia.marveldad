@@ -39,10 +39,10 @@
 				<div class="row" id="navigationBackGroup" style="margin-top: -20px">
                     <ul class="pager">
                         <li class="previous" id="navigationBackToCategory">
-                            <a href="#"><span aria-hidden="true">&larr;</span> Smartphone</a>
+                            <a href="#"></a>
                         </li>
-                        <li class="previous" id="navigationBackToSLService">
-                            <a href="#"><span aria-hidden="true">&larr;</span> Servizi SL</a>
+                        <li class="previous hidden" id="navigationBackToSLService">
+                            <a href="#"><span aria-hidden="true">&larr;</span> </a>
                         </li>
                     </ul>
 				</div>
@@ -171,19 +171,28 @@
 							$('#aPrevInPromo').unbind('click').click(function(){loadProduct(data['promoPrev'],promoYes)}).removeClass('hidden');
 						}
 						if(data['promoNext'] != undefined)
-							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)}).removeClass('hidden');;
+							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)}).removeClass('hidden');
+							
+						// Back to Promo Link
+						$('#navigationBackToSLService').find('a').attr('href','dev_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> '+'Promozioni').parent().removeClass('hidden'); 
+						
 					}else{
 						$('#navigation').removeClass('hidden');
 						if(data['prevInCat'] != undefined)
 							$('#aPrevInCat').unbind('click').click(function(){loadProduct(data['prevInCat'],promoNo)}).removeClass('hidden');
 						if(data['nextInCat'] != undefined)
 							$('#aNextInCat').unbind('click').click(function(){loadProduct(data['nextInCat'],promoNo)}).removeClass('hidden');
+
+						// Back to SL link
+						if(getURLParameter('fromsl') != null){
+							$('#navigationBackToSLService').find('a').attr('href','sl_service.html?sid='+getURLParameter('fromsl')).html('<span aria-hidden="true">&larr;</span> '+'SLNAME').parent().removeClass('hidden'); 
+						}	
 					}
 					
-					// Back to SL link
-					if(getURLParameter('fromSL') != null)
-						$('#navigationBackToSLService').attr('href','sl_service.html?sid='+getURLParameter('fromSL')); 
-
+					// Back to Device Cat (always active)
+					$('#navigationBackToCategory').find('a').attr('href','dev_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+ data['categoria']);
+					
+						
 					}).fail(function(){ajaxErrorRep();});
 				
 				// return statement for links

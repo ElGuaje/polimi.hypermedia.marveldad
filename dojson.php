@@ -61,7 +61,10 @@
 		}elseif($_GET['get'] == 'singleproduct'){
 			
 			$pid = (int)$_GET['pid'];
-			$sql = "SELECT * FROM ".TAB_PRODOTTI." WHERE idProdotto = ".$pid;
+			$sql = "SELECT p.*,c.categoria FROM ".TAB_PRODOTTI." p 
+			JOIN ".TAB_CATEGORIES." c 
+			ON rifCategoria = idCategoria 
+			WHERE idProdotto = ".$pid;
 			
 			$query = $db->query($sql);
 			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
