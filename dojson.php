@@ -114,6 +114,12 @@
 					$ret['prevInCat'] = $cat[0][0];
 			}
 			
+			// Get previous SL name if needed
+			if(isset($_GET['getslname'])){
+				$pSL = query($db,"SELECT nome FROM ".TAB_SL." WHERE idSmartLife = ".(int)$_GET['getslname']);
+				$ret['prevSLName'] = empty($pSL) ? null : $pSL[0]['nome'];
+			}
+			
 			$toJ = $ret;
 			
 		}elseif($_GET['get'] == 'promo'){

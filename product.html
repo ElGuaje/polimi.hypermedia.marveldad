@@ -132,9 +132,12 @@
 				
 				$('.toHide').addClass('hidden');
 				
+				var getSLName = (getURLParameter('fromsl') != null) ? '&getslname=' + getURLParameter('fromsl') : '';
+					
+				
 				// Get data from DB
 				$.ajax({
-					url: mySite+'dojson.php?get=singleproduct&pid='+pid+promo,
+					url: mySite+'dojson.php?get=singleproduct&pid='+pid+promo+getSLName,
 					method: 'GET',
 					dataType: 'json'
 				}).done(function(data){
@@ -172,7 +175,7 @@
 						}
 						if(data['promoNext'] != undefined)
 							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)}).removeClass('hidden');
-							
+						
 						// Back to Promo Link
 						$('#navigationBackToSLService').find('a').attr('href','dev_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> '+'Promozioni').parent().removeClass('hidden'); 
 						
@@ -184,8 +187,8 @@
 							$('#aNextInCat').unbind('click').click(function(){loadProduct(data['nextInCat'],promoNo)}).removeClass('hidden');
 
 						// Back to SL link
-						if(getURLParameter('fromsl') != null){
-							$('#navigationBackToSLService').find('a').attr('href','sl_service.html?sid='+getURLParameter('fromsl')).html('<span aria-hidden="true">&larr;</span> '+'SLNAME').parent().removeClass('hidden'); 
+						if(getURLParameter('fromsl') != null && data['prevSLName'] != null){
+							$('#navigationBackToSLService').find('a').attr('href','sl_service.html?sid='+getURLParameter('fromsl')).html('<span aria-hidden="true">&larr;</span> ' + data['prevSLName']).parent().removeClass('hidden'); 
 						}	
 					}
 					
