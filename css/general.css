@@ -500,3 +500,7 @@ a .thumbnail:hover{
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: rgba(255, 51, 0, 0.15);
 }
+
+.form-placeholder {
+    display: none;
+}
