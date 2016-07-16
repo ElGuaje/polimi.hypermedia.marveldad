@@ -111,46 +111,14 @@
                             <p id="dataSchedaTecnica"></p>                  
                         </div>
                         <div id="menu2" class="tab-pane fade">
-                            <h3>Servizi Associati</h3>
-                            <div class="col-md-3 col-xs-12">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/350x150" alt="Primo">
-                                    <div class="caption">
-                                        <a href="#"><h3 class="text-center">TIMVision</h3></a>
-                                        <p class="text-center">Service description</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-xs-12">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/350x150" alt="Primo">
-                                    <div class="caption">
-                                        <a href="#"><h3 class="text-center">TIMVision</h3></a>
-                                        <p class="text-center">Service description</p>
-                                    </div>
-                                </div>
-                            </div> 
-                            <div class="col-md-3 col-xs-12">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/350x150" alt="Primo">
-                                    <div class="caption">
-                                        <a href="#"><h3 class="text-center">TIMVision</h3></a>
-                                        <p class="text-center">Service description</p>
-                                    </div>
-                                </div>
-                            </div> 
+                            <h3>Servizi associati disponibili:</h3>
+							<div id="featSLServ" class="noUnderlined"></div>
                         </div>
                         <div id="faq" class="tab-pane fade">
                             <h3>FAQ</h3>
                             <h4>Domande frequenti relative a questo prodotto:</h4>
                             <div id="featAssServ" class="panel panel-default">
-                                <div class="list-group">
-                                    <a class="list-group-item text-center" href="#">Domanda 1</a></li>
-                                    <a class="list-group-item text-center" href="#">Domanda 2</a>
-                                    <a class="list-group-item text-center" href="#">Domanda 3</a>
-                                    <a class="list-group-item text-center" href="#">Domanda 4</a></li>
-                                    <a class="list-group-item text-center" href="#">Domanda 5</a></li>
-                                </div>
+                                <div class="list-group"></div>
                             </div>
                         </div>
                         </div>
@@ -230,8 +198,8 @@
 					// Back to Device Cat (always active)
 					$('#navigationBackToCategory').find('a').attr('href','dev_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+ data['categoria']);
 					
+					// Featured Assistance Services
 					$('#featAssServ').html('');
-					// Featured Assistance Service
 					if(data['ass'].length == 0){
 						$('#featAssServ').append('Nessuna domanda relativa a questo prodotto.').removeClass('panel');
 					}else{
@@ -240,6 +208,26 @@
 							$('#featAssServ').append('<a class="list-group-item text-center" href="ass_page.html?aid='+v['idAssistenza']+'&fromdevice='+data['idProdotto']+'"><b>'+v['nome']+'</b><br>'+v['abstract']+'</a>');
 						});
 						$('#featAssServ').append('</div>');
+					}
+					
+					// Featured SL Services
+					$('#featSLServ').html('');
+					if(data['sls'].length == 0){
+						$('#featSLServ').append("Nessun servizio Smart Life associato a questo prodotto.");
+					}else{
+						$.each(data['sls'],function(i,v){
+							$('#featSLServ').append('<div class="col-md-3 col-xs-12">' +
+									'<a href="sl_service.html?sid='+v['idSmartLife']+'&fromdevice='+data['idProdotto']+'">'+
+										'<div class="thumbnail">'+
+											'<img src="'+imgPathSL+v['image']+'" alt="'+v['nome']+'">'+
+											'<div class="caption">'+
+												'<h3 class="text-center">'+v['nome']+'</h3>'+
+												'<p class="text-center">'+v['abstract']+'</p>'+
+											'</div>'+
+										'</div>'+
+									'</a>'+
+								'</div> ');						
+						});
 					}
 					
 						
