@@ -413,7 +413,7 @@ span.promo-trial {
     margin-bottom: 10px;
 }
 
-a .devThumb:hover{
+a .thumbnail:hover{
 	border-color:#004592;
 	border-width: 1.5px;
 }
