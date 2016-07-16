@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TIM :: Contattaci</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--link rel="icon" href="../../favicon.ico"-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <link href="css/general.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/general.js"></script>
+</head>
+<body>
+    <div id="divNavbar">
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top: -20px">
+            <h1 class="text-center">Invia una richiesta di contatto</h1>
+            <h4>Ti risponderemo appena possibile.</h4>
+        </div>
+        <div id="formGrid" class="col-md-8 col-xs-12" style="margin-top: 20px; margin-bottom: 100px">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="motiv">Motivazione della richiesta:</label>
+                    <select class="form-control" id="motiv">
+                        <option class="form-placeholder" selected disabled>Scegli la tipologia di richiesta</option>
+                        <option>Linea telefonica o supporto tecnico</option>
+                        <option>Acquisti sul sito TIM</option>
+                        <option>Attivazione e contratti</option>
+                        <option>Collaborazione con TIM</option>
+                        <option>Altro</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top: 30px">
+                    <label class="control-label col-md-3" for="name">Nome:</label>
+                    <div class="col-md-9">
+                        <input type="name" class="form-control" id="name" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="surname">Cognome:</label>
+                    <div class="col-md-9"> 
+                        <input type="surname" class="form-control" id="surname" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="cf">Codice Fiscale:</label>
+                    <div class="col-md-9"> 
+                        <input type="cf" class="form-control" id="cf" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="cc">Codice Cliente:</label>
+                    <div class="col-md-9"> 
+                        <input type="cc" class="form-control" id="cc" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="telephone">Telefono:</label>
+                    <div class="col-md-3"> 
+                        <input type="telephone" class="form-control" id="telephone" placeholder="">
+                    </div>
+                    <label class="control-label col-md-2" for="email">E-mail:</label>
+                    <div class="col-md-4"> 
+                        <input type="email" class="form-control" id="email" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="nation">Nazione:</label>
+                    <div class="col-md-9"> 
+                        <input type="nation" class="form-control" id="nation" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="addr">Indirizzo:</label>
+                    <div class="col-md-9"> 
+                        <input type="addr" class="form-control" id="addr" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="city">Città:</label>
+                    <div class="col-md-9"> 
+                        <input type="city" class="form-control" id="city" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="prov">Provincia:</label>
+                    <div class="col-md-9"> 
+                        <input type="prov" class="form-control" id="prov" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="text">Inserisci qui sotto il testo della tua richiesta a TIM:</label>
+                    <div class="col-md-12"> 
+                        <textarea rows="10" type="text" class="form-control" id="text" placeholder="Inserisci il testo qui..."></textarea>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="">Con l'invio del presente modulo acconsento al trattamento dei dati personali trasmessi. Consenso esplicito ai sensi del DLgs 196/2003.</label>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3 col-xs-12" style="float: right">
+            <div class="panel panel-default" style="background-color: rgba()">
+                <div class="panel-body">
+                    <img src="media/icons/faq-blue.png" style="position: relative; left: 37%">
+                    <h4 class="text-center">Gli operatori sono a tua disposizione per informazioni commerciali e amministrative tutti i giorni, dalle 7.00 alle 22.30. Per ricevere assistenza tecnica sulla linea telefonica o sulla linea ADSL puoi anche contattare gli operatori chiamando il numero gratuito <span style="color: green; font-weight: bold">187</span>, disponibile 24 ore su 24.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divFooter">
+    </div>
+</body>
+</html>
