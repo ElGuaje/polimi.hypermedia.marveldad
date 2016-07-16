@@ -216,9 +216,10 @@
 						$('#featSLServ').append("Nessun servizio Smart Life associato a questo prodotto.");
 					}else{
 						$.each(data['sls'],function(i,v){
+							var promoClass = (v['promo'] == 1 ? 'promotion-item' : '');
 							$('#featSLServ').append('<div class="col-md-3 col-xs-12">' +
 									'<a href="sl_service.html?sid='+v['idSmartLife']+'&fromdevice='+data['idProdotto']+'">'+
-										'<div class="thumbnail">'+
+										'<div class="thumbnail '+promoClass+'">'+
 											'<img src="'+imgPathSL+v['image']+'" alt="'+v['nome']+'">'+
 											'<div class="caption">'+
 												'<h3 class="text-center">'+v['nome']+'</h3>'+

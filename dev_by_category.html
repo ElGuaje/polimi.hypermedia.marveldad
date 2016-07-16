@@ -181,7 +181,7 @@
 				categories += ", 10";
 		}
 
-		var promoClass = (item['inPromo'] == 1 ? 'devicepromotion' : '');
+		var promoClass = (item['inPromo'] == 1 ? 'promotion-item' : '');
 		var promo = (idCat == 0 ? '&promo=1' : '');
         return '<a href="product.html?pid=' + item['idProdotto'] + promo + '" style="text-decoration: none"><div class="col-xs-12 col-md-3 col-sm-6 filtr-item" data-category="' + categories + '" data-sort="value">' +
                 '<div class="thumbnail devThumb '+promoClass+'">' +

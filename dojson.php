@@ -124,7 +124,8 @@
 			$featSLSql = "SELECT idSmartLife, nome, abstract, image, promo 
 			FROM ".TAB_SL." 
 			JOIN ".TAB_DEV_IN_SL." ON rifSmartLife = idSmartLife 
-			WHERE rifDevice = {$pid}";
+			WHERE rifDevice = {$pid}
+			ORDER BY promo DESC";
 			$featSL = query($db,$featSLSql);
 			$ret['sls'] = $featSL;
 			
@@ -132,7 +133,8 @@
 			$featAssSql = "SELECT idAssistenza, nome, abstract 
 			FROM ".TAB_ASSISTENZA." 
 			JOIN ".TAB_DEV_IN_ASS." ON rifAssistenza = idAssistenza 
-			WHERE rifDevice = {$pid}";
+			WHERE rifDevice = {$pid} 
+			ORDER BY faq DESC";
 			$featAss = query($db,$featAssSql);
 			$ret['ass'] = $featAss;
 			
@@ -168,7 +170,13 @@
 			
 			// Get the devices associated 
 			
-			$sqlDevInSl = "SELECT d.*,id.src as image FROM ".TAB_PRODOTTI." d JOIN ".TAB_DEV_IN_SL." dis ON dis.rifDevice = d.idProdotto JOIN ".TAB_SL." s ON dis.rifSmartLife = s.idSmartLife JOIN ".TAB_IMGPROD." id ON id.rifDevice = d.idProdotto WHERE s.idSmartLife = {$sid} GROUP BY idProdotto";
+			$sqlDevInSl = "SELECT idProdotto, d.nome, prezzo, spec1, spec2, spec3, spec4, d.inPromo, id.src as image 
+			FROM ".TAB_PRODOTTI." d JOIN ".TAB_DEV_IN_SL." dis ON dis.rifDevice = d.idProdotto 
+			JOIN ".TAB_SL." s ON dis.rifSmartLife = s.idSmartLife 
+			JOIN ".TAB_IMGPROD." id ON id.rifDevice = d.idProdotto 
+			WHERE s.idSmartLife = {$sid} 
+			GROUP BY idProdotto
+			ORDER BY d.inPromo";
 			$queryDevInSl = $db->query($sqlDevInSl);
 			if(!$queryDevInSl)
 				die($db->error);
@@ -200,7 +208,10 @@
 			$idCat = $_GET['catid'];
 			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 's' LIMIT 1");
 			$toJ['categoria'] = $resCat[0];
-			$sqlSLByCat = "SELECT idSmartLife,nome,abstract,image,categoria,promo FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria WHERE rifCategoria = {$idCat}";
+			$sqlSLByCat = "SELECT idSmartLife,nome,abstract,image,categoria,promo 
+			FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria 
+			WHERE rifCategoria = {$idCat} 
+			ORDER BY promo DESC";
 			$resSLByCat = query($db,$sqlSLByCat);
 			
 			$toJ['sls'] = $resSLByCat;
