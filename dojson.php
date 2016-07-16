@@ -262,6 +262,12 @@
 			
 			$associatedDevices = query($db,$sqlAssociatedDevices);
 			
+			// Get previous Device name if needed
+			if(isset($_GET['getdevname'])){
+				$pDev = query($db,"SELECT nome FROM ".TAB_PRODOTTI." WHERE idProdotto= ".(int)$_GET['getdevname']);
+				$toJ['prevDevName'] = empty($pDev) ? null : $pDev[0]['nome'];
+			}
+			
 			$toJ['assistenza'] = $singleA[0];
 			$toJ['devices'] = $associatedDevices;
 			
