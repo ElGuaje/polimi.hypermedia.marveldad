@@ -39,8 +39,8 @@
     <div class="row">
         <nav>
             <ul class="pager">
-                <li id="toCatAss" class="previous"><a href="#"><span aria-hidden="true">&larr;</span> </a></li>
-				<li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Torna #Device#</a></li>
+                <li id="toCatAss" class="previous"><a href="#"></a></li>
+				<li id="toPrevDev" class="previous toHide"><a href="#"></a></li>
             </ul>
         </nav>
     </div>
@@ -99,9 +99,13 @@
 	var aid = getURLParameter('aid');
 	
 	function loadAssistance(aid){
+	
+		$('.toHide').addClass('hidden');
+	
+		var getDevName = (getURLParameter('fromdevice') != null) ? '&getdevname=' + getURLParameter('fromdevice') : '';
 		
 		$.ajax({
-			url: mySite + 'dojson.php?get=singleass&aid='+aid,
+			url: mySite + 'dojson.php?get=singleass&aid='+aid+getDevName,
 			method: 'GET',
 			dataType: 'json'
 		}).done(function(data){
@@ -121,7 +125,11 @@
 				
 				$('#assContent').html(assistenza['descrizione']);
 				// Navigation
-				$('#toCatAss').find('a').attr('href','ass_by_category.html?catid='+assistenza['rifCategoria']).append(assistenza['categoria']);
+				$('#toCatAss').find('a').attr('href','ass_by_category.html?catid='+assistenza['rifCategoria']).html('<span aria-hidden="true">&larr;</span> ' + assistenza['categoria']);
+				if(getURLParameter('fromdevice') != null && data['prevDevName'] != null){
+					$('#toPrevDev').find('a').attr('href','product.html?pid='+getURLParameter('fromdevice')).html('<span aria-hidden="true">&larr;</span> ' + data['prevDevName']).parent().removeClass('hidden'); 
+				}
+				
 				
 				// Associated devices
 				if(devices.length == 0)
