@@ -204,13 +204,18 @@
 			$toJ = $sl;
 			
 		}elseif($_GET['get'] == 'slbycat' && isset($_GET['catid'])){
-			
-			$idCat = $_GET['catid'];
-			$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 's' LIMIT 1");
-			$toJ['categoria'] = $resCat[0];
+			if($_GET['catid'] > 0){
+				$idCat = $_GET['catid'];
+				$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 's' LIMIT 1");
+				$toJ['categoria'] = $resCat[0];
+				$where = "WHERE rifCategoria = {$idCat} ";
+			}else{
+				$toJ['categoria']['nomeCategoria'] = 'Servizi in promozione';
+				$where = ' WHERE promo = 1';
+			}
 			$sqlSLByCat = "SELECT idSmartLife,nome,abstract,image,categoria,promo 
 			FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria 
-			WHERE rifCategoria = {$idCat} 
+			{$where} 
 			ORDER BY promo DESC";
 			$resSLByCat = query($db,$sqlSLByCat);
 			

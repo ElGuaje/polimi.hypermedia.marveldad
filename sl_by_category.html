@@ -126,7 +126,7 @@
         }).done(function (data) {
 
             console.log(data);
-            $('#dataCatName').html('Smart Life : ' + data['categoria']['nomeCategoria']);
+            $('#dataCatName').html('Smart Life: ' + data['categoria']['nomeCategoria']);
             if (data['sls'].length > 0) {
                 var colCounter = 0;
                 $.each(data['sls'], function (i, v) {
