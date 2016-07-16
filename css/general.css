@@ -508,7 +508,7 @@ a .thumbnail:hover{
 @media screen and (max-width: 599px) {
     #navigationPrevInCategory, #navigationNextInCategory, #navigationBackInPromo, #navigationNextInPromo {
         float: left;
-        margin-right: -10px;
+        margin-right: 10px;
     }
 }
 
