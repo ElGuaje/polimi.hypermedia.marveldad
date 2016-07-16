@@ -456,3 +456,8 @@ a .thumbnail:hover{
 .carousel-indicators .active {
     background: #333333;
 }
+
+/* Removes underline from text in introductories  */
+.filtr-item a:hover{
+	text-decoration: none;
+}
