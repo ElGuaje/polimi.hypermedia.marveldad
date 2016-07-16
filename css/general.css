@@ -504,3 +504,10 @@ a .thumbnail:hover{
 .form-placeholder {
     display: none;
 }
+
+@media screen and (max-width: 599px) {
+    #navigationPrevInCategory, #navigationNextInCategory, #navigationBackInPromo, #navigationNextInPromo {
+        float: left;
+        margin-right: -10px;
+    }
+}
