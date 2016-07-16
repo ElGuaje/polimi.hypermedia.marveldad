@@ -50,24 +50,24 @@
         <!--Previous link for small diveces-->
         <nav>
             <ul class="pager">
-                <li class="previous hidden-md hidden-lg"><a href="#"><span aria-hidden="true">&larr;</span> Indietro</a>
+                <li class="previous hidden-md hidden-lg"><a href="#" class="backToSLCat"><span aria-hidden="true">&larr;</span> </a>
             </ul>
         </nav>
         <!--General navigation for big screens-->
         <nav>
             <ul class="pager">
-                <li class="previous hidden-sm hidden-xs"><a href="#"><span aria-hidden="true">&larr;</span> Indietro</a>
+                <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"><span aria-hidden="true">&larr;</span> </a>
                 </li>
                 <li class="hidden-sm hidden-xs"><a href="#">Precedente</a></li>
                 <li><h1 style="display: inline" id="aPrevInCat">SL Title</h1></li>
-                <li class="hidden-sm hidden-xs"><a href="#">Prossimo</a></li>
+                <li class="hidden-sm hidden-xs"><a href="#">Successivo</a></li>
             </ul>
         </nav>
         <!--Navigation for small and x-small devices -->
         <nav>
             <ul class="pager">
                 <li class="hidden-md hidden-lg"><a href="#">Precedente</a></li>
-                <li class="hidden-md hidden-lg"><a href="#">Prossimo</a></li>
+                <li class="hidden-md hidden-lg"><a href="#">Successivo</a></li>
             </ul>
         </nav>
     </div>
@@ -138,16 +138,6 @@
                     <div class="col-xs-12">
                         <h3>Attivazione e regolamento</h3>
                         <div id="dataAttivazioneRegolamento"></div>
-                        <!--ul class="list-group">
-                            <li class="list-group-item">Alghero</li>
-                            <li class="list-group-item">Brescia</li>
-                            <li class="list-group-item">Grosetto</li>
-                            <li class="list-group-item">Livorno</li>
-                            <li class="list-group-item">Mantova</li>
-                            <li class="list-group-item">Oristano</li>
-                            <li class="list-group-item">Pisa</li>
-                            <li class="list-group-item">Vicenza</li>
-                        </ul-->
                     </div>
                 </div>
             </div>
@@ -226,8 +216,10 @@
                 $('#dataAssDevices').append('<p>Nessun prodotto associato a questo servizio.</p>');
             }
 
-            $('#linkToCategory').html('<a href="sl_by_category.html?catid=' + data['rifCategoria'] + '">< ' + data['categoria'] + '</a>')
-
+            //$('#linkToCategory').html('<a href="sl_by_category.html?catid=' + data['rifCategoria'] + '">< ' + data['categoria'] + '</a>')
+			
+			$('.backToSLCat').attr('href','sl_by_category.html?catid='+data['rifCategoria']).append(data['categoria']);
+			
             if (data['prevInCat'] != undefined)
                 $('#aPrevInCat').unbind('click').click(function () {
                     loadSL(data['prevInCat'], promoNo)
