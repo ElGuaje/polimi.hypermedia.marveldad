@@ -120,6 +120,22 @@
 				$ret['prevSLName'] = empty($pSL) ? null : $pSL[0]['nome'];
 			}
 			
+			// Get associated SL
+			$featSLSql = "SELECT idSmartLife, nome, abstract, image, promo 
+			FROM ".TAB_SL." 
+			JOIN ".TAB_DEV_IN_SL." ON rifSmartLife = idSmartLife 
+			WHERE rifDevice = {$pid}";
+			$featSL = query($db,$featSLSql);
+			$ret['sls'] = $featSL;
+			
+			// Get associated AssServices
+			$featAssSql = "SELECT idAssistenza, nome, abstract 
+			FROM ".TAB_ASSISTENZA." 
+			JOIN ".TAB_DEV_IN_ASS." ON rifAssistenza = idAssistenza 
+			WHERE rifDevice = {$pid}";
+			$featAss = query($db,$featAssSql);
+			$ret['ass'] = $featAss;
+			
 			$toJ = $ret;
 			
 		}elseif($_GET['get'] == 'promo'){

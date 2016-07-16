@@ -143,11 +143,11 @@
                         <div id="faq" class="tab-pane fade">
                             <h3>FAQ</h3>
                             <h4>Domande frequenti relative a questo prodotto:</h4>
-                            <div class="panel panel-default">
+                            <div id="featAssServ" class="panel panel-default">
                                 <div class="list-group">
                                     <a class="list-group-item text-center" href="#">Domanda 1</a></li>
-                                    <a class="list-group-item text-center" href="#">Domanda 2</a></li>
-                                    <a class="list-group-item text-center" href="#">Domanda 3</a></li>
+                                    <a class="list-group-item text-center" href="#">Domanda 2</a>
+                                    <a class="list-group-item text-center" href="#">Domanda 3</a>
                                     <a class="list-group-item text-center" href="#">Domanda 4</a></li>
                                     <a class="list-group-item text-center" href="#">Domanda 5</a></li>
                                 </div>
@@ -229,6 +229,18 @@
 					
 					// Back to Device Cat (always active)
 					$('#navigationBackToCategory').find('a').attr('href','dev_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+ data['categoria']);
+					
+					$('#featAssServ').html('');
+					// Featured Assistance Service
+					if(data['ass'].length == 0){
+						$('#featAssServ').append('Nessuna domanda relativa a questo prodotto.').removeClass('panel');
+					}else{
+						$('#featAssServ').append('<div class="list-group">');
+						$.each(data['ass'],function(i,v){
+							$('#featAssServ').append('<a class="list-group-item text-center" href="ass_page.html?aid='+v['idAssistenza']+'&fromdevice='+data['idProdotto']+'"><b>'+v['nome']+'</b><br>'+v['abstract']+'</a>');
+						});
+						$('#featAssServ').append('</div>');
+					}
 					
 						
 					}).fail(function(){ajaxErrorRep();});
