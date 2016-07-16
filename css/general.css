@@ -511,3 +511,8 @@ a .thumbnail:hover{
         margin-right: -10px;
     }
 }
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
