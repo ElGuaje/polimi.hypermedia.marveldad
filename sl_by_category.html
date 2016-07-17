@@ -80,8 +80,8 @@
         </div>
     </div>
     <!--SL Services -->
-    <div id="dataGridSL" style="margin-bottom: 100px" class="filtr-container">
-        <div class="row">
+    <div id="dataGridSL" style="margin-bottom: 100px">
+        <div class="row filtr-container">
             <!--div class="col-xs-3">
                 <div class="thumbnail">
                     <img src="http://placehold.it/350x150" alt="Primo">
@@ -135,7 +135,7 @@
                         colCounter = 0;
                     }
                     if (colCounter == 0)
-                        $('#dataGridSL').append('<div class="row">');
+                        $('#dataGridSL').append('<div class="row filtr-container">');
                     var last = $('#dataGridSL').find('.row').last();
                     last.append(buildBlock(v));
                     //$last.addClass("filtr-container");
