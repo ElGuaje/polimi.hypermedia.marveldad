@@ -291,19 +291,25 @@
 		}elseif($_GET['get'] = 'assbycat' && isset($_GET['catid'])){
 			
 			if($_GET['catid'] == 0){
-				// Load FAQ
+				$toJ['categoria']['categoria'] = 'Domande frequenti';
+				$where = ' WHERE faq = 1 ';
 			;
 			}else{
 				$catid = (int)$_GET['catid'];
 				$sqlCat = "SELECT * FROM ".TAB_CATEGORIES." WHERE idCategoria = {$catid}";
 				$cat = query($db,$sqlCat);
+				$toJ['categoria'] = $cat[0];
 				
-				$sqlAssByCat = "SELECT idAssistenza, nome, abstract, image FROM ".TAB_ASSISTENZA." WHERE rifCategoria = {$catid}";
+				$where = " WHERE rifCategoria = {$catid} ";
+			}
+				$sqlAssByCat = "SELECT idAssistenza, nome, abstract, image 
+				FROM ".TAB_ASSISTENZA." 
+				{$where} 
+				ORDER BY faq DESC";
 				$assByCat = query($db,$sqlAssByCat);
 				
-				$toJ['categoria'] = $cat[0];
 				$toJ['assistenze'] = $assByCat;
-			}
+			
 		}
 		
 		
