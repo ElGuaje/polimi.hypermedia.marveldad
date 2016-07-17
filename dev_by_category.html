@@ -207,7 +207,7 @@
 
         $('#dataGridDevices').empty();
         $.ajax({
-            url: 'dojson.php?get=devicesbycat&catid=' + idCat,
+            url: mySite+'dojson.php?get=devicesbycat&catid=' + idCat,
             type: 'GET',
             dataType: 'json'
         }).done(function (data) {
