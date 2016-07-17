@@ -516,3 +516,11 @@ a .thumbnail:hover{
     display: flex;
     align-items: center;
 }
+
+.col-with-border {
+    border: solid;
+}
+
+.twenty-margin-top-row {
+    margin-top: 20px;
+}

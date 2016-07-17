@@ -280,14 +280,14 @@
                 <div class="col-xs-12 col-md-8">
                     <div class="jcarousel-wrapper">
                         <div class="jcarousel" data-jcarousel="true">
-                            <ul style="left: 0px; top: 0px;">
+                            <ul style="left: 0; top: 0;">
                                 <li style="width: 200px; height: 210px">
-                                    <img src="/hypermedia/media/assistenza/group_investor1.jpg"
+                                    <img src="/hypermedia/media/group_images/group_investor1.jpg"
                                          width="100%"
                                          alt="Investor 1">
                                 </li>
                                 <li style="width: 200px; height: 210px">
-                                    <img src="/hypermedia/media/assistenza/group_investor2.jpg"
+                                    <img src="/hypermedia/media/group_images/group_investor2.jpg"
                                          width="100%"
                                          alt="Investor 2">
                                 </li>
@@ -297,13 +297,46 @@
                         <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
                         <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
                         <div class="hidden">
-                        <p class="jcarousel-pagination" data-jcarouselpagination="true"><a href="#1"
-                                                                                           class="active">1</a><a
-                                href="#2">2</a><a href="#3">3</a><a href="#4">4</a><a href="#5">5</a><a href="#6">6</a>
-                        </p></div>
+                            <p class="jcarousel-pagination" data-jcarouselpagination="true">
+                                <a href="#1"
+                                   class="active">1
+                                </a>
+                                <a href="#2">
+                                    2
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="hidden-xs hidden-sm col-md-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center col-with-border">
+                    <h4>
+                        Qui sotto: trovi tutti gli indirizzi per contattare la funzione Invetor Relations del Gruppo
+                        Telecom
+                        Italia
+                    </h4>
+                </div>
+            </div>
+            <div class="row twenty-margin-top-row">
+                <div class="col-xs-12 col-md-5">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="/hypermedia/media/group_images/alex_the_investor.png"
+                                 class="media-object"
+                                 style="height: 75px ";
+                            />
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                Alex Bolis
+                            </h4>
+                            <p>Responsabile investore Relations</p>
+                            <p><a>e-mail</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -311,55 +344,55 @@
 </div>
 <div id="divFooter">
 </div>
-    
+
 <script>
-    (function($) {
-        $(function() {
+    (function ($) {
+        $(function () {
             var jcarousel = $('.jcarousel');
 
             jcarousel
-                .on('jcarousel:reload jcarousel:create', function () {
-                    var carousel = $(this),
-                        width = carousel.innerWidth();
+                    .on('jcarousel:reload jcarousel:create', function () {
+                        var carousel = $(this),
+                                width = carousel.innerWidth();
 
-                    if (width >= 600) {
-                        width = width / 2;
-                    } else if (width >= 350) {
-                        width = width / 2;
-                    }
+                        if (width >= 600) {
+                            width = width / 2;
+                        } else if (width >= 350) {
+                            width = width / 2;
+                        }
 
-                    carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-                })
-                .jcarousel({
-                    wrap: 'circular'
-                });
+                        carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+                    })
+                    .jcarousel({
+                        wrap: 'circular'
+                    });
 
             $('.jcarousel-control-prev')
-                .jcarouselControl({
-                    target: '-=1'
-                });
+                    .jcarouselControl({
+                        target: '-=1'
+                    });
 
             $('.jcarousel-control-next')
-                .jcarouselControl({
-                    target: '+=1'
-                });
+                    .jcarouselControl({
+                        target: '+=1'
+                    });
 
             $('.jcarousel-pagination')
-                .on('jcarouselpagination:active', 'a', function() {
-                    $(this).addClass('active');
-                })
-                .on('jcarouselpagination:inactive', 'a', function() {
-                    $(this).removeClass('active');
-                })
-                .on('click', function(e) {
-                    e.preventDefault();
-                })
-                .jcarouselPagination({
-                    perPage: 1,
-                    item: function(page) {
-                        return '<a href="#' + page + '">' + page + '</a>';
-                    }
-                });
+                    .on('jcarouselpagination:active', 'a', function () {
+                        $(this).addClass('active');
+                    })
+                    .on('jcarouselpagination:inactive', 'a', function () {
+                        $(this).removeClass('active');
+                    })
+                    .on('click', function (e) {
+                        e.preventDefault();
+                    })
+                    .jcarouselPagination({
+                        perPage: 1,
+                        item: function (page) {
+                            return '<a href="#' + page + '">' + page + '</a>';
+                        }
+                    });
         });
     })(jQuery);
 </script>
