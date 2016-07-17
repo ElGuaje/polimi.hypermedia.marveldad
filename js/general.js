@@ -19,7 +19,10 @@ var imgPathSL = mySite + 'media/sl_images/';
 var imgPathAss = mySite + 'media/assistenza/';
 
 $(document).ready(function () {
-    $('#divNavbar').load('include/navigation.html');
+    $('#divNavbar').load('include/navigation.html',function(){
+		if(typeof setActivePageCaller == 'function') 
+			setActivePageCaller();
+		});
     $('#divFooter').load('include/footer.html');
 });
 
@@ -34,4 +37,8 @@ function ajaxErrorRep() {
         if (feed.toLowerCase() == 'yes' || feed.toLowerCase() == 'si' || feed.toLowerCase() == 'y' || feed.toLowerCase() == 's')
             alert('Thanks, they really appreciated that!\nBut unfortunately the error is still there :(');
 };  
+
+function setActivePage(page){
+	$(page).find('a').addClass('currentPageNav');
+}
 

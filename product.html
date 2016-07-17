@@ -1,268 +1,254 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TIM :: Prodotti</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!--link rel="icon" href="../../favicon.ico"-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TIM :: Prodotti</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!--link rel="icon" href="../../favicon.ico"-->
+		
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+		<link href="css/general.css" rel="stylesheet">
 
-    <link href="css/general.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
-    <script src="js/general.js"></script>
-</head>
-<body>
-<div id="divNavbar">
-</div>
-<div class="container col-md-12 col-xs-12">
-    <div class="col-md-4 col-xs-12">
-        <div class="row" id="navigationBackGroup" style="margin-top: -20px">
-            <ul class="pager">
-                <li class="previous" id="navigationBackToCategory">
-                    <a href="#"></a>
-                </li>
-                <li class="previous hidden" id="navigationBackToSLService">
-                    <a href="#"><span aria-hidden="true">&larr;</span> </a>
-                </li>
-            </ul>
-        </div>
-        <div id="myCarousel" style="margin-top: 30px; margin-bottom: 50px" class="carousel slide col-md-12 col-xs-12"
-             data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators" id="dataImgCarOL">
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox" id="dataCarItems">
-            </div>
-        </div>
-        <div id="modalImages">
-        </div>
-    </div>
-    <div class="container col-md-8 col-xs-12">
-        <div class="col-md-12 col-xs-12" style="margin-top: -20px">
-            <div class="col-md-5 col-xs-12 pull-right">
-                <div id="navigation" class="col-md-12 col-xs-12" style="float: right">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="js/ie10-viewport-bug-workaround.js"></script>
+		<script src="js/general.js"></script>
+	</head>
+	<body>
+		<div id="divNavbar">
+		</div>
+		<div class="container col-md-12 col-xs-12">
+			<div class="col-md-4 col-xs-12">
+				<div class="row" id="navigationBackGroup" style="margin-top: -20px">
                     <ul class="pager">
-                        <li class="previous" id="navigationPrevInCategory">
-                            <a href="#" id="aPrevInCat" class="alignright toHide hidden"><span
-                                    aria-hidden="true">&larr;</span> Precedente</a>
+                        <li class="previous" id="navigationBackToCategory">
+                            <a href="#"></a>
                         </li>
-                        <li class="previous" id="navigationNextInCategory">
-                            <a href="#" id="aNextInCat" class="alignright toHide hidden">Successivo <span
-                                    aria-hidden="true">&rarr;</span></a>
-                        </li>
-                        <li class="previous" id="navigationBackInPromo">
-                            <a href="#" id="aPrevInPromo" class="alignright hidden toHide"><span
-                                    aria-hidden="true">&larr;</span> Prec in Promo</a>
-                        </li>
-                        <li class="previous" id="navigationNextInPromo">
-                            <a href="#" id="aNextInPromo" class="alignright hidden toHide">Succ in Promo<span
-                                    aria-hidden="true">&rarr;</span></a>
+                        <li class="previous hidden" id="navigationBackToSLService">
+                            <a href="#"><span aria-hidden="true">&larr;</span> </a>
                         </li>
                     </ul>
-                </div>
-            </div>
-            <div class="col-md-7 col-xs-12" id="divNomeProdotto">
-                <h1 id="dataNomeProdotto"></h1>
-                <div class="container col-md-12 col-xs-12">
-                    <div class="col-md-3 prezzo">
-                        <br>
-                        <p id="dataPrezzo"></p>
-                    </div>
-                    <div class="col-md-9" id="specifiche">
-                        <h4 style="font-size: 14px; font-weight: bold">Specifiche prodotto:</h4>
-                        <ul style="font-size: 12px" id="dataSpecUl">
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container col-md-12 col-xs-12" style="margin-bottom: 100px">
-            <div id="prodTabs" class="col-md-12 col-xs-12">
-                <ul class="nav nav-tabs">
-                    <li class="active smallTabText"><a data-toggle="tab" href="#home">Descrizione</a></li>
-                    <li class="smallTabText"><a data-toggle="tab" href="#menu1">Scheda Tecnica</a></li>
-                    <li class="smallTabText"><a data-toggle="tab" href="#menu2">Servizi associati</a></li>
-                    <li class="smallTabText"><a data-toggle="tab" href="#faq">FAQ</a></li>
-                </ul>
+				</div>
+                <div id="myCarousel" style="margin-top: 30px; margin-bottom: 50px" class="carousel slide col-md-12 col-xs-12" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators" id="dataImgCarOL">
+					</ol>
 
-                <div class="tab-content">
-                    <div id="home" class="tab-pane fade in active">
-                        <h3>Descrizione</h3>
-                        <p id="dataDescrizione"></p>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox" id="dataCarItems">
+					</div>
+				</div>
+				<div id="modalImages">
+				</div>
+			</div>
+			<div class="container col-md-8 col-xs-12">
+                <div class="col-md-12 col-xs-12" style="margin-top: -20px">
+                    <div class="col-md-5 col-xs-12 pull-right">
+                        <div id="navigation" class="col-md-12 col-xs-12" style="float: right">
+                            <ul class="pager">
+                                <li class="previous" id="navigationPrevInCategory">
+                                    <a href="#" id="aPrevInCat" class="alignright toHide hidden"><span aria-hidden="true">&larr;</span> Precedente</a>
+                                </li>
+                                <li class="previous" id="navigationNextInCategory">
+                                    <a href="#"id="aNextInCat" class="alignright toHide hidden">Successivo <span aria-hidden="true">&rarr;</span></a>
+                                </li>
+                                <li class="previous" id="navigationBackInPromo">
+                                    <a href="#" id="aPrevInPromo" class="alignright hidden toHide"><span aria-hidden="true">&larr;</span> Prec in Promo</a>
+                                </li>
+                                <li class="previous" id="navigationNextInPromo">
+                                    <a href="#" id="aNextInPromo" class="alignright hidden toHide">Succ in Promo<span aria-hidden="true">&rarr;</span></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div id="menu1" class="tab-pane fade">
-                        <h3>Scheda Tecnica</h3>
-                        <p id="dataSchedaTecnica"></p>
+                    <div class="col-md-7 col-xs-12" id="divNomeProdotto">
+                        <h1 id="dataNomeProdotto"></h1>
+                        <div class="container col-md-12 col-xs-12">
+                            <div class="col-md-3 prezzo">
+                                <br><p id="dataPrezzo"></p>
+                            </div>
+                            <div class="col-md-9" id="specifiche">
+                                <h4 style="font-size: 14px; font-weight: bold">Specifiche prodotto:</h4>
+                                <ul style="font-size: 12px" id="dataSpecUl">
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div id="menu2" class="tab-pane fade">
-                        <h3>Servizi associati disponibili:</h3>
-                        <div id="featSLServ" class="noUnderlined"></div>
-                    </div>
-                    <div id="faq" class="tab-pane fade">
-                        <h3>FAQ</h3>
-                        <h4>Domande frequenti relative a questo prodotto:</h4>
-                        <div id="featAssServ" class="panel panel-default">
-                            <div class="list-group"></div>
+                </div>
+                <div class="container col-md-12 col-xs-12" style="margin-bottom: 100px">
+                    <div id="prodTabs" class="col-md-12 col-xs-12">
+                        <ul class="nav nav-tabs">
+                          <li class="active smallTabText"><a data-toggle="tab" href="#home">Descrizione</a></li>
+                          <li class="smallTabText"><a data-toggle="tab" href="#menu1">Scheda Tecnica</a></li>
+                          <li class="smallTabText"><a data-toggle="tab" href="#menu2">Servizi associati</a></li>
+                          <li class="smallTabText"><a data-toggle="tab" href="#faq">FAQ</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div id="home" class="tab-pane fade in active">
+                            <h3>Descrizione</h3>
+                            <p id="dataDescrizione"></p>
+                          </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Scheda Tecnica</h3>
+                            <p id="dataSchedaTecnica"></p>                  
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Servizi associati disponibili:</h3>
+							<div id="featSLServ" class="noUnderlined"></div>
+                        </div>
+                        <div id="faq" class="tab-pane fade">
+                            <h3>FAQ</h3>
+                            <h4>Domande frequenti relative a questo prodotto:</h4>
+                            <div id="featAssServ" class="panel panel-default">
+                                <div class="list-group"></div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script>
-    var promoYes = '&getpromo=1';
-    var promoNo = '';
-    var carImg = '<div class="item"><a class="product-modal" data-toggle="modal" data-target="" href="#"><img src="media/test_iphone0_small.jpg" alt=""></a></div>';
-    var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
-    function loadProduct(pid, promo) {
+		<script>
+			var promoYes = '&getpromo=1';
+			var promoNo = '';
+			var carImg = '<div class="item"><a class="product-modal" data-toggle="modal" data-target="" href="#"><img src="media/test_iphone0_small.jpg" alt=""></a></div>';
+			var modalImg = '<div class="modal fade toSetClass" tabindex="-1" role="dialog" aria-labelledby="productModal"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><img class="modal-img img-responsive" src="" alt=""></div></div></div></div>';
+			function loadProduct(pid,promo){
+				
+				$('.toHide').addClass('hidden');
+				
+				var getSLName = (getURLParameter('fromsl') != null) ? '&getslname=' + getURLParameter('fromsl') : '';
+					
+				
+				// Get data from DB
+				$.ajax({
+					url: mySite+'dojson.php?get=singleproduct&pid='+pid+promo+getSLName,
+					method: 'GET',
+					dataType: 'json'
+				}).done(function(data){
+					console.log(data);
+										
+					$('#dataNomeProdotto').html(data['nome']);
+					$('#dataPrezzo').html(data['prezzo'].toFixed(2) +'&euro;');
+					$('#dataSpecUl').html('');
+					$('#dataSpecUl').append('<li>'+data['spec1']+'</li>');
+					$('#dataSpecUl').append('<li>'+data['spec2']+'</li>');
+					$('#dataSpecUl').append('<li>'+data['spec3']+'</li>');
+					$('#dataSpecUl').append('<li>'+data['spec4']+'</li>');
+					$('#dataDescrizione').html(data['descrizione']);
+					$('#dataSchedaTecnica').html(data['schedaTecnica']);
+					$('#dataCarItems').html('');
+					$('#dataImgCarOL').html('');
+					$('#modalImages').html('');
+					if(data['immagini']){
+						var counter =0;
+						$.each(data['immagini'],function(i,v){
+							$('#dataCarItems').append(carImg).find('.product-modal').last().attr('data-target','.modalImg'+counter).find('img').last().attr('src',imgPathProduct+v['src']);
+							$('#dataImgCarOL').append('<li data-target="#myCarousel" data-slide-to="'+counter+'"></li>');
+							$('#modalImages').append(modalImg).find('.toSetClass').removeClass('toSetClass').addClass('modalImg'+counter).find('img').last().attr('src',imgPathProduct+v['src']).attr('id','modalImg'+counter);
+							counter++;
+						});
+						$('#dataCarItems').find('.item').first().addClass('active');
+						$('#myCarousel ol').find('li').first().addClass('active');
+					}
+					
+					// Next and Prev promotions link
+					if(promo != ''){
+						$('#promoNavigation').removeClass('hidden').removeClass('toHide');
+						if(data['promoPrev'] != undefined){
+							$('#aPrevInPromo').unbind('click').click(function(){loadProduct(data['promoPrev'],promoYes)}).removeClass('hidden');
+						}
+						if(data['promoNext'] != undefined)
+							$('#aNextInPromo').unbind('click').click(function(){loadProduct(data['promoNext'],promoYes)}).removeClass('hidden');
+						
+						// Back to Promo Link
+						$('#navigationBackToSLService').find('a').attr('href','dev_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> '+'Promozioni').parent().removeClass('hidden'); 
+						
+					}else{
+						$('#navigation').removeClass('hidden');
+						if(data['prevInCat'] != undefined)
+							$('#aPrevInCat').unbind('click').click(function(){loadProduct(data['prevInCat'],promoNo)}).removeClass('hidden');
+						if(data['nextInCat'] != undefined)
+							$('#aNextInCat').unbind('click').click(function(){loadProduct(data['nextInCat'],promoNo)}).removeClass('hidden');
 
-        $('.toHide').addClass('hidden');
+						// Back to SL link
+						if(getURLParameter('fromsl') != null && data['prevSLName'] != null){
+							$('#navigationBackToSLService').find('a').attr('href','sl_service.html?sid='+getURLParameter('fromsl')).html('<span aria-hidden="true">&larr;</span> ' + data['prevSLName']).parent().removeClass('hidden'); 
+						}	
+					}
+					
+					// Back to Device Cat (always active)
+					$('#navigationBackToCategory').find('a').attr('href','dev_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+ data['categoria']);
+					
+					// Featured Assistance Services
+					$('#featAssServ').html('');
+					if(data['ass'].length == 0){
+						$('#featAssServ').append('Nessuna domanda relativa a questo prodotto.').removeClass('panel');
+					}else{
+						$('#featAssServ').append('<div class="list-group">');
+						$.each(data['ass'],function(i,v){
+							$('#featAssServ').append('<a class="list-group-item text-center" href="ass_page.html?aid='+v['idAssistenza']+'&fromdevice='+data['idProdotto']+'"><b>'+v['nome']+'</b><br>'+v['abstract']+'</a>');
+						});
+						$('#featAssServ').append('</div>');
+					}
+					
+					// Featured SL Services
+					$('#featSLServ').html('');
+					if(data['sls'].length == 0){
+						$('#featSLServ').append("Nessun servizio Smart Life associato a questo prodotto.");
+					}else{
+						$.each(data['sls'],function(i,v){
+							var promoClass = (v['promo'] == 1 ? 'promotion-item' : '');
+							$('#featSLServ').append('<div class="col-md-4 col-xs-12">' +
+									'<a href="sl_service.html?sid='+v['idSmartLife']+'&fromdevice='+data['idProdotto']+'">'+
+										'<div class="thumbnail '+promoClass+'">'+
+											'<img src="'+imgPathSL+v['image']+'" alt="'+v['nome']+'">'+
+											'<div class="caption">'+
+												'<h3 class="text-center">'+v['nome']+'</h3>'+
+												'<p class="text-justify">'+v['abstract']+'</p>'+
+											'</div>'+
+										'</div>'+
+									'</a>'+
+								'</div> ');
+                            if ((i + 1) % 3 == 0) $('#featSLServ').append('<div class="clearfix visible-md-block visible-lg-block"></div>')
+						});
+					}
+					
+						
+					}).fail(function(){ajaxErrorRep();});
+				
+				// return statement for links
+				return false;
+			}
+			$(function(){
+				var pid = getURLParameter('pid');
+				var promo = (getURLParameter('promo') != null) ? promoYes:'';
+				loadProduct(pid,promo);
+			});
 
-        var getSLName = (getURLParameter('fromsl') != null) ? '&getslname=' + getURLParameter('fromsl') : '';
-
-
-        // Get data from DB
-        $.ajax({
-            url: mySite + 'dojson.php?get=singleproduct&pid=' + pid + promo + getSLName,
-            method: 'GET',
-            dataType: 'json'
-        }).done(function (data) {
-            console.log(data);
-
-            $('#dataNomeProdotto').html(data['nome']);
-            $('#dataPrezzo').html(data['prezzo'].toFixed(2) + '&euro;');
-            $('#dataSpecUl').html('');
-            $('#dataSpecUl').append('<li>' + data['spec1'] + '</li>');
-            $('#dataSpecUl').append('<li>' + data['spec2'] + '</li>');
-            $('#dataSpecUl').append('<li>' + data['spec3'] + '</li>');
-            $('#dataSpecUl').append('<li>' + data['spec4'] + '</li>');
-            $('#dataDescrizione').html(data['descrizione']);
-            $('#dataSchedaTecnica').html(data['schedaTecnica']);
-            $('#dataCarItems').html('');
-            $('#dataImgCarOL').html('');
-            $('#modalImages').html('');
-            if (data['immagini']) {
-                var counter = 0;
-                $.each(data['immagini'], function (i, v) {
-                    $('#dataCarItems').append(carImg).find('.product-modal').last().attr('data-target', '.modalImg' + counter).find('img').last().attr('src', imgPathProduct + v['src']);
-                    $('#dataImgCarOL').append('<li data-target="#myCarousel" data-slide-to="' + counter + '"></li>');
-                    $('#modalImages').append(modalImg).find('.toSetClass').removeClass('toSetClass').addClass('modalImg' + counter).find('img').last().attr('src', imgPathProduct + v['src']).attr('id', 'modalImg' + counter);
-                    counter++;
-                });
-                $('#dataCarItems').find('.item').first().addClass('active');
-                $('#myCarousel ol').find('li').first().addClass('active');
-            }
-
-            // Next and Prev promotions link
-            if (promo != '') {
-                $('#promoNavigation').removeClass('hidden').removeClass('toHide');
-                if (data['promoPrev'] != undefined) {
-                    $('#aPrevInPromo').unbind('click').click(function () {
-                        loadProduct(data['promoPrev'], promoYes)
-                    }).removeClass('hidden');
-                }
-                if (data['promoNext'] != undefined)
-                    $('#aNextInPromo').unbind('click').click(function () {
-                        loadProduct(data['promoNext'], promoYes)
-                    }).removeClass('hidden');
-
-                // Back to Promo Link
-                $('#navigationBackToSLService').find('a').attr('href', 'dev_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> ' + 'Promozioni').parent().removeClass('hidden');
-
-            } else {
-                $('#navigation').removeClass('hidden');
-                if (data['prevInCat'] != undefined)
-                    $('#aPrevInCat').unbind('click').click(function () {
-                        loadProduct(data['prevInCat'], promoNo)
-                    }).removeClass('hidden');
-                if (data['nextInCat'] != undefined)
-                    $('#aNextInCat').unbind('click').click(function () {
-                        loadProduct(data['nextInCat'], promoNo)
-                    }).removeClass('hidden');
-
-                // Back to SL link
-                if (getURLParameter('fromsl') != null && data['prevSLName'] != null) {
-                    $('#navigationBackToSLService').find('a').attr('href', 'sl_service.html?sid=' + getURLParameter('fromsl')).html('<span aria-hidden="true">&larr;</span> ' + data['prevSLName']).parent().removeClass('hidden');
-                }
-            }
-
-            // Back to Device Cat (always active)
-            $('#navigationBackToCategory').find('a').attr('href', 'dev_by_category.html?catid=' + data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> ' + data['categoria']);
-
-            // Featured Assistance Services
-            $('#featAssServ').html('');
-            if (data['ass'].length == 0) {
-                $('#featAssServ').append('Nessuna domanda relativa a questo prodotto.').removeClass('panel');
-            } else {
-                $('#featAssServ').append('<div class="list-group">');
-                $.each(data['ass'], function (i, v) {
-                    $('#featAssServ').append('<a class="list-group-item text-center" href="ass_page.html?aid=' + v['idAssistenza'] + '&fromdevice=' + data['idProdotto'] + '"><b>' + v['nome'] + '</b><br>' + v['abstract'] + '</a>');
-                });
-                $('#featAssServ').append('</div>');
-            }
-
-            // Featured SL Services
-            $('#featSLServ').html('');
-            if (data['sls'].length == 0) {
-                $('#featSLServ').append("Nessun servizio Smart Life associato a questo prodotto.");
-            } else {
-                $.each(data['sls'], function (i, v) {
-                    var promoClass = (v['promo'] == 1 ? 'promotion-item' : '');
-                    $('#featSLServ').append(
-                            '<div class="col-xs-12 col-md-4">' +
-                                '<a href="sl_service.html?sid=' + v['idSmartLife'] + '&fromdevice=' + data['idProdotto'] + '">' +
-                                    '<div class="thumbnail ' + promoClass + '">' +
-                                        '<img src="' + imgPathSL + v['image'] + '" alt="' + v['nome'] + '">' +
-                                        '<div class="caption">' +
-                                            '<h3 class="text-center">' + v['nome'] + '</h3>' +
-                                            '<p class="text-justify">' + v['abstract'] + '</p>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</a>' +
-                            '</div> ');
-                    debugger;
-                    if ((i + 1) % 3 == 0) $('#featSLServ').append('<div class="clearfix visible-md-block visible-lg-block"></div>')
-                });
-            }
-
-
-        }).fail(function () {
-            ajaxErrorRep();
-        });
-
-        // return statement for links
-        return false;
-    }
-    $(function () {
-        var pid = getURLParameter('pid');
-        var promo = (getURLParameter('promo') != null) ? promoYes : '';
-        loadProduct(pid, promo);
-    });
-</script>
-<div id="divFooter">
-</div>
-</body>
+			function setActivePageCaller(){
+				setActivePage('#liNavProdotti');
+			}
+		</script>
+		<div id="divFooter">
+		</div>
+	</body>
 </html>

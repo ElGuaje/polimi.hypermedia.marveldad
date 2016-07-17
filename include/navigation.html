@@ -11,20 +11,20 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul id="navbarIntestUL" class="nav navbar-nav">
-        <li style="font-size: 17px; font-family: Trebuchet MS"><a href="#whoweare">Chi Siamo</a></li>
-        <li style="font-size: 17px; font-family: Trebuchet MS"><a href="gruppo.html">Il Gruppo</a></li>
-        <li style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
-              <a href="#devices" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Prodotti <span class="caret"></span></a>
-              <ul class="dropdown-menu home-dropdown">
-                <li><a href="dev_by_category.html?catid=1"><img class="dropdown-icon" src="media/icons/01_SmartphoneTelefoni_1.png"><h4>Smartphone e Telefonia</h4></a></li>
-                <li><a href="dev_by_category.html?catid=4"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Decoder e SmartTV</h4></a></li>
-                <li><a href="dev_by_category.html?catid=3"><img class="dropdown-icon" src="media/icons/02_Wearable_Gadget.png"><h4>Wearable e Gadget</h4></a></li>
-                <li><a href="dev_by_category.html?catid=2"><img class="dropdown-icon" src="media/icons/02_TabletComputer.png"><h4>Computer e Tablet</h4></a></li>
-                <li><a href="dev_by_category.html?catid=0"><img class="dropdown-icon" src="media/icons/05_Outlet_2.png"><h4>Offerte ed Occasioni</h4></a></li>
-              </ul>
-            </li>
-        <li style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Smart Life <span class="caret"></span></a>
+        <li id="liNavChiSiamo" style="font-size: 17px; font-family: Trebuchet MS"><a href="#whoweare">Chi Siamo</a></li>
+        <li id="liNavGruppo" style="font-size: 17px; font-family: Trebuchet MS"><a href="gruppo.html">Il Gruppo</a></li>
+        <li id="liNavProdotti" style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
+		  <a href="#devices" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" intro-link="dev_categories.html">Prodotti <span class="caret"></span></a>
+		  <ul class="dropdown-menu home-dropdown">
+			<li><a href="dev_by_category.html?catid=1"><img class="dropdown-icon" src="media/icons/01_SmartphoneTelefoni_1.png"><h4>Smartphone e Telefonia</h4></a></li>
+			<li><a href="dev_by_category.html?catid=4"><img class="dropdown-icon" src="media/icons/04_TVDigitalHome.png"><h4>Decoder e SmartTV</h4></a></li>
+			<li><a href="dev_by_category.html?catid=3"><img class="dropdown-icon" src="media/icons/02_Wearable_Gadget.png"><h4>Wearable e Gadget</h4></a></li>
+			<li><a href="dev_by_category.html?catid=2"><img class="dropdown-icon" src="media/icons/02_TabletComputer.png"><h4>Computer e Tablet</h4></a></li>
+			<li><a href="dev_by_category.html?catid=0"><img class="dropdown-icon" src="media/icons/05_Outlet_2.png"><h4>Offerte ed Occasioni</h4></a></li>
+		  </ul>
+		</li>
+        <li id="liNavSL" style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  intro-link="sl_categories.html">Smart Life <span class="caret"></span></a>
           <ul class="dropdown-menu home-dropdown">
             <li><a href="sl_by_category.html?catid=6"><img class="dropdown-icon" src="media/icons/01_Intrattenimento_0.png"><h4>TV e Intrattenimento</h4></a></li>
             <li><a href="sl_by_category.html?catid=7"><img class="dropdown-icon" src="media/icons/03_casa_famiglia_v2.png"><h4>Casa e Famiglia</h4></a></li>
@@ -33,8 +33,8 @@
             <li><a href="sl_by_category.html?catid=0"><img class="dropdown-icon" src="media/icons/05_Outlet_2.png"><h4>Offerte ed Occasioni</h4></a></li>
           </ul>
         </li>
-        <li style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Assistenza <span class="caret"></span></a>
+        <li id="liNavAS" style="font-size: 17px; font-family: Trebuchet MS" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  intro-link="ass_categories.html">Assistenza <span class="caret"></span></a>
           <ul class="dropdown-menu home-dropdown">
             <li role="separator" class="divider"></li>
             <li><a href="ass_by_category.html?catid=12"><img class="dropdown-icon" src="media/icons/01_Gestione_Linea_e_Servizi_v1.png"><h4>Gestione Linea</h4></a></li>
@@ -44,7 +44,7 @@
             <li><a href="ass_by_category.html?catid=0"><img class="dropdown-icon" src="media/icons/faq-blue.png"><h4>FAQ</h4></a></li>
           </ul>
         </li>
-        <li style="font-size: 17px; font-family: Trebuchet MS"><a href="carrello.html">Carrello (2)</a></li>
+        <li id="liNavCarr" style="font-size: 17px; font-family: Trebuchet MS"><a href="carrello.html">Carrello (2)</a></li>
       </ul>
       <!--<ul class="nav navbar-nav navbar-right">
         <li><a href="#">Carrello</a></li>
@@ -61,12 +61,20 @@
 				p.trigger('click');
 			});
         });
+	}else{
+		$('nav li.dropdown').find('a.dropdown-toggle').click(function(){
+			if($(this).attr('intro-link'))
+				window.location.href = $(this).attr('intro-link');
+			return false;
+		}).find('span.caret').remove();
+		
+		
+	}
         /*$('nav li.dropdown-toggle').click(function(){
             //$('.dropdown-toggle', this).click('click');
             window.location.href = "sl_by_category.html?catid=6";
         });*/
-		
-    }
+
     /*else if($(window).width() > 599 && $(window).width() < 768){
         $('nav .dropdown').click(function(){
             $('.dropdown-toggle', this).trigger('click');
