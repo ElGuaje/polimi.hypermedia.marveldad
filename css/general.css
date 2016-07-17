@@ -44,7 +44,7 @@ code {
     position: static;
 }
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 1000px) {
     .nav > li.dropdown.open .home-dropdown {
         display: table;
         width: 100%;
@@ -83,7 +83,7 @@ code {
 
 }
 
-@media screen and (min-width: 600px) and (max-width: 799px){
+@media screen and (min-width: 600px) and (max-width: 999px){
     .nav > li.dropdown.open .home-dropdown {
         display: list-item;
         width: 100%;
