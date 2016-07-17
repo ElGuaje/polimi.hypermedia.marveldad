@@ -144,9 +144,10 @@
             } else {
                 $('#dataGridSL').html('<p>Nessun servizio associato a questa categoria.</p>');
             }
-
-            var filterizd = $('.filtr-container').filterizr({});
-
+            var options = {
+                layout: 'packed'
+            };
+            var filtr = $('.filtr-container').filterizr(options);
 
         }).fail(function () {
             ajaxErrorRep();
