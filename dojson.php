@@ -77,7 +77,6 @@
 			$ret = $telefoni[0];
 			$ret['immagini'] = $immagini;
 			
-			// Check same category!
 			if(isset($_GET['getpromo'])){
 				$sqlPromo = "SELECT idProdotto FROM ".TAB_PRODOTTI." WHERE ( 
 					idProdotto = IFNULL((SELECT MIN(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto > {$pid} AND inPromo = 1),0) 
@@ -89,7 +88,7 @@
 				if(isset($promo[0]) && isset($promo[1])){
 					$ret['promoPrev'] = $promo[0][0];
 					$ret['promoNext'] = $promo[1][0];
-				}elseif(!isset($promo[1])){
+				}elseif(isset($promo[0]) && !isset($promo[1])){
 					if($promo[0][0] > $pid)
 						$ret['promoNext'] = $promo[0][0];
 					else
@@ -194,11 +193,29 @@
 			if(isset($cat[0]) && isset($cat[1])){
 					$sl['prevInCat'] = $cat[0][0];
 					$sl['nextInCat'] = $cat[1][0];
-			}elseif(!isset($cat[1])){
+			}elseif(isset($cat[0]) && !isset($cat[1])){
 				if($cat[0][0] > $sid)
 					$sl['nextInCat'] = $cat[0][0];
 				else
 					$sl['prevInCat'] = $cat[0][0];
+			}
+			
+			// Navigation between SL promo
+			if(isset($_GET['getpromo'])){
+				$sqlPromo = "SELECT idSmartLife FROM ".TAB_SL." WHERE ( 
+					idSmartLife = IFNULL((SELECT MIN(idSmartLife) FROM ".TAB_SL." WHERE idSmartLife > {$sid} AND promo = 1),0) 
+					OR idSmartLife = IFNULL((SELECT MAX(idSmartLife) FROM ".TAB_SL." WHERE idSmartLife < {$sid} AND promo = 1),0)
+					)";
+				$promo = query($db,$sqlPromo,MYSQLI_NUM);
+				if(isset($promo[0]) && isset($promo[1])){
+					$sl['promoPrev'] = $promo[0][0];
+					$sl['promoNext'] = $promo[1][0];
+				}elseif(isset($promo[0]) && !isset($promo[1])){
+					if($promo[0][0] > $sid)
+						$sl['promoNext'] = $promo[0][0];
+					else
+						$sl['promoPrev'] = $promo[0][0];
+				}
 			}
 			
 			$toJ = $sl;
