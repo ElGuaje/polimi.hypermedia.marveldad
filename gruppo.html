@@ -47,7 +47,8 @@
                     <li role="presentation"><a data-toggle="tab" href="#tab-news">News</a></li>
                     <li role="presentation"><a data-toggle="tab" href="#tab-governance">Governance</a></li>
                     <li role="presentation"><a data-toggle="tab" href="#tab-market">Business & Market</a></li>
-                    <li role="presentation"><a data-toggle="tab" href="#tab-investors">Per gli investitori</a></li>
+                    <li role="presentation"><a data-toggle="tab" data-carousel="true" href="#tab-investors">Per gli
+                        investitori</a></li>
                 </ul>
             </div>
         </div>
@@ -308,6 +309,16 @@
                                          width="100%"
                                          alt="Investor 2">
                                 </li>
+                                <li style="width: 200px; height: 210px">
+                                    <img src="/hypermedia/media/group_images/group_investor1.jpg"
+                                         width="100%"
+                                         alt="Investor 3">
+                                </li>
+                                <li style="width: 200px; height: 210px">
+                                    <img src="/hypermedia/media/group_images/group_investor2.jpg"
+                                         width="100%"
+                                         alt="Investor 4">
+                                </li>
                             </ul>
                         </div>
 
@@ -315,11 +326,17 @@
                         <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
                         <div class="hidden">
                             <p class="jcarousel-pagination" data-jcarouselpagination="true">
-                                <a href="#1"
-                                   class="active">1
+                                <a href="#1" class="active"
+                                >1
                                 </a>
                                 <a href="#2">
                                     2
+                                </a>
+                                <a href="#3">
+                                    3
+                                </a>
+                                <a href="#4">
+                                    4
                                 </a>
                             </p>
                         </div>
@@ -378,59 +395,9 @@
 </div>
 
 <script>
-    (function ($) {
-        $(function () {
-            var jcarousel = $('.jcarousel');
-
-            jcarousel
-                    .on('jcarousel:reload jcarousel:create', function () {
-                        var carousel = $(this),
-                                width = carousel.innerWidth();
-
-                        if (width >= 600) {
-                            width = width / 2;
-                        } else if (width >= 350) {
-                            width = width / 2;
-                        }
-
-                        carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-                    })
-                    .jcarousel({
-                        wrap: 'circular'
-                    });
-
-            $('.jcarousel-control-prev')
-                    .jcarouselControl({
-                        target: '-=1'
-                    });
-
-            $('.jcarousel-control-next')
-                    .jcarouselControl({
-                        target: '+=1'
-                    });
-
-            $('.jcarousel-pagination')
-                    .on('jcarouselpagination:active', 'a', function () {
-                        $(this).addClass('active');
-                    })
-                    .on('jcarouselpagination:inactive', 'a', function () {
-                        $(this).removeClass('active');
-                    })
-                    .on('click', function (e) {
-                        e.preventDefault();
-                    })
-                    .jcarouselPagination({
-                        perPage: 1,
-                        item: function (page) {
-                            return '<a href="#' + page + '">' + page + '</a>';
-                        }
-                    });
-        });
-    })(jQuery);
-	
-	function setActivePageCaller(){
-		setActivePage('#liNavGruppo');
-	}
+    function setActivePageCaller() {
+        setActivePage('#liNavGruppo');
+    }
 </script>
 </body>
 </html>
