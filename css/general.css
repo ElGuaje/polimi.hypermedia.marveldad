@@ -536,3 +536,19 @@ a .thumbnail:hover{
 	color: #ff3c1a !important;
 	background-color: transparent !important;
 }
+
+.tim-jumbotron {
+    background-color: #004591;
+    color: whitesmoke;
+}
+
+.tim-row {
+    padding-top: 15px;
+    border-radius: 5px;
+    background-color: #004591;
+    color: whitesmoke;
+}
+
+.bottom-padding {
+    padding-bottom: 15px;
+}
