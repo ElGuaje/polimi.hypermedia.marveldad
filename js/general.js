@@ -53,8 +53,7 @@ $(document).ready(function () {
                 jcarousel.on('jcarousel:reload jcarousel:create', function () {
                         var carousel = $(this),
                             width = carousel.innerWidth();
-
-
+                            
                         if (width >= 600) {
                             width = width / 2;
                         } else if (width >= 350) {
