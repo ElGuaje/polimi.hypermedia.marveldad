@@ -56,18 +56,17 @@
         <!--General navigation for big screens-->
         <nav>
             <ul class="pager">
-                <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"></a>
-                </li>
-                <li class="hidden-sm hidden-xs" id="aPrevInCat"><a href="#">Precedente</a></li>
+                <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"></a></li>
+                <li class="hidden-sm hidden-xs"><a href="#" class="aPrevInCat toHide"></a></li>
                 <li><h1 style="display: inline" id="dataNomeSL">SL Title</h1></li>
-                <li class="hidden-sm hidden-xs"><a href="#">Successivo</a></li>
+                <li class="hidden-sm hidden-xs"><a href="#" class="aNextInCat toHide">Successivo<span aria-hidden="true">&rarr;</span></a></li>
             </ul>
         </nav>
         <!--Navigation for small and x-small devices -->
         <nav>
             <ul class="pager hidden-md hidden-lg">
-                <li><a href="#">Precedente</a></li>
-                <li><a href="#">Successivo</a></li>
+                <li><a href="#" class="aPrevInCat toHide"><span aria-hidden="true">&larr;</span>Precedente</a></li>
+                <li><a href="#" class="aNextInCat toHide">Successivo<span aria-hidden="true">&rarr;</span></a></li>
             </ul>
         </nav>
     </div>
@@ -196,7 +195,10 @@
     }
 
     function loadSL(sid, promo) {
-
+		
+		
+		$('.toHide').addClass('hidden');
+		
         // Get data from DB
         $.ajax({
             url: mySite + 'dojson.php?get=singlesl&sid=' + sid + promo,
@@ -236,15 +238,26 @@
 			
 			$('.backToSLCat').attr('href','sl_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+data['categoria']);
 			
-            if (data['prevInCat'] != undefined)
-                $('#aPrevInCat').unbind('click').click(function () {
-                    loadSL(data['prevInCat'], promoNo)
-                })
-
-            if (data['nextInCat'] != undefined)
-                $('#aNextInCat').unbind('click').click(function () {
-                    loadSL(data['nextInCat'], promoNo)
-                })
+            if (data['promoPrev'] != undefined){
+				$('.aPrevInCat').unbind('click').click(function () {
+					loadSL(data['promoPrev'], promoYes)
+				}).html('<span aria-hidden="true">&larr;</span>Precedente in promo').removeClass('hidden');
+			}else if(data['prevInCat'] != undefined  && !promo){
+				$('.aPrevInCat').unbind('click').click(function () {
+					loadSL(data['prevInCat'], promoNo)
+				}).html('<span aria-hidden="true">&larr;</span>Precedente').removeClass('hidden');
+				
+			}
+			
+            if (data['promoNext'] != undefined){
+					$('.aNextInCat').unbind('click').click(function () {
+						loadSL(data['promoNext'], promoYes)
+					}).html('Successivo in promo<span aria-hidden="true">&rarr;</span>').removeClass('hidden');
+			}else if(data['nextInCat'] != undefined && !promo){
+				$('.aNextInCat').unbind('click').click(function () {
+					loadSL(data['nextInCat'], promoNo)
+				}).html('Successivo<span aria-hidden="true">&rarr;</span>').removeClass('hidden');
+			}
 
 
         }).fail(function () {
