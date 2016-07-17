@@ -2,34 +2,31 @@
 	// Phonegap stuff
 	header('Access-Control-Allow-Origin: *');
 	
+	// Our query handler
 	function query($db,$sql,$resType = MYSQLI_ASSOC){
 		$query = $db->query($sql);
 		if(!$query)
 			die($db->error);
 		return $query->fetch_all($resType);
 	}
-/*
-	function unTag($i){
-		if(is_array($i))
-			foreach($i as $k=>$v)
-				$i[$k] = unTag($v);
-		return htmlspecialchars("<b>ciao</b>");
-	}
-
-*/
+	
+	// Checks if we are on localhost or on public server
 	if($_SERVER['HTTP_HOST'] != 'www.marveldad.altervista.org' && $_SERVER['HTTP_HOST'] != 'marveldad.altervista.org'){
 		define('DEVELOPMENT',true);
 		define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/hypermedia/');
 	}else{
 		define('DEVELOPMENT',false);
 		define('ROOT','');
-		//define('ROOT',realpath($_SERVER['DOCUMENT_ROOT']).'/');
 	}
+	
+	// Connect to DB
 	require_once ROOT.'core/connect.php';
+	
+	// Syntax:
 	// doJson.php?get=prodotti
 	// doJson.php?get=singleproduct&pid=
 	
-	
+	// Define tables
 	define('TAB_PRODOTTI','devices');
 	define('TAB_IMMAGINI','immagini');
 	define('TAB_IMGPROD','imagesindevices');
@@ -40,25 +37,29 @@
 	define('TAB_ASSISTENZA','assistenza');
 	define('TAB_DEV_IN_ASS','devicesinassistenza');
 	
-	
-	
+	// Output
 	$toJ = "";
+	
+	// Do some escaping
 	foreach($_GET as $k=>$v){
 		$_GET[$k] = $db->real_escape_string($v);
 	}
 	foreach($_POST as $k=>$v){
 		$_GET[$k] = $db->real_escape_string($v);
 	}
+	
+	
 	if(isset($_GET['get'])){
+
+		// Get all the products
 		if( $_GET['get'] == 'prodotti'){
-			
 			$sql = "SELECT * FROM devices";
 			
-			$query = $db->query($sql);
-			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
-			$toJ = $telefoni;
-			//echo '<pre>',print_r($telefoni,true),'</pre>';
-		}elseif($_GET['get'] == 'singleproduct'){
+			$toJ = query($db,$sql);
+			
+		}
+		// Get a single product
+		elseif($_GET['get'] == 'singleproduct'){
 			
 			$pid = (int)$_GET['pid'];
 			$sql = "SELECT p.*,c.categoria FROM ".TAB_PRODOTTI." p 
@@ -66,23 +67,23 @@
 			ON rifCategoria = idCategoria 
 			WHERE idProdotto = ".$pid;
 			
-			$query = $db->query($sql);
-			$telefoni = $query->fetch_all(MYSQLI_ASSOC);
+			$telefoni = query($db,$sql);
 			if(empty($telefoni))
 				die(json_encode('No devices found', JSON_NUMERIC_CHECK));
-			$sqlImmagini = "SELECT src FROM ".TAB_IMGPROD." WHERE rifDevice ={$pid}";
-			$queryImmagini = $db->query($sqlImmagini);
-			$immagini = $queryImmagini->fetch_all(MYSQLI_ASSOC);
-			
 			$ret = $telefoni[0];
+			
+			// Get images
+			$sqlImmagini = "SELECT src FROM ".TAB_IMGPROD." WHERE rifDevice ={$pid}";
+			$immagini = query($db,$sqlImmagini);
+			
 			$ret['immagini'] = $immagini;
 			
+			// Get next and prev in promo - if necessary
 			if(isset($_GET['getpromo'])){
 				$sqlPromo = "SELECT idProdotto FROM ".TAB_PRODOTTI." WHERE ( 
 					idProdotto = IFNULL((SELECT MIN(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto > {$pid} AND inPromo = 1),0) 
 					OR idProdotto = IFNULL((SELECT MAX(idProdotto) FROM ".TAB_PRODOTTI." WHERE idProdotto < {$pid} AND inPromo = 1),0)
 					)";
-				//$sqlPromo = "SELECT a.idProdotto AS nextPromo,  b.idProdotto AS prevPromo FROM ".TAB_PRODOTTI." a, ".TAB_PRODOTTI." b WHERE a.inPromo =1 AND b.inPromo = 1 AND ({$pid}<a.idProdotto) AND ({$pid}>b.idProdotto)";
 				$queryPromo = $db->query($sqlPromo);
 				$promo = $queryPromo->fetch_all(MYSQLI_NUM);
 				if(isset($promo[0]) && isset($promo[1])){
@@ -139,36 +140,30 @@
 			
 			$toJ = $ret;
 			
-		}elseif($_GET['get'] == 'promo'){
+		}
+		// Get devices in promotion
+		elseif($_GET['get'] == 'promo'){
 			
 			// SIMPLE JOIN: there must be an image for a device in promotion
 			$sql = "SELECT * FROM ".TAB_PRODOTTI." p JOIN ".TAB_IMGPROD." pi ON pi.rifDevice = p.idProdotto WHERE inPromo = 1 GROUP BY idProdotto";
-			$query = $db->query($sql);
-			if(!$query)
-				die($db->error);
-			$promo = $query->fetch_all(MYSQLI_ASSOC);
-			$toJ = $promo;
+			$toJ = query($db,$sql);
 		
-		}elseif($_GET['get'] == 'singlesl'){
+		}
+		// Get single smart life service
+		elseif($_GET['get'] == 'singlesl'){
 			
 			$sid =$_GET['sid'];
 			$sqlSl = "SELECT * FROM ".TAB_SL." JOIN ".TAB_CATEGORIES." ON rifCategoria = idCategoria WHERE idSmartLife = {$sid}";
-			$querySl = $db->query($sqlSl);
-			if(!$querySl)
-				die($db->error);
-			$sl = $querySl->fetch_all(MYSQLI_ASSOC);
+			$sl = query($db,$sqlSl);
 			$sl = $sl[0];
 			
+			// Get associated FAQ
 			$sqlFaq = "SELECT * FROM ".TAB_FAQ_SL." WHERE rifSmartLife = {$sid}";
-			$queryFaq = $db->query($sqlFaq);
-			if(!$queryFaq)
-				die($db->error);
-			$faq = $queryFaq->fetch_all(MYSQLI_ASSOC);
+			$faq = query($db,$sqlFaq);
 			
 			$sl['faq'] = $faq;
 			
 			// Get the devices associated 
-			
 			$sqlDevInSl = "SELECT idProdotto, d.nome, prezzo, spec1, spec2, spec3, spec4, d.inPromo, id.src as image 
 			FROM ".TAB_PRODOTTI." d JOIN ".TAB_DEV_IN_SL." dis ON dis.rifDevice = d.idProdotto 
 			JOIN ".TAB_SL." s ON dis.rifSmartLife = s.idSmartLife 
@@ -176,10 +171,7 @@
 			WHERE s.idSmartLife = {$sid} 
 			GROUP BY idProdotto
 			ORDER BY d.inPromo";
-			$queryDevInSl = $db->query($sqlDevInSl);
-			if(!$queryDevInSl)
-				die($db->error);
-			$devInSl = $queryDevInSl->fetch_all(MYSQLI_ASSOC);
+			$devInSl = query($db,$sqlDevInSl);
 			
 			$sl['assDevices'] = $devInSl;
 			
@@ -220,7 +212,10 @@
 			
 			$toJ = $sl;
 			
-		}elseif($_GET['get'] == 'slbycat' && isset($_GET['catid'])){
+		}
+		// Smart Life introductory
+		elseif($_GET['get'] == 'slbycat' && isset($_GET['catid'])){
+			// if catid == 0 promotions are shown
 			if($_GET['catid'] > 0){
 				$idCat = $_GET['catid'];
 				$resCat = query($db,"SELECT categoria AS nomeCategoria FROM ".TAB_CATEGORIES." WHERE idCategoria = {$idCat} AND tipo = 's' LIMIT 1");
@@ -238,8 +233,11 @@
 			
 			$toJ['sls'] = $resSLByCat;
 			
-		}elseif($_GET['get'] == 'devicesbycat' && isset($_GET['catid'])){
+		}
+		// Devices introductory
+		elseif($_GET['get'] == 'devicesbycat' && isset($_GET['catid'])){
 			$where = '';
+			// if catid == 0 promotion are shown
 			if($_GET['catid'] > 0){
 				$idCat = $_GET['catid'];
 				$resCat = query($db,"
@@ -262,7 +260,9 @@
 			$resDevicesByCat = query($db,$sqlDevicesByCat);
 			$toJ['devices'] = $resDevicesByCat;
 		
-		}elseif($_GET['get'] == 'singleass' && isset($_GET['aid'])){
+		}
+		// Single Assistance Service
+		elseif($_GET['get'] == 'singleass' && isset($_GET['aid'])){
 			$aid = (int)$_GET['aid'];
 			$sql = "SELECT *, categoria FROM ".TAB_ASSISTENZA." 
 			JOIN ".TAB_CATEGORIES." 
@@ -270,6 +270,7 @@
 			WHERE idAssistenza = {$aid}";
 			$singleA = query($db,$sql);
 			
+			// Get associated devices
 			$sqlAssociatedDevices = "SELECT p.idProdotto, p.nome 
 			FROM ".TAB_PRODOTTI." p 
 			JOIN ".TAB_DEV_IN_ASS." dia 
@@ -288,18 +289,18 @@
 			$toJ['assistenza'] = $singleA[0];
 			$toJ['devices'] = $associatedDevices;
 			
-		}elseif($_GET['get'] = 'assbycat' && isset($_GET['catid'])){
-			
+		}
+		// Assistance service introductory
+		elseif($_GET['get'] = 'assbycat' && isset($_GET['catid'])){
+			// if catid == 0 FAQ
 			if($_GET['catid'] == 0){
 				$toJ['categoria']['categoria'] = 'Domande frequenti';
 				$where = ' WHERE faq = 1 ';
-			;
 			}else{
 				$catid = (int)$_GET['catid'];
 				$sqlCat = "SELECT * FROM ".TAB_CATEGORIES." WHERE idCategoria = {$catid}";
 				$cat = query($db,$sqlCat);
 				$toJ['categoria'] = $cat[0];
-				
 				$where = " WHERE rifCategoria = {$catid} ";
 			}
 				$sqlAssByCat = "SELECT idAssistenza, nome, abstract, image 
@@ -315,13 +316,10 @@
 		
 	}
 	
+	// Debugging
 	if(isset($_GET['pre']))
 		echo '<pre>',print_r($toJ,true),'</pre>';
 	echo json_encode($toJ, JSON_NUMERIC_CHECK);
 	
-	//echo '<pre>',print_r($_GET,true),'</pre>';
-
-
-
 
 ?>
