@@ -524,3 +524,10 @@ a .thumbnail:hover{
 .twenty-margin-top-row {
     margin-top: 20px;
 }
+
+.investors-card {
+    color: white;
+    background-color: #085394;
+    height: 65px;
+    padding: 5px 0 0 5px ;
+}
