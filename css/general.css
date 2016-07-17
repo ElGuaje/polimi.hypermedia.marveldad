@@ -531,3 +531,8 @@ a .thumbnail:hover{
     height: 65px;
     padding: 5px 0 0 5px ;
 }
+
+.currentPageNav{
+	color: #ff3c1a !important;
+	background-color: transparent !important;
+}
