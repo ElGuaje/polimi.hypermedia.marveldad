@@ -57,6 +57,7 @@
         <nav>
             <ul class="pager">
                 <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"></a></li>
+				<li class="previous toHide hidden-sm hidden-xs"><a href="#" class="backToPromoOrDevice"></a></li>
                 <li class="hidden-sm hidden-xs"><a href="#" class="aPrevInCat toHide"></a></li>
                 <li><h1 style="display: inline" id="dataNomeSL">SL Title</h1></li>
                 <li class="hidden-sm hidden-xs"><a href="#" class="aNextInCat toHide">Successivo<span aria-hidden="true">&rarr;</span></a></li>
@@ -124,7 +125,7 @@
                     <!--Additional content row-->
                     <div class="row">
                         <div class="col-xs-12">
-                            <p>Additional content</p>
+                            <!--p>Additional content</p-->
                         </div>
                     </div>
                 </div>
@@ -166,10 +167,11 @@
 </div>
 
 <script>
-    var sid = getURLParameter('sid');
     var promoYes = '&getpromo=1';
     var promoNo = '';
+    var sid = getURLParameter('sid');
     var promo = (getURLParameter('promo') != null) ? promoYes : promoNo;
+	
     function buildFAQ(question, answer) {
         return '<div class="panel panel-default"><div class="panel-heading">' + question + '</div><div class="panel-body">' + answer + '</div></div>';
     }
@@ -196,12 +198,12 @@
 
     function loadSL(sid, promo) {
 		
-		
 		$('.toHide').addClass('hidden');
+		var getDeviceName = (getURLParameter('fromdevice') != null) ? '&getdevicename=' + getURLParameter('fromdevice') : '';
 		
         // Get data from DB
         $.ajax({
-            url: mySite + 'dojson.php?get=singlesl&sid=' + sid + promo,
+            url: mySite + 'dojson.php?get=singlesl&sid=' + sid + promo + getDeviceName,
             method: 'GET',
             dataType: 'json'
         }).done(function (data) {
@@ -237,6 +239,13 @@
             //$('#linkToCategory').html('<a href="sl_by_category.html?catid=' + data['rifCategoria'] + '">< ' + data['categoria'] + '</a>')
 			
 			$('.backToSLCat').attr('href','sl_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+data['categoria']);
+			
+			if(promo){
+				$('.backToPromoOrDevice').attr('href','sl_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> Promozioni').parent().removeClass('hidden');
+			}else if(getURLParameter('fromdevice') != null && data['prevDeviceName'] != null){
+				// Back to Device link
+				$('.backToPromoOrDevice').attr('href','product.html?pid='+getURLParameter('fromdevice')).html('<span aria-hidden="true">&larr;</span> '+data['prevDeviceName']).parent().removeClass('hidden');
+			}
 			
             if (data['promoPrev'] != undefined){
 				$('.aPrevInCat').unbind('click').click(function () {

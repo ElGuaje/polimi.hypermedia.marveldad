@@ -80,8 +80,8 @@
         </div>
     </div>
     <!--SL Services -->
-    <div id="dataGridSL" class="filtr-container" style="margin-bottom: 100px">
-        <div class="row">
+    <div id="dataGridSL" style="margin-bottom: 100px" class="filtr-container">
+        <div class="row ">
             <!--div class="col-xs-3">
                 <div class="thumbnail">
                     <img src="http://placehold.it/350x150" alt="Primo">
@@ -104,6 +104,7 @@
 <script>
     var idCat = getURLParameter('catid');
     function buildBlock(item) {
+		var promo = (idCat == 0 ? '&promo=1' : '');
 		var promoClass = (item['promo'] == 1 ? 'promotion-item' : '');
         return '<div class="col-xs-12 col-sm-6 col-md-3 filtr-item" data-category="1" data-sort="value">' +
                 '<a href="sl_service.html?sid=' + item['idSmartLife'] + '">' +
