@@ -210,6 +210,14 @@
 				}
 			}
 			
+			// Get prev Device name is needed
+			if(isset($_GET['getdevicename'])){
+				$i = (int) $_GET['getdevicename'];
+				$d = query($db,"SELECT nome FROM ".TAB_PRODOTTI." WHERE idProdotto = {$i}");
+				if(!empty($d))
+					$sl['prevDeviceName'] = $d[0]['nome'];
+			}
+			
 			$toJ = $sl;
 			
 		}
