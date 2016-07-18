@@ -383,6 +383,12 @@ span.promo-trial {
     height: 150px;
 }
 
+.fifth-colored-box {
+    background-color: #31b0d5;
+    width: 100%;
+    height: 150px;
+}
+
 .sl-categories .thumbnail {
     /* Fallback for web browsers that don't support RGBa */
     background-color: rgb(255, 255, 255);
@@ -566,7 +572,7 @@ a .thumbnail:hover {
 }
 
 .sl-thumbnail {
-    width:100%;
+    width: 100%;
     height: 500px;
     overflow: auto;
 }
