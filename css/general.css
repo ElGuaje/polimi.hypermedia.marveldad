@@ -333,7 +333,7 @@ span.promo-trial {
 }
 
 .sl-cat-container {
-    background: url("/hypermedia/media/sl_images/sl-categories-background.jpg") no-repeat center center fixed;
+    background: url("media/sl_images/sl-categories-background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
