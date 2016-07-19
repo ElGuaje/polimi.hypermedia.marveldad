@@ -576,3 +576,7 @@ a .thumbnail:hover {
     height: 430px;
     overflow: auto;
 }
+
+.sl-cat-thumbnail {
+    height: 350px;
+}
