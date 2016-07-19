@@ -57,10 +57,11 @@
         <nav>
             <ul class="pager">
                 <li class="previous hidden-sm hidden-xs"><a href="#" class="backToSLCat"></a></li>
-				<li class="previous toHide hidden-sm hidden-xs"><a href="#" class="backToPromoOrDevice"></a></li>
+                <li class="previous toHide hidden-sm hidden-xs"><a href="#" class="backToPromoOrDevice"></a></li>
                 <li class="hidden-sm hidden-xs"><a href="#" class="aPrevInCat toHide"></a></li>
                 <li><h1 style="display: inline" id="dataNomeSL">SL Title</h1></li>
-                <li class="hidden-sm hidden-xs"><a href="#" class="aNextInCat toHide">Successivo<span aria-hidden="true">&rarr;</span></a></li>
+                <li class="hidden-sm hidden-xs"><a href="#" class="aNextInCat toHide">Successivo<span
+                        aria-hidden="true">&rarr;</span></a></li>
             </ul>
         </nav>
         <!--Navigation for small and x-small devices -->
@@ -112,7 +113,6 @@
                             <img class="img-responsive" id="dataImg">
                         </div>
                         <div class="col-xs-12 col-md-8">
-                            <h4>Come funziona</h4>
                             <p id="dataDescrizione"></p>
                         </div>
                     </div>
@@ -136,7 +136,6 @@
                 <!--Activation e rules row-->
                 <div class="row" id="sl-act-row">
                     <div class="col-xs-12">
-                        <h3>Attivazione e regolamento</h3>
                         <div id="dataAttivazioneRegolamento"></div>
                     </div>
                 </div>
@@ -171,36 +170,36 @@
     var promoNo = '';
     var sid = getURLParameter('sid');
     var promo = (getURLParameter('promo') != null) ? promoYes : promoNo;
-	
+
     function buildFAQ(question, answer) {
         return '<div class="panel panel-default"><div class="panel-heading">' + question + '</div><div class="panel-body">' + answer + '</div></div>';
     }
 
     function buildAssDevices(dev) {
-		var promoClass = (dev['inPromo'] == 1 ? 'promotion-item' : '');
-        return '<a href="product.html?pid=' + dev['idProdotto'] + '&fromsl=' + sid + '">'+
-			'<div class="col-sm-6 col-md-4">'+
-				'<div class="thumbnail '+promoClass+'">'+
-					'<img src="' + imgPathProduct + dev['image'] + '" alt="' + dev['nome'] + '">'+
-					'<div class="caption">'+
-						'<h3>' + dev['nome'] + '</h3><p class="prezzo">' + dev['prezzo'].toFixed(2) + '&euro;' + '</p>'+
-						 '<div><ul style="margin-top: 25px;">' +
-							'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ dev['spec1'] +'</p></li>'+
-							'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ dev['spec2'] +'</p></li>'+
-							'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ dev['spec3'] +'</p></li>'+
-							'<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>'+ dev['spec4'] +'</p></li>'+
-							'</ul></div>' +
-					'</div>'+
-				'</div>'+
-			'</div>'+
-		'</a>';
+        var promoClass = (dev['inPromo'] == 1 ? 'promotion-item' : '');
+        return '<a href="product.html?pid=' + dev['idProdotto'] + '&fromsl=' + sid + '">' +
+                '<div class="col-sm-6 col-md-4">' +
+                '<div class="thumbnail ' + promoClass + '">' +
+                '<img src="' + imgPathProduct + dev['image'] + '" alt="' + dev['nome'] + '">' +
+                '<div class="caption">' +
+                '<h3>' + dev['nome'] + '</h3><p class="prezzo">' + dev['prezzo'].toFixed(2) + '&euro;' + '</p>' +
+                '<div><ul style="margin-top: 25px;">' +
+                '<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>' + dev['spec1'] + '</p></li>' +
+                '<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>' + dev['spec2'] + '</p></li>' +
+                '<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>' + dev['spec3'] + '</p></li>' +
+                '<li style="font-size: 9px; margin: -10px -30px 0px -30px"><p>' + dev['spec4'] + '</p></li>' +
+                '</ul></div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</a>';
     }
 
     function loadSL(sid, promo) {
-		
-		$('.toHide').addClass('hidden');
-		var getDeviceName = (getURLParameter('fromdevice') != null) ? '&getdevicename=' + getURLParameter('fromdevice') : '';
-		
+
+        $('.toHide').addClass('hidden');
+        var getDeviceName = (getURLParameter('fromdevice') != null) ? '&getdevicename=' + getURLParameter('fromdevice') : '';
+
         // Get data from DB
         $.ajax({
             url: mySite + 'dojson.php?get=singlesl&sid=' + sid + promo + getDeviceName,
@@ -237,36 +236,36 @@
             }
 
             //$('#linkToCategory').html('<a href="sl_by_category.html?catid=' + data['rifCategoria'] + '">< ' + data['categoria'] + '</a>')
-			
-			$('.backToSLCat').attr('href','sl_by_category.html?catid='+data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> '+data['categoria']);
-			
-			if(promo){
-				$('.backToPromoOrDevice').attr('href','sl_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> Promozioni').parent().removeClass('hidden');
-			}else if(getURLParameter('fromdevice') != null && data['prevDeviceName'] != null){
-				// Back to Device link
-				$('.backToPromoOrDevice').attr('href','product.html?pid='+getURLParameter('fromdevice')).html('<span aria-hidden="true">&larr;</span> '+data['prevDeviceName']).parent().removeClass('hidden');
-			}
-			
-            if (data['promoPrev'] != undefined){
-				$('.aPrevInCat').unbind('click').click(function () {
-					loadSL(data['promoPrev'], promoYes)
-				}).html('<span aria-hidden="true">&larr;</span>Precedente in promo').removeClass('hidden');
-			}else if(data['prevInCat'] != undefined  && !promo){
-				$('.aPrevInCat').unbind('click').click(function () {
-					loadSL(data['prevInCat'], promoNo)
-				}).html('<span aria-hidden="true">&larr;</span>Precedente').removeClass('hidden');
-				
-			}
-			
-            if (data['promoNext'] != undefined){
-					$('.aNextInCat').unbind('click').click(function () {
-						loadSL(data['promoNext'], promoYes)
-					}).html('Successivo in promo<span aria-hidden="true">&rarr;</span>').removeClass('hidden');
-			}else if(data['nextInCat'] != undefined && !promo){
-				$('.aNextInCat').unbind('click').click(function () {
-					loadSL(data['nextInCat'], promoNo)
-				}).html('Successivo<span aria-hidden="true">&rarr;</span>').removeClass('hidden');
-			}
+
+            $('.backToSLCat').attr('href', 'sl_by_category.html?catid=' + data['rifCategoria']).html('<span aria-hidden="true">&larr;</span> ' + data['categoria']);
+
+            if (promo) {
+                $('.backToPromoOrDevice').attr('href', 'sl_by_category.html?catid=0').html('<span aria-hidden="true">&larr;</span> Promozioni').parent().removeClass('hidden');
+            } else if (getURLParameter('fromdevice') != null && data['prevDeviceName'] != null) {
+                // Back to Device link
+                $('.backToPromoOrDevice').attr('href', 'product.html?pid=' + getURLParameter('fromdevice')).html('<span aria-hidden="true">&larr;</span> ' + data['prevDeviceName']).parent().removeClass('hidden');
+            }
+
+            if (data['promoPrev'] != undefined) {
+                $('.aPrevInCat').unbind('click').click(function () {
+                    loadSL(data['promoPrev'], promoYes)
+                }).html('<span aria-hidden="true">&larr;</span>Precedente in promo').removeClass('hidden');
+            } else if (data['prevInCat'] != undefined && !promo) {
+                $('.aPrevInCat').unbind('click').click(function () {
+                    loadSL(data['prevInCat'], promoNo)
+                }).html('<span aria-hidden="true">&larr;</span>Precedente').removeClass('hidden');
+
+            }
+
+            if (data['promoNext'] != undefined) {
+                $('.aNextInCat').unbind('click').click(function () {
+                    loadSL(data['promoNext'], promoYes)
+                }).html('Successivo in promo<span aria-hidden="true">&rarr;</span>').removeClass('hidden');
+            } else if (data['nextInCat'] != undefined && !promo) {
+                $('.aNextInCat').unbind('click').click(function () {
+                    loadSL(data['nextInCat'], promoNo)
+                }).html('Successivo<span aria-hidden="true">&rarr;</span>').removeClass('hidden');
+            }
 
 
         }).fail(function () {
@@ -281,12 +280,14 @@
     $(function () {
         loadSL(sid, promo);
     });
-	
-	function setActivePageCaller(){
-		setActivePage('#liNavSL');
-	}
+
+    function setActivePageCaller() {
+        setActivePage('#liNavSL');
+    }
 </script>
 <div id="divFooter">
 </div>
 </body>
 </html>
+
+
