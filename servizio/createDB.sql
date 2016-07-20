@@ -1,2 +1,0 @@
-CREATE DATABASE `hypermedia09` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-CREATE USER 'hypermedia'@'localhost' IDENTIFIED BY 'hypermedia';GRANT USAGE ON *.* TO 'hypermedia'@'localhost' IDENTIFIED BY 'hypermedia' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `hypermedia09`.* TO 'hypermedia'@'localhost';
